@@ -67,6 +67,8 @@ CREATE TABLE football.PastMatches
 	[Violations-B] smallint NOT NULL,
 	[shot_on_target-A] smallint NOT NULL,
 	[shot_on_target-B] smallint NOT NULL,
+	[save-A] smallint NOT NULL,
+	[save-B] smallint NOT NULL,
 	tournament numeric(38,0) NOT NULL,
 	is_ready_for_learning bit NOT NULL,
 	[replacements-A] smallint NOT NULL,
