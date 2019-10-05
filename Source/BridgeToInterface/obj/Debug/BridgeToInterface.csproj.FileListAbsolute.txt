@@ -1,0 +1,2 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csproj.CoreCompileInputs.cache

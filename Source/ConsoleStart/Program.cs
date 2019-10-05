@@ -24,9 +24,7 @@ namespace ConsoleStart
 					team_name = "Эвертон",
 					tier_team = 5
 				};
-
-				db_entities.Comands.Add(node);
-				
+								
 				_dalExecute.CloseConnection(db_entities);
 			}
 

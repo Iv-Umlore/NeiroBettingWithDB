@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleStart", "ConsoleStar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseConnect", "DataBaseConnect\DataBaseConnect.csproj", "{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INetwork", "INetwork\INetwork.csproj", "{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IInteractionController", "IInteractionController\IInteractionController.csproj", "{77EC09A7-6E9C-42CB-811D-CEBC2242209A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeToInterface", "BridgeToInterface\BridgeToInterface.csproj", "{CCCF669B-2904-493C-B19B-2B56764BFA2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
