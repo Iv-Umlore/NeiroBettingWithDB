@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище MatchesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comands">
+          <Key>
+            <PropertyRef Name="id_team" />
+          </Key>
+          <Property Name="id_team" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="abbrevitions" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="team_name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="tier_team" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PastMatches">
+          <Key>
+            <PropertyRef Name="id_match" />
+          </Key>
+          <Property Name="id_match" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team-A" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Team-B" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Score-A" Type="smallint" Nullable="false" />
+          <Property Name="Score-B" Type="smallint" Nullable="false" />
+          <Property Name="Important-A" Type="smallint" Nullable="false" />
+          <Property Name="Important-B" Type="smallint" Nullable="false" />
+          <Property Name="Violations-A" Type="smallint" Nullable="false" />
+          <Property Name="Violations-B" Type="smallint" Nullable="false" />
+          <Property Name="shot_on_target-A" Type="smallint" Nullable="false" />
+          <Property Name="shot_on_target-B" Type="smallint" Nullable="false" />
+          <Property Name="save-A" Type="smallint" Nullable="false" />
+          <Property Name="save-B" Type="smallint" Nullable="false" />
+          <Property Name="tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="is_ready_for_learning" Type="bit" Nullable="false" />
+          <Property Name="replacements-A" Type="smallint" Nullable="false" />
+          <Property Name="replacements-B" Type="smallint" Nullable="false" />
+          <Property Name="match_date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tournament">
+          <Key>
+            <PropertyRef Name="id_Tournament" />
+          </Key>
+          <Property Name="id_Tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Tournament_name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tournament_size" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WaitResults">
+          <Key>
+            <PropertyRef Name="id_game" />
+          </Key>
+          <Property Name="id_game" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team-A" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Team-B" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="replacements-A" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="replacements-B" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="important-A" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="important-B" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TeamA">
+          <End Role="Comands" Type="Self.Comands" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PastMatches" Type="Self.PastMatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comands">
+              <PropertyRef Name="id_team" />
+            </Principal>
+            <Dependent Role="PastMatches">
+              <PropertyRef Name="Team-A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tournament">
+          <End Role="Tournament" Type="Self.Tournament" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PastMatches" Type="Self.PastMatches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournament">
+              <PropertyRef Name="id_Tournament" />
+            </Principal>
+            <Dependent Role="PastMatches">
+              <PropertyRef Name="tournament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WR_A">
+          <End Role="Comands" Type="Self.Comands" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WaitResults" Type="Self.WaitResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comands">
+              <PropertyRef Name="id_team" />
+            </Principal>
+            <Dependent Role="WaitResults">
+              <PropertyRef Name="Team-A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WR_Tournament">
+          <End Role="Tournament" Type="Self.Tournament" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WaitResults" Type="Self.WaitResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournament">
+              <PropertyRef Name="id_Tournament" />
+            </Principal>
+            <Dependent Role="WaitResults">
+              <PropertyRef Name="tournament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MatchesModelContainer">
+          <EntitySet Name="Comands" EntityType="Self.Comands" Schema="football" store:Type="Tables" />
+          <EntitySet Name="PastMatches" EntityType="Self.PastMatches" Schema="football" store:Type="Tables" />
+          <EntitySet Name="Tournament" EntityType="Self.Tournament" Schema="football" store:Type="Tables" />
+          <EntitySet Name="WaitResults" EntityType="Self.WaitResults" Schema="football" store:Type="Tables" />
+          <AssociationSet Name="FK_TeamA" Association="Self.FK_TeamA">
+            <End Role="Comands" EntitySet="Comands" />
+            <End Role="PastMatches" EntitySet="PastMatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tournament" Association="Self.FK_Tournament">
+            <End Role="Tournament" EntitySet="Tournament" />
+            <End Role="PastMatches" EntitySet="PastMatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WR_A" Association="Self.FK_WR_A">
+            <End Role="Comands" EntitySet="Comands" />
+            <End Role="WaitResults" EntitySet="WaitResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WR_Tournament" Association="Self.FK_WR_Tournament">
+            <End Role="Tournament" EntitySet="Tournament" />
+            <End Role="WaitResults" EntitySet="WaitResults" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MatchesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MatchResult_Entities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Comands" EntityType="MatchesModel.Comand" />
+          <EntitySet Name="PastMatches" EntityType="MatchesModel.PastMatch" />
+          <EntitySet Name="Tournaments" EntityType="MatchesModel.Tournament" />
+          <EntitySet Name="WaitResults" EntityType="MatchesModel.WaitResult" />
+          <AssociationSet Name="FK_TeamA" Association="MatchesModel.FK_TeamA">
+            <End Role="Comand" EntitySet="Comands" />
+            <End Role="PastMatch" EntitySet="PastMatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WR_A" Association="MatchesModel.FK_WR_A">
+            <End Role="Comand" EntitySet="Comands" />
+            <End Role="WaitResult" EntitySet="WaitResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tournament" Association="MatchesModel.FK_Tournament">
+            <End Role="Tournament" EntitySet="Tournaments" />
+            <End Role="PastMatch" EntitySet="PastMatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WR_Tournament" Association="MatchesModel.FK_WR_Tournament">
+            <End Role="Tournament" EntitySet="Tournaments" />
+            <End Role="WaitResult" EntitySet="WaitResults" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comand">
+          <Key>
+            <PropertyRef Name="id_team" />
+          </Key>
+          <Property Name="id_team" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="abbrevitions" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="team_name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="tier_team" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_TeamA" FromRole="Comand" ToRole="PastMatch" />
+          <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_A" FromRole="Comand" ToRole="WaitResult" />
+        </EntityType>
+        <EntityType Name="PastMatch">
+          <Key>
+            <PropertyRef Name="id_match" />
+          </Key>
+          <Property Name="id_match" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team_A" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Team_B" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Score_A" Type="Int16" Nullable="false" />
+          <Property Name="Score_B" Type="Int16" Nullable="false" />
+          <Property Name="Important_A" Type="Int16" Nullable="false" />
+          <Property Name="Important_B" Type="Int16" Nullable="false" />
+          <Property Name="Violations_A" Type="Int16" Nullable="false" />
+          <Property Name="Violations_B" Type="Int16" Nullable="false" />
+          <Property Name="shot_on_target_A" Type="Int16" Nullable="false" />
+          <Property Name="shot_on_target_B" Type="Int16" Nullable="false" />
+          <Property Name="save_A" Type="Int16" Nullable="false" />
+          <Property Name="save_B" Type="Int16" Nullable="false" />
+          <Property Name="tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="is_ready_for_learning" Type="Boolean" Nullable="false" />
+          <Property Name="replacements_A" Type="Int16" Nullable="false" />
+          <Property Name="replacements_B" Type="Int16" Nullable="false" />
+          <Property Name="match_date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Comand" Relationship="MatchesModel.FK_TeamA" FromRole="PastMatch" ToRole="Comand" />
+          <NavigationProperty Name="Tournament1" Relationship="MatchesModel.FK_Tournament" FromRole="PastMatch" ToRole="Tournament" />
+        </EntityType>
+        <EntityType Name="Tournament">
+          <Key>
+            <PropertyRef Name="id_Tournament" />
+          </Key>
+          <Property Name="id_Tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Tournament_name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Tournament_size" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_Tournament" FromRole="Tournament" ToRole="PastMatch" />
+          <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_Tournament" FromRole="Tournament" ToRole="WaitResult" />
+        </EntityType>
+        <EntityType Name="WaitResult">
+          <Key>
+            <PropertyRef Name="id_game" />
+          </Key>
+          <Property Name="id_game" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team_A" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Team_B" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="replacements_A" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="replacements_B" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="important_A" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="important_B" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Comand" Relationship="MatchesModel.FK_WR_A" FromRole="WaitResult" ToRole="Comand" />
+          <NavigationProperty Name="Tournament1" Relationship="MatchesModel.FK_WR_Tournament" FromRole="WaitResult" ToRole="Tournament" />
+        </EntityType>
+        <Association Name="FK_TeamA">
+          <End Type="MatchesModel.Comand" Role="Comand" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MatchesModel.PastMatch" Role="PastMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comand">
+              <PropertyRef Name="id_team" />
+            </Principal>
+            <Dependent Role="PastMatch">
+              <PropertyRef Name="Team_A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WR_A">
+          <End Type="MatchesModel.Comand" Role="Comand" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MatchesModel.WaitResult" Role="WaitResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comand">
+              <PropertyRef Name="id_team" />
+            </Principal>
+            <Dependent Role="WaitResult">
+              <PropertyRef Name="Team_A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tournament">
+          <End Type="MatchesModel.Tournament" Role="Tournament" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MatchesModel.PastMatch" Role="PastMatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournament">
+              <PropertyRef Name="id_Tournament" />
+            </Principal>
+            <Dependent Role="PastMatch">
+              <PropertyRef Name="tournament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WR_Tournament">
+          <End Type="MatchesModel.Tournament" Role="Tournament" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MatchesModel.WaitResult" Role="WaitResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tournament">
+              <PropertyRef Name="id_Tournament" />
+            </Principal>
+            <Dependent Role="WaitResult">
+              <PropertyRef Name="tournament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MatchesModelContainer" CdmEntityContainer="MatchResult_Entities" >
+          <EntitySetMapping Name="Comands">
+            <EntityTypeMapping TypeName="MatchesModel.Comand">
+              <MappingFragment StoreEntitySet="Comands">
+                <ScalarProperty Name="tier_team" ColumnName="tier_team" />
+                <ScalarProperty Name="team_name" ColumnName="team_name" />
+                <ScalarProperty Name="abbrevitions" ColumnName="abbrevitions" />
+                <ScalarProperty Name="id_team" ColumnName="id_team" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PastMatches">
+            <EntityTypeMapping TypeName="MatchesModel.PastMatch">
+              <MappingFragment StoreEntitySet="PastMatches">
+                <ScalarProperty Name="match_date" ColumnName="match_date" />
+                <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
+                <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
+                <ScalarProperty Name="is_ready_for_learning" ColumnName="is_ready_for_learning" />
+                <ScalarProperty Name="tournament" ColumnName="tournament" />
+                <ScalarProperty Name="save_B" ColumnName="save-B" />
+                <ScalarProperty Name="save_A" ColumnName="save-A" />
+                <ScalarProperty Name="shot_on_target_B" ColumnName="shot_on_target-B" />
+                <ScalarProperty Name="shot_on_target_A" ColumnName="shot_on_target-A" />
+                <ScalarProperty Name="Violations_B" ColumnName="Violations-B" />
+                <ScalarProperty Name="Violations_A" ColumnName="Violations-A" />
+                <ScalarProperty Name="Important_B" ColumnName="Important-B" />
+                <ScalarProperty Name="Important_A" ColumnName="Important-A" />
+                <ScalarProperty Name="Score_B" ColumnName="Score-B" />
+                <ScalarProperty Name="Score_A" ColumnName="Score-A" />
+                <ScalarProperty Name="Team_B" ColumnName="Team-B" />
+                <ScalarProperty Name="Team_A" ColumnName="Team-A" />
+                <ScalarProperty Name="id_match" ColumnName="id_match" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tournaments">
+            <EntityTypeMapping TypeName="MatchesModel.Tournament">
+              <MappingFragment StoreEntitySet="Tournament">
+                <ScalarProperty Name="Tournament_size" ColumnName="Tournament_size" />
+                <ScalarProperty Name="Tournament_name" ColumnName="Tournament_name" />
+                <ScalarProperty Name="id_Tournament" ColumnName="id_Tournament" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaitResults">
+            <EntityTypeMapping TypeName="MatchesModel.WaitResult">
+              <MappingFragment StoreEntitySet="WaitResults">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="important_B" ColumnName="important-B" />
+                <ScalarProperty Name="important_A" ColumnName="important-A" />
+                <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
+                <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
+                <ScalarProperty Name="tournament" ColumnName="tournament" />
+                <ScalarProperty Name="Team_B" ColumnName="Team-B" />
+                <ScalarProperty Name="Team_A" ColumnName="Team-A" />
+                <ScalarProperty Name="id_game" ColumnName="id_game" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

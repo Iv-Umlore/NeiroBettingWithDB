@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище MatchesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comands">
+    <Key>
+      <PropertyRef Name="id_team" />
+    </Key>
+    <Property Name="id_team" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="abbrevitions" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="team_name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="tier_team" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PastMatches">
+    <Key>
+      <PropertyRef Name="id_match" />
+    </Key>
+    <Property Name="id_match" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Team-A" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="Team-B" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="Score-A" Type="smallint" Nullable="false" />
+    <Property Name="Score-B" Type="smallint" Nullable="false" />
+    <Property Name="Important-A" Type="smallint" Nullable="false" />
+    <Property Name="Important-B" Type="smallint" Nullable="false" />
+    <Property Name="Violations-A" Type="smallint" Nullable="false" />
+    <Property Name="Violations-B" Type="smallint" Nullable="false" />
+    <Property Name="shot_on_target-A" Type="smallint" Nullable="false" />
+    <Property Name="shot_on_target-B" Type="smallint" Nullable="false" />
+    <Property Name="save-A" Type="smallint" Nullable="false" />
+    <Property Name="save-B" Type="smallint" Nullable="false" />
+    <Property Name="tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="is_ready_for_learning" Type="bit" Nullable="false" />
+    <Property Name="replacements-A" Type="smallint" Nullable="false" />
+    <Property Name="replacements-B" Type="smallint" Nullable="false" />
+    <Property Name="match_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tournament">
+    <Key>
+      <PropertyRef Name="id_Tournament" />
+    </Key>
+    <Property Name="id_Tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="Tournament_name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tournament_size" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WaitResults">
+    <Key>
+      <PropertyRef Name="id_game" />
+    </Key>
+    <Property Name="id_game" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Team-A" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="Team-B" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="replacements-A" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="replacements-B" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="important-A" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="important-B" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TeamA">
+    <End Role="Comands" Type="Self.Comands" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PastMatches" Type="Self.PastMatches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comands">
+        <PropertyRef Name="id_team" />
+      </Principal>
+      <Dependent Role="PastMatches">
+        <PropertyRef Name="Team-A" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tournament">
+    <End Role="Tournament" Type="Self.Tournament" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PastMatches" Type="Self.PastMatches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tournament">
+        <PropertyRef Name="id_Tournament" />
+      </Principal>
+      <Dependent Role="PastMatches">
+        <PropertyRef Name="tournament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WR_A">
+    <End Role="Comands" Type="Self.Comands" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WaitResults" Type="Self.WaitResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comands">
+        <PropertyRef Name="id_team" />
+      </Principal>
+      <Dependent Role="WaitResults">
+        <PropertyRef Name="Team-A" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WR_Tournament">
+    <End Role="Tournament" Type="Self.Tournament" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="WaitResults" Type="Self.WaitResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tournament">
+        <PropertyRef Name="id_Tournament" />
+      </Principal>
+      <Dependent Role="WaitResults">
+        <PropertyRef Name="tournament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище MatchesModelContainer">
+    <EntitySet Name="Comands" EntityType="Self.Comands" Schema="football" store:Type="Tables" />
+    <EntitySet Name="PastMatches" EntityType="Self.PastMatches" Schema="football" store:Type="Tables" />
+    <EntitySet Name="Tournament" EntityType="Self.Tournament" Schema="football" store:Type="Tables" />
+    <EntitySet Name="WaitResults" EntityType="Self.WaitResults" Schema="football" store:Type="Tables" />
+    <AssociationSet Name="FK_TeamA" Association="Self.FK_TeamA">
+      <End Role="Comands" EntitySet="Comands" />
+      <End Role="PastMatches" EntitySet="PastMatches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tournament" Association="Self.FK_Tournament">
+      <End Role="Tournament" EntitySet="Tournament" />
+      <End Role="PastMatches" EntitySet="PastMatches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WR_A" Association="Self.FK_WR_A">
+      <End Role="Comands" EntitySet="Comands" />
+      <End Role="WaitResults" EntitySet="WaitResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WR_Tournament" Association="Self.FK_WR_Tournament">
+      <End Role="Tournament" EntitySet="Tournament" />
+      <End Role="WaitResults" EntitySet="WaitResults" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

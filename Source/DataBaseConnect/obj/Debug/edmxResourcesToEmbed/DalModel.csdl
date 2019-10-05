@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MatchesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MatchResult_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comands" EntityType="MatchesModel.Comand" />
+    <EntitySet Name="PastMatches" EntityType="MatchesModel.PastMatch" />
+    <EntitySet Name="Tournaments" EntityType="MatchesModel.Tournament" />
+    <EntitySet Name="WaitResults" EntityType="MatchesModel.WaitResult" />
+    <AssociationSet Name="FK_TeamA" Association="MatchesModel.FK_TeamA">
+      <End Role="Comand" EntitySet="Comands" />
+      <End Role="PastMatch" EntitySet="PastMatches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WR_A" Association="MatchesModel.FK_WR_A">
+      <End Role="Comand" EntitySet="Comands" />
+      <End Role="WaitResult" EntitySet="WaitResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tournament" Association="MatchesModel.FK_Tournament">
+      <End Role="Tournament" EntitySet="Tournaments" />
+      <End Role="PastMatch" EntitySet="PastMatches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WR_Tournament" Association="MatchesModel.FK_WR_Tournament">
+      <End Role="Tournament" EntitySet="Tournaments" />
+      <End Role="WaitResult" EntitySet="WaitResults" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Comand">
+    <Key>
+      <PropertyRef Name="id_team" />
+    </Key>
+    <Property Name="id_team" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="abbrevitions" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="team_name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="tier_team" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_TeamA" FromRole="Comand" ToRole="PastMatch" />
+    <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_A" FromRole="Comand" ToRole="WaitResult" />
+  </EntityType>
+  <EntityType Name="PastMatch">
+    <Key>
+      <PropertyRef Name="id_match" />
+    </Key>
+    <Property Name="id_match" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_A" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="Team_B" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="Score_A" Type="Int16" Nullable="false" />
+    <Property Name="Score_B" Type="Int16" Nullable="false" />
+    <Property Name="Important_A" Type="Int16" Nullable="false" />
+    <Property Name="Important_B" Type="Int16" Nullable="false" />
+    <Property Name="Violations_A" Type="Int16" Nullable="false" />
+    <Property Name="Violations_B" Type="Int16" Nullable="false" />
+    <Property Name="shot_on_target_A" Type="Int16" Nullable="false" />
+    <Property Name="shot_on_target_B" Type="Int16" Nullable="false" />
+    <Property Name="save_A" Type="Int16" Nullable="false" />
+    <Property Name="save_B" Type="Int16" Nullable="false" />
+    <Property Name="tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="is_ready_for_learning" Type="Boolean" Nullable="false" />
+    <Property Name="replacements_A" Type="Int16" Nullable="false" />
+    <Property Name="replacements_B" Type="Int16" Nullable="false" />
+    <Property Name="match_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Comand" Relationship="MatchesModel.FK_TeamA" FromRole="PastMatch" ToRole="Comand" />
+    <NavigationProperty Name="Tournament1" Relationship="MatchesModel.FK_Tournament" FromRole="PastMatch" ToRole="Tournament" />
+  </EntityType>
+  <EntityType Name="Tournament">
+    <Key>
+      <PropertyRef Name="id_Tournament" />
+    </Key>
+    <Property Name="id_Tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="Tournament_name" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Tournament_size" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_Tournament" FromRole="Tournament" ToRole="PastMatch" />
+    <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_Tournament" FromRole="Tournament" ToRole="WaitResult" />
+  </EntityType>
+  <EntityType Name="WaitResult">
+    <Key>
+      <PropertyRef Name="id_game" />
+    </Key>
+    <Property Name="id_game" Type="Decimal" Nullable="false" Precision="38" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Team_A" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="Team_B" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="tournament" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="replacements_A" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="replacements_B" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="important_A" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="important_B" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Comand" Relationship="MatchesModel.FK_WR_A" FromRole="WaitResult" ToRole="Comand" />
+    <NavigationProperty Name="Tournament1" Relationship="MatchesModel.FK_WR_Tournament" FromRole="WaitResult" ToRole="Tournament" />
+  </EntityType>
+  <Association Name="FK_TeamA">
+    <End Type="MatchesModel.Comand" Role="Comand" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MatchesModel.PastMatch" Role="PastMatch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comand">
+        <PropertyRef Name="id_team" />
+      </Principal>
+      <Dependent Role="PastMatch">
+        <PropertyRef Name="Team_A" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WR_A">
+    <End Type="MatchesModel.Comand" Role="Comand" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MatchesModel.WaitResult" Role="WaitResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comand">
+        <PropertyRef Name="id_team" />
+      </Principal>
+      <Dependent Role="WaitResult">
+        <PropertyRef Name="Team_A" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tournament">
+    <End Type="MatchesModel.Tournament" Role="Tournament" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MatchesModel.PastMatch" Role="PastMatch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tournament">
+        <PropertyRef Name="id_Tournament" />
+      </Principal>
+      <Dependent Role="PastMatch">
+        <PropertyRef Name="tournament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WR_Tournament">
+    <End Type="MatchesModel.Tournament" Role="Tournament" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="MatchesModel.WaitResult" Role="WaitResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tournament">
+        <PropertyRef Name="id_Tournament" />
+      </Principal>
+      <Dependent Role="WaitResult">
+        <PropertyRef Name="tournament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -94,7 +94,6 @@ GO
 
 /*ALTER TABLE football.PastMatches
 ADD CONSTRAINT FK_TeamB FOREIGN KEY([Team-B]) REFERENCES football.Comands(id_team)
-ON DELETE CASCADE
 ON UPDATE CASCADE
 GO*/
 
