@@ -36,7 +36,8 @@ CREATE TABLE football.Comands
 	id_team numeric(38, 0) NOT NULL IDENTITY (1, 1),
 	abbrevitions nchar(6) NOT NULL,
 	team_name nchar(50) NOT NULL,
-	tier_team smallint NOT NULL
+	tier_team smallint NOT NULL,
+	team_point int NOT NULL 
 	)  ON [PRIMARY]
 GO
 ALTER TABLE football.Comands ADD CONSTRAINT

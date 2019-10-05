@@ -25,6 +25,7 @@ namespace DataBaseConnect
         public string abbrevitions { get; set; }
         public string team_name { get; set; }
         public short tier_team { get; set; }
+        public int team_point { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PastMatch> PastMatches { get; set; }

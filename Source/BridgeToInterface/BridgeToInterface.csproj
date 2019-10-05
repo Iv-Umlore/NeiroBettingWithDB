@@ -43,6 +43,17 @@
   <ItemGroup>
     <Compile Include="BridgeToInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialClasses.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IInteractionController\IInteractionController.csproj">
+      <Project>{77EC09A7-6E9C-42CB-811D-CEBC2242209A}</Project>
+      <Name>IInteractionController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\INetwork\INetwork.csproj">
+      <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>
+      <Name>INetwork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

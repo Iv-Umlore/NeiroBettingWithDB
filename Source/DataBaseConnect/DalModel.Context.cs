@@ -19,9 +19,6 @@ namespace DataBaseConnect
             : base("name=MatchResult_Entities")
         {
         }
-
-		public MatchResult_Entities(string connectionString) : 
-			base(connectionString) { }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

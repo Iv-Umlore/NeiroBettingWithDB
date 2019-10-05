@@ -13,6 +13,7 @@
           <Property Name="abbrevitions" Type="nchar" MaxLength="6" Nullable="false" />
           <Property Name="team_name" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="tier_team" Type="smallint" Nullable="false" />
+          <Property Name="team_point" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PastMatches">
           <Key>
@@ -173,6 +174,7 @@
           <Property Name="tier_team" Type="Int16" Nullable="false" />
           <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_TeamA" FromRole="Comand" ToRole="PastMatch" />
           <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_A" FromRole="Comand" ToRole="WaitResult" />
+          <Property Name="team_point" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PastMatch">
           <Key>
@@ -290,6 +292,7 @@
           <EntitySetMapping Name="Comands">
             <EntityTypeMapping TypeName="MatchesModel.Comand">
               <MappingFragment StoreEntitySet="Comands">
+                <ScalarProperty Name="team_point" ColumnName="team_point" />
                 <ScalarProperty Name="tier_team" ColumnName="tier_team" />
                 <ScalarProperty Name="team_name" ColumnName="team_name" />
                 <ScalarProperty Name="abbrevitions" ColumnName="abbrevitions" />
