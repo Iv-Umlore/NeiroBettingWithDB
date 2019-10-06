@@ -1,0 +1,7 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\FootBall.InteractionController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\FootBall.InteractionController.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.InteractionController\obj\Debug\FootBall.InteractionController.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.InteractionController\obj\Debug\FootBall.InteractionController.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.InteractionController\obj\Debug\FootBall.InteractionController.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.InteractionController\obj\Debug\FootBall.InteractionController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.InteractionController\obj\Debug\FootBall.InteractionController.pdb

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Comands">
       <EntityTypeMapping TypeName="MatchesModel.Comand">
         <MappingFragment StoreEntitySet="Comands">
+          <ScalarProperty Name="team_point" ColumnName="team_point" />
           <ScalarProperty Name="tier_team" ColumnName="tier_team" />
           <ScalarProperty Name="team_name" ColumnName="team_name" />
           <ScalarProperty Name="abbrevitions" ColumnName="abbrevitions" />

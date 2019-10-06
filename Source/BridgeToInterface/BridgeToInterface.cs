@@ -1,19 +1,29 @@
-﻿using IInteractionController;
+﻿using FootBall.InteractionController;
+using FootBall.Network;
+using IInteractionController;
 using INetwork;
+using ProjectHelper;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BridgeToInterface
 {
-	public class BridgeToInterface
+	public class BridgeToInterfaceController
     {
 		private InteractionControllerInterface _interactionController;
 		private NetworkInterface _network;
+        private List<TeamInfo> teamList;
 
-		public BridgeToInterface()
+        public BridgeToInterfaceController()
 		{
-			//_interactionController = new InteractionControllerInterface()
-			//_network = new INetwork()
+			_interactionController = new FootBallIneractionController();
+			_network = new FootBallNetwork();
 		}
+
+        public bool ChangeDiscipline(Discipline discipline)
+        {
+            return true;
+        }
 
 		public List<MatchWaitResult> GetWaitResultMatches()
 		{
@@ -28,11 +38,13 @@ namespace BridgeToInterface
 			return true;
 		}
 
-		public List<TeamInfo> GetTeamList(int withoutTeam_id)
+		public List<string> GetTeamList(string withoutTeam_name = "")
 		{
-			var result = new List<TeamInfo>();
-			// Changes
-			return result;
+            if (teamList == null)
+                teamList = _interactionController.GetTeamList();
+            if (withoutTeam_name == "")
+                return teamList.Select(it => it.Team_name).ToList();
+            else return teamList.Where(it => it.Team_name != withoutTeam_name).Select(it => it.Team_name).ToList();
 		}
 
 		public bool AddNewTeam(string abbreviature, string TeamName, int tier_team, int teamPoint)

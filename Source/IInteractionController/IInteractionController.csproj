@@ -44,5 +44,15 @@
     <Compile Include="InteractionControllerInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBaseConnect\DataBaseConnect.csproj">
+      <Project>{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}</Project>
+      <Name>DataBaseConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectHelper\ProjectHelper.csproj">
+      <Project>{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}</Project>
+      <Name>ProjectHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

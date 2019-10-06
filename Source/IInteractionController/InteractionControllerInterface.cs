@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBaseConnect;
+using ProjectHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +10,13 @@ namespace IInteractionController
 {
 	public interface InteractionControllerInterface
 	{
-		List<string> GetWaitResultMatches();
+		List<MatchWaitResult> GetWaitResultMatches();
 
 		bool SaveMatchResult(string matchParameters);
 
-		List<string> GetTeamList(string withoutTeam = null);
+		List<TeamInfo> GetTeamList(string withoutTeam = null);
 
-		int? GetlastFiveTeamMatch(string teamName);
+		List<PastMatch> GetlastFiveTeamMatch(string teamName);
 
 		bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
 	}

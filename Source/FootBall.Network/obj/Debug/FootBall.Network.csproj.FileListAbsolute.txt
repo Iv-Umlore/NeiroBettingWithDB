@@ -1,0 +1,7 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\FootBall.Network.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\FootBall.Network.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.pdb

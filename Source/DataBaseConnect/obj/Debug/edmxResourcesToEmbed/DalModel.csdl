@@ -32,6 +32,7 @@
     <Property Name="tier_team" Type="Int16" Nullable="false" />
     <NavigationProperty Name="PastMatches" Relationship="MatchesModel.FK_TeamA" FromRole="Comand" ToRole="PastMatch" />
     <NavigationProperty Name="WaitResults" Relationship="MatchesModel.FK_WR_A" FromRole="Comand" ToRole="WaitResult" />
+    <Property Name="team_point" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="PastMatch">
     <Key>

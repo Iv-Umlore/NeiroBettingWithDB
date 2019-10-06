@@ -8,6 +8,7 @@
     <Property Name="abbrevitions" Type="nchar" MaxLength="6" Nullable="false" />
     <Property Name="team_name" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="tier_team" Type="smallint" Nullable="false" />
+    <Property Name="team_point" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PastMatches">
     <Key>
