@@ -1,62 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище MatchesModelContainer" CdmEntityContainer="MatchResult_Entities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище MatchesResultModelContainer" CdmEntityContainer="MatchResult_Entities">
     <EntitySetMapping Name="Comands">
-      <EntityTypeMapping TypeName="MatchesModel.Comand">
+      <EntityTypeMapping TypeName="MatchesResultModel.Comand">
         <MappingFragment StoreEntitySet="Comands">
-          <ScalarProperty Name="team_point" ColumnName="team_point" />
-          <ScalarProperty Name="tier_team" ColumnName="tier_team" />
-          <ScalarProperty Name="team_name" ColumnName="team_name" />
-          <ScalarProperty Name="abbrevitions" ColumnName="abbrevitions" />
           <ScalarProperty Name="id_team" ColumnName="id_team" />
+          <ScalarProperty Name="abbrevitions" ColumnName="abbrevitions" />
+          <ScalarProperty Name="team_name" ColumnName="team_name" />
+          <ScalarProperty Name="tier_team" ColumnName="tier_team" />
+          <ScalarProperty Name="team_point" ColumnName="team_point" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PastMatches">
-      <EntityTypeMapping TypeName="MatchesModel.PastMatch">
+      <EntityTypeMapping TypeName="MatchesResultModel.PastMatch">
         <MappingFragment StoreEntitySet="PastMatches">
-          <ScalarProperty Name="match_date" ColumnName="match_date" />
-          <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
-          <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
-          <ScalarProperty Name="is_ready_for_learning" ColumnName="is_ready_for_learning" />
-          <ScalarProperty Name="tournament" ColumnName="tournament" />
-          <ScalarProperty Name="save_B" ColumnName="save-B" />
-          <ScalarProperty Name="save_A" ColumnName="save-A" />
-          <ScalarProperty Name="shot_on_target_B" ColumnName="shot_on_target-B" />
-          <ScalarProperty Name="shot_on_target_A" ColumnName="shot_on_target-A" />
-          <ScalarProperty Name="Violations_B" ColumnName="Violations-B" />
-          <ScalarProperty Name="Violations_A" ColumnName="Violations-A" />
-          <ScalarProperty Name="Important_B" ColumnName="Important-B" />
-          <ScalarProperty Name="Important_A" ColumnName="Important-A" />
-          <ScalarProperty Name="Score_B" ColumnName="Score-B" />
-          <ScalarProperty Name="Score_A" ColumnName="Score-A" />
-          <ScalarProperty Name="Team_B" ColumnName="Team-B" />
-          <ScalarProperty Name="Team_A" ColumnName="Team-A" />
           <ScalarProperty Name="id_match" ColumnName="id_match" />
+          <ScalarProperty Name="Team_A" ColumnName="Team-A" />
+          <ScalarProperty Name="Team_B" ColumnName="Team-B" />
+          <ScalarProperty Name="Score_A" ColumnName="Score-A" />
+          <ScalarProperty Name="Score_B" ColumnName="Score-B" />
+          <ScalarProperty Name="Important_A" ColumnName="Important-A" />
+          <ScalarProperty Name="Important_B" ColumnName="Important-B" />
+          <ScalarProperty Name="Violations_A" ColumnName="Violations-A" />
+          <ScalarProperty Name="Violations_B" ColumnName="Violations-B" />
+          <ScalarProperty Name="shot_on_target_A" ColumnName="shot_on_target-A" />
+          <ScalarProperty Name="shot_on_target_B" ColumnName="shot_on_target-B" />
+          <ScalarProperty Name="save_A" ColumnName="save-A" />
+          <ScalarProperty Name="save_B" ColumnName="save-B" />
+          <ScalarProperty Name="tournament" ColumnName="tournament" />
+          <ScalarProperty Name="is_ready_for_learning" ColumnName="is_ready_for_learning" />
+          <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
+          <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
+          <ScalarProperty Name="match_date" ColumnName="match_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tournaments">
-      <EntityTypeMapping TypeName="MatchesModel.Tournament">
+      <EntityTypeMapping TypeName="MatchesResultModel.Tournament">
         <MappingFragment StoreEntitySet="Tournament">
-          <ScalarProperty Name="Tournament_size" ColumnName="Tournament_size" />
-          <ScalarProperty Name="Tournament_name" ColumnName="Tournament_name" />
           <ScalarProperty Name="id_Tournament" ColumnName="id_Tournament" />
+          <ScalarProperty Name="Tournament_name" ColumnName="Tournament_name" />
+          <ScalarProperty Name="Tournament_size" ColumnName="Tournament_size" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WaitResults">
-      <EntityTypeMapping TypeName="MatchesModel.WaitResult">
+      <EntityTypeMapping TypeName="MatchesResultModel.WaitResult">
         <MappingFragment StoreEntitySet="WaitResults">
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="important_B" ColumnName="important-B" />
-          <ScalarProperty Name="important_A" ColumnName="important-A" />
-          <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
-          <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
-          <ScalarProperty Name="tournament" ColumnName="tournament" />
-          <ScalarProperty Name="Team_B" ColumnName="Team-B" />
-          <ScalarProperty Name="Team_A" ColumnName="Team-A" />
           <ScalarProperty Name="id_game" ColumnName="id_game" />
+          <ScalarProperty Name="Team_A" ColumnName="Team-A" />
+          <ScalarProperty Name="Team_B" ColumnName="Team-B" />
+          <ScalarProperty Name="tournament" ColumnName="tournament" />
+          <ScalarProperty Name="replacements_A" ColumnName="replacements-A" />
+          <ScalarProperty Name="replacements_B" ColumnName="replacements-B" />
+          <ScalarProperty Name="important_A" ColumnName="important-A" />
+          <ScalarProperty Name="important_B" ColumnName="important-B" />
+          <ScalarProperty Name="date" ColumnName="date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

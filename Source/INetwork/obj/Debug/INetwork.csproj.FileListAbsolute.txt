@@ -1,6 +1,5 @@
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\INetwork.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\INetwork.pdb
-D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csprojAssemblyReference.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.pdb

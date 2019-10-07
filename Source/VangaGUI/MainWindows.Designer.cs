@@ -56,14 +56,40 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OpenWaitResultMatches = new System.Windows.Forms.Button();
             this.DisciplinePanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.NetworkLearning = new System.Windows.Forms.Button();
+            this.TestNetwork = new System.Windows.Forms.Button();
             this.LearningProgressPanel = new System.Windows.Forms.Panel();
+            this.MatchesCount = new System.Windows.Forms.Label();
+            this.MatchesCountLabel = new System.Windows.Forms.Label();
+            this.CountOfCircle = new System.Windows.Forms.Label();
+            this.NumberOfCircleValue = new System.Windows.Forms.Label();
+            this.CircleCountLabel = new System.Windows.Forms.Label();
+            this.AverageResultValue = new System.Windows.Forms.Label();
+            this.AverageResultLabel = new System.Windows.Forms.Label();
+            this.PredictionPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.HardRisk = new System.Windows.Forms.Label();
+            this.HardPrediction = new System.Windows.Forms.Label();
+            this.ResultHardLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MediumRisk = new System.Windows.Forms.Label();
+            this.MediumPrediction = new System.Windows.Forms.Label();
+            this.ResultMediumLabel = new System.Windows.Forms.Label();
+            this.FirstPredictionPanel = new System.Windows.Forms.Panel();
+            this.EasyRisk = new System.Windows.Forms.Label();
+            this.EasyPrediction = new System.Windows.Forms.Label();
+            this.ResultEasyLabel = new System.Windows.Forms.Label();
+            this.AddTeam = new System.Windows.Forms.Button();
+            this.GetPrediction = new System.Windows.Forms.Button();
             this.VangaPanel.SuspendLayout();
             this.LastFiveMatchesA.SuspendLayout();
             this.LastFiveMatchesB.SuspendLayout();
             this.DisciplinePanel.SuspendLayout();
             this.LearningProgressPanel.SuspendLayout();
+            this.PredictionPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.FirstPredictionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FootBall_Radio
@@ -103,7 +129,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(3, 34);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(448, 23);
+            this.progressBar1.Size = new System.Drawing.Size(770, 23);
             this.progressBar1.TabIndex = 3;
             // 
             // ChangeDiscipline
@@ -114,7 +140,7 @@
             this.ChangeDiscipline.TabIndex = 4;
             this.ChangeDiscipline.Text = "Выбрать дисциплину";
             this.ChangeDiscipline.UseVisualStyleBackColor = true;
-            this.ChangeDiscipline.Click += new System.EventHandler(this.button1_Click_1);
+            this.ChangeDiscipline.Click += new System.EventHandler(this.ChangeDiscipline_Click);
             // 
             // Label_TeamA
             // 
@@ -179,6 +205,7 @@
             this.AddMatch_TeamA.TabIndex = 15;
             this.AddMatch_TeamA.Text = "Добавить матч команды";
             this.AddMatch_TeamA.UseVisualStyleBackColor = true;
+            this.AddMatch_TeamA.Click += new System.EventHandler(this.AddMatch_TeamA_Click);
             // 
             // SecondMatchPanelA
             // 
@@ -237,6 +264,7 @@
             this.AddMatch_TeamB.TabIndex = 15;
             this.AddMatch_TeamB.Text = "Добавить матч команды";
             this.AddMatch_TeamB.UseVisualStyleBackColor = true;
+            this.AddMatch_TeamB.Click += new System.EventHandler(this.AddMatch_TeamB_Click);
             // 
             // SecondMatchPanelB
             // 
@@ -323,41 +351,258 @@
             this.DisciplinePanel.Size = new System.Drawing.Size(148, 100);
             this.DisciplinePanel.TabIndex = 9;
             // 
-            // button1
+            // NetworkLearning
             // 
-            this.button1.Location = new System.Drawing.Point(13, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 47);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Обучение Нейронной сети";
-            this.button1.UseVisualStyleBackColor = true;
+            this.NetworkLearning.Location = new System.Drawing.Point(13, 226);
+            this.NetworkLearning.Name = "NetworkLearning";
+            this.NetworkLearning.Size = new System.Drawing.Size(171, 47);
+            this.NetworkLearning.TabIndex = 10;
+            this.NetworkLearning.Text = "Обучение Нейронной сети";
+            this.NetworkLearning.UseVisualStyleBackColor = true;
+            this.NetworkLearning.Click += new System.EventHandler(this.NetworkLearning_Click);
             // 
-            // button2
+            // TestNetwork
             // 
-            this.button2.Location = new System.Drawing.Point(13, 280);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 49);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Тест Нейронной сети";
-            this.button2.UseVisualStyleBackColor = true;
+            this.TestNetwork.Location = new System.Drawing.Point(13, 280);
+            this.TestNetwork.Name = "TestNetwork";
+            this.TestNetwork.Size = new System.Drawing.Size(171, 49);
+            this.TestNetwork.TabIndex = 11;
+            this.TestNetwork.Text = "Тест Нейронной сети";
+            this.TestNetwork.UseVisualStyleBackColor = true;
+            this.TestNetwork.Click += new System.EventHandler(this.TestNetwork_Click);
             // 
             // LearningProgressPanel
             // 
+            this.LearningProgressPanel.Controls.Add(this.MatchesCount);
+            this.LearningProgressPanel.Controls.Add(this.MatchesCountLabel);
+            this.LearningProgressPanel.Controls.Add(this.CountOfCircle);
+            this.LearningProgressPanel.Controls.Add(this.NumberOfCircleValue);
+            this.LearningProgressPanel.Controls.Add(this.CircleCountLabel);
+            this.LearningProgressPanel.Controls.Add(this.AverageResultValue);
+            this.LearningProgressPanel.Controls.Add(this.AverageResultLabel);
             this.LearningProgressPanel.Controls.Add(this.progressBar1);
             this.LearningProgressPanel.Location = new System.Drawing.Point(12, 388);
             this.LearningProgressPanel.Name = "LearningProgressPanel";
-            this.LearningProgressPanel.Size = new System.Drawing.Size(773, 60);
+            this.LearningProgressPanel.Size = new System.Drawing.Size(776, 60);
             this.LearningProgressPanel.TabIndex = 12;
+            this.LearningProgressPanel.Visible = false;
+            // 
+            // MatchesCount
+            // 
+            this.MatchesCount.AutoSize = true;
+            this.MatchesCount.Location = new System.Drawing.Point(460, 11);
+            this.MatchesCount.Name = "MatchesCount";
+            this.MatchesCount.Size = new System.Drawing.Size(25, 13);
+            this.MatchesCount.TabIndex = 10;
+            this.MatchesCount.Text = "150";
+            // 
+            // MatchesCountLabel
+            // 
+            this.MatchesCountLabel.AutoSize = true;
+            this.MatchesCountLabel.Location = new System.Drawing.Point(343, 11);
+            this.MatchesCountLabel.Name = "MatchesCountLabel";
+            this.MatchesCountLabel.Size = new System.Drawing.Size(108, 13);
+            this.MatchesCountLabel.TabIndex = 9;
+            this.MatchesCountLabel.Text = "Количество матчей:";
+            // 
+            // CountOfCircle
+            // 
+            this.CountOfCircle.AutoSize = true;
+            this.CountOfCircle.Location = new System.Drawing.Point(238, 11);
+            this.CountOfCircle.Name = "CountOfCircle";
+            this.CountOfCircle.Size = new System.Drawing.Size(46, 13);
+            this.CountOfCircle.TabIndex = 8;
+            this.CountOfCircle.Text = "из 1000";
+            // 
+            // NumberOfCircleValue
+            // 
+            this.NumberOfCircleValue.AutoSize = true;
+            this.NumberOfCircleValue.Location = new System.Drawing.Point(216, 11);
+            this.NumberOfCircleValue.Name = "NumberOfCircleValue";
+            this.NumberOfCircleValue.Size = new System.Drawing.Size(16, 13);
+            this.NumberOfCircleValue.TabIndex = 7;
+            this.NumberOfCircleValue.Text = "...";
+            // 
+            // CircleCountLabel
+            // 
+            this.CircleCountLabel.AutoSize = true;
+            this.CircleCountLabel.Location = new System.Drawing.Point(171, 11);
+            this.CircleCountLabel.Name = "CircleCountLabel";
+            this.CircleCountLabel.Size = new System.Drawing.Size(39, 13);
+            this.CircleCountLabel.TabIndex = 6;
+            this.CircleCountLabel.Text = "Цикл: ";
+            // 
+            // AverageResultValue
+            // 
+            this.AverageResultValue.AutoSize = true;
+            this.AverageResultValue.Location = new System.Drawing.Point(109, 11);
+            this.AverageResultValue.Name = "AverageResultValue";
+            this.AverageResultValue.Size = new System.Drawing.Size(16, 13);
+            this.AverageResultValue.TabIndex = 5;
+            this.AverageResultValue.Text = "...";
+            // 
+            // AverageResultLabel
+            // 
+            this.AverageResultLabel.AutoSize = true;
+            this.AverageResultLabel.Location = new System.Drawing.Point(11, 11);
+            this.AverageResultLabel.Name = "AverageResultLabel";
+            this.AverageResultLabel.Size = new System.Drawing.Size(96, 13);
+            this.AverageResultLabel.TabIndex = 4;
+            this.AverageResultLabel.Text = "Средняя Ошибка:";
+            // 
+            // PredictionPanel
+            // 
+            this.PredictionPanel.Controls.Add(this.panel2);
+            this.PredictionPanel.Controls.Add(this.panel1);
+            this.PredictionPanel.Controls.Add(this.FirstPredictionPanel);
+            this.PredictionPanel.Location = new System.Drawing.Point(462, 385);
+            this.PredictionPanel.Name = "PredictionPanel";
+            this.PredictionPanel.Size = new System.Drawing.Size(326, 63);
+            this.PredictionPanel.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.HardRisk);
+            this.panel2.Controls.Add(this.HardPrediction);
+            this.panel2.Controls.Add(this.ResultHardLabel);
+            this.panel2.Location = new System.Drawing.Point(216, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(103, 57);
+            this.panel2.TabIndex = 2;
+            // 
+            // HardRisk
+            // 
+            this.HardRisk.AutoSize = true;
+            this.HardRisk.Location = new System.Drawing.Point(65, 34);
+            this.HardRisk.Name = "HardRisk";
+            this.HardRisk.Size = new System.Drawing.Size(28, 13);
+            this.HardRisk.TabIndex = 2;
+            this.HardRisk.Text = "0.83";
+            // 
+            // HardPrediction
+            // 
+            this.HardPrediction.AutoSize = true;
+            this.HardPrediction.Location = new System.Drawing.Point(7, 34);
+            this.HardPrediction.Name = "HardPrediction";
+            this.HardPrediction.Size = new System.Drawing.Size(48, 13);
+            this.HardPrediction.TabIndex = 1;
+            this.HardPrediction.Text = "П1 + 1,5";
+            // 
+            // ResultHardLabel
+            // 
+            this.ResultHardLabel.AutoSize = true;
+            this.ResultHardLabel.Location = new System.Drawing.Point(4, 10);
+            this.ResultHardLabel.Name = "ResultHardLabel";
+            this.ResultHardLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultHardLabel.TabIndex = 0;
+            this.ResultHardLabel.Text = "Результат + риск:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.MediumRisk);
+            this.panel1.Controls.Add(this.MediumPrediction);
+            this.panel1.Controls.Add(this.ResultMediumLabel);
+            this.panel1.Location = new System.Drawing.Point(107, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(106, 57);
+            this.panel1.TabIndex = 1;
+            // 
+            // MediumRisk
+            // 
+            this.MediumRisk.AutoSize = true;
+            this.MediumRisk.Location = new System.Drawing.Point(65, 34);
+            this.MediumRisk.Name = "MediumRisk";
+            this.MediumRisk.Size = new System.Drawing.Size(28, 13);
+            this.MediumRisk.TabIndex = 2;
+            this.MediumRisk.Text = "0.83";
+            // 
+            // MediumPrediction
+            // 
+            this.MediumPrediction.AutoSize = true;
+            this.MediumPrediction.Location = new System.Drawing.Point(2, 34);
+            this.MediumPrediction.Name = "MediumPrediction";
+            this.MediumPrediction.Size = new System.Drawing.Size(48, 13);
+            this.MediumPrediction.TabIndex = 1;
+            this.MediumPrediction.Text = "П1 + 1,5";
+            // 
+            // ResultMediumLabel
+            // 
+            this.ResultMediumLabel.AutoSize = true;
+            this.ResultMediumLabel.Location = new System.Drawing.Point(2, 10);
+            this.ResultMediumLabel.Name = "ResultMediumLabel";
+            this.ResultMediumLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultMediumLabel.TabIndex = 0;
+            this.ResultMediumLabel.Text = "Результат + риск:";
+            // 
+            // FirstPredictionPanel
+            // 
+            this.FirstPredictionPanel.Controls.Add(this.EasyRisk);
+            this.FirstPredictionPanel.Controls.Add(this.EasyPrediction);
+            this.FirstPredictionPanel.Controls.Add(this.ResultEasyLabel);
+            this.FirstPredictionPanel.Location = new System.Drawing.Point(3, 3);
+            this.FirstPredictionPanel.Name = "FirstPredictionPanel";
+            this.FirstPredictionPanel.Size = new System.Drawing.Size(101, 57);
+            this.FirstPredictionPanel.TabIndex = 0;
+            // 
+            // EasyRisk
+            // 
+            this.EasyRisk.AutoSize = true;
+            this.EasyRisk.Location = new System.Drawing.Point(67, 34);
+            this.EasyRisk.Name = "EasyRisk";
+            this.EasyRisk.Size = new System.Drawing.Size(28, 13);
+            this.EasyRisk.TabIndex = 2;
+            this.EasyRisk.Text = "0.83";
+            // 
+            // EasyPrediction
+            // 
+            this.EasyPrediction.AutoSize = true;
+            this.EasyPrediction.Location = new System.Drawing.Point(3, 34);
+            this.EasyPrediction.Name = "EasyPrediction";
+            this.EasyPrediction.Size = new System.Drawing.Size(48, 13);
+            this.EasyPrediction.TabIndex = 1;
+            this.EasyPrediction.Text = "П1 + 1,5";
+            // 
+            // ResultEasyLabel
+            // 
+            this.ResultEasyLabel.AutoSize = true;
+            this.ResultEasyLabel.Location = new System.Drawing.Point(0, 10);
+            this.ResultEasyLabel.Name = "ResultEasyLabel";
+            this.ResultEasyLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultEasyLabel.TabIndex = 0;
+            this.ResultEasyLabel.Text = "Результат + риск:";
+            // 
+            // AddTeam
+            // 
+            this.AddTeam.Location = new System.Drawing.Point(15, 118);
+            this.AddTeam.Name = "AddTeam";
+            this.AddTeam.Size = new System.Drawing.Size(169, 39);
+            this.AddTeam.TabIndex = 14;
+            this.AddTeam.Text = "Добавить команду";
+            this.AddTeam.UseVisualStyleBackColor = true;
+            this.AddTeam.Click += new System.EventHandler(this.AddTeam_Click);
+            // 
+            // GetPrediction
+            // 
+            this.GetPrediction.Location = new System.Drawing.Point(15, 163);
+            this.GetPrediction.Name = "GetPrediction";
+            this.GetPrediction.Size = new System.Drawing.Size(169, 39);
+            this.GetPrediction.TabIndex = 15;
+            this.GetPrediction.Text = "Предсказать исход";
+            this.GetPrediction.UseVisualStyleBackColor = true;
+            this.GetPrediction.Click += new System.EventHandler(this.GetPrediction_Click);
             // 
             // MainWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 459);
+            this.Controls.Add(this.GetPrediction);
+            this.Controls.Add(this.AddTeam);
+            this.Controls.Add(this.PredictionPanel);
             this.Controls.Add(this.LearningProgressPanel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TestNetwork);
+            this.Controls.Add(this.NetworkLearning);
             this.Controls.Add(this.DisciplinePanel);
             this.Controls.Add(this.OpenWaitResultMatches);
             this.Controls.Add(this.VangaPanel);
@@ -370,6 +615,14 @@
             this.DisciplinePanel.ResumeLayout(false);
             this.DisciplinePanel.PerformLayout();
             this.LearningProgressPanel.ResumeLayout(false);
+            this.LearningProgressPanel.PerformLayout();
+            this.PredictionPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.FirstPredictionPanel.ResumeLayout(false);
+            this.FirstPredictionPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -404,9 +657,31 @@
         private System.Windows.Forms.Panel FourthMatchPanelB;
         private System.Windows.Forms.Button OpenWaitResultMatches;
         private System.Windows.Forms.Panel DisciplinePanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button NetworkLearning;
+        private System.Windows.Forms.Button TestNetwork;
         private System.Windows.Forms.Panel LearningProgressPanel;
+        private System.Windows.Forms.Label AverageResultLabel;
+        private System.Windows.Forms.Label CountOfCircle;
+        private System.Windows.Forms.Label NumberOfCircleValue;
+        private System.Windows.Forms.Label CircleCountLabel;
+        private System.Windows.Forms.Label AverageResultValue;
+        private System.Windows.Forms.Panel PredictionPanel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label HardRisk;
+        private System.Windows.Forms.Label HardPrediction;
+        private System.Windows.Forms.Label ResultHardLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label MediumRisk;
+        private System.Windows.Forms.Label MediumPrediction;
+        private System.Windows.Forms.Label ResultMediumLabel;
+        private System.Windows.Forms.Panel FirstPredictionPanel;
+        private System.Windows.Forms.Label EasyRisk;
+        private System.Windows.Forms.Label EasyPrediction;
+        private System.Windows.Forms.Label ResultEasyLabel;
+        private System.Windows.Forms.Button AddTeam;
+        private System.Windows.Forms.Button GetPrediction;
+        private System.Windows.Forms.Label MatchesCount;
+        private System.Windows.Forms.Label MatchesCountLabel;
     }
 }
 

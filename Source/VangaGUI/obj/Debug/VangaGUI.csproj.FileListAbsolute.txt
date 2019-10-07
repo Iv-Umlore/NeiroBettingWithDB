@@ -1,10 +1,11 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csprojAssemblyReference.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.MainWindows.resources
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.Properties.Resources.resources
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.GenerateResource.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\VangaGUI.exe.config
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\VangaGUI.exe
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\VangaGUI.pdb
-D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.Properties.Resources.resources
-D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.exe
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.pdb

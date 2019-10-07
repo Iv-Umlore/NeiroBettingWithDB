@@ -1,5 +1,6 @@
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\ProjectHelper.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\ProjectHelper.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.csprojAssemblyReference.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.pdb

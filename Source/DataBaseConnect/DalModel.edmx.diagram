@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b3f1e00115374907881ae27c8dc4b4b5" Name="Diagram1" >
-        <EntityTypeShape EntityType="MatchesModel.Comand" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="MatchesModel.PastMatch" Width="1.5" PointX="3" PointY="3.25" />
-        <EntityTypeShape EntityType="MatchesModel.Tournament" Width="1.5" PointX="0.75" PointY="4.625" />
-        <EntityTypeShape EntityType="MatchesModel.WaitResult" Width="1.5" PointX="6" PointY="4.125" />
-        <AssociationConnector Association="MatchesModel.FK_TeamA" />
-        <AssociationConnector Association="MatchesModel.FK_WR_A" />
-        <AssociationConnector Association="MatchesModel.FK_Tournament" />
-        <AssociationConnector Association="MatchesModel.FK_WR_Tournament" />
+      <Diagram DiagramId="8291970544ac46b0aaa9beeb8045d121" Name="Diagram1">
+        <EntityTypeShape EntityType="MatchesResultModel.Comand" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchesResultModel.PastMatch" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchesResultModel.Tournament" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MatchesResultModel.WaitResult" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="MatchesResultModel.FK_TeamA" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchesResultModel.FK_WR_A" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchesResultModel.FK_Tournament" ManuallyRouted="false" />
+        <AssociationConnector Association="MatchesResultModel.FK_WR_Tournament" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

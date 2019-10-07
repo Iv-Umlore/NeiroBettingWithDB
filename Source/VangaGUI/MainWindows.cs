@@ -28,12 +28,7 @@ namespace VangaGUI
         {
             _mainController = new BridgeToInterfaceController();
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {            
-            Console.Write("Была нажата кнопка");
-        }
-
+        
         private void TeamA_Box_SelectedIndexChanged(object sender, EventArgs e)
         {
             var list = new List<string>();
@@ -57,7 +52,44 @@ namespace VangaGUI
 
         private void OpenWaitResultMatches_Click(object sender, EventArgs e)
         {
+            MatchesCount.Text = "250";
+        }
+        
+        private void GetPrediction_Click(object sender, EventArgs e)
+        {
+            PredictionPanel.Show();
+            LearningProgressPanel.Hide();
+        }
 
-        }        
+        private void AddTeam_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void AddMatch_TeamA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddMatch_TeamB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestNetwork_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NetworkLearning_Click(object sender, EventArgs e)
+        {
+            PredictionPanel.Hide();
+            LearningProgressPanel.Show();
+        }
+
+        private void ChangeDiscipline_Click(object sender, EventArgs e)
+        {
+            Console.Write("Была нажата кнопка");
+        }
     }
 }

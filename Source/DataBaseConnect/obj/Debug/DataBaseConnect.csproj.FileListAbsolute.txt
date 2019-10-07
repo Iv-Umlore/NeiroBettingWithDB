@@ -6,11 +6,11 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\bin\Debug\EntityFramework.
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\bin\Debug\EntityFramework.xml
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\bin\Debug\EntityFramework.SqlServer.xml
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\bin\Debug\ru\EntityFramework.resources.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\DataBaseConnect.dll.config
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\DataBaseConnect.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\DataBaseConnect.pdb
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csprojAssemblyReference.cache
-D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.pdb
