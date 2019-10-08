@@ -81,6 +81,8 @@
             this.ResultEasyLabel = new System.Windows.Forms.Label();
             this.AddTeam = new System.Windows.Forms.Button();
             this.GetPrediction = new System.Windows.Forms.Button();
+            this.ReloadWeights = new System.Windows.Forms.Button();
+            this.SaveWeights = new System.Windows.Forms.Button();
             this.VangaPanel.SuspendLayout();
             this.LastFiveMatchesA.SuspendLayout();
             this.LastFiveMatchesB.SuspendLayout();
@@ -332,9 +334,9 @@
             // 
             // OpenWaitResultMatches
             // 
-            this.OpenWaitResultMatches.Location = new System.Drawing.Point(13, 335);
+            this.OpenWaitResultMatches.Location = new System.Drawing.Point(15, 208);
             this.OpenWaitResultMatches.Name = "OpenWaitResultMatches";
-            this.OpenWaitResultMatches.Size = new System.Drawing.Size(171, 47);
+            this.OpenWaitResultMatches.Size = new System.Drawing.Size(169, 47);
             this.OpenWaitResultMatches.TabIndex = 8;
             this.OpenWaitResultMatches.Text = "Посмотреть матчи  ожидающие результата";
             this.OpenWaitResultMatches.UseVisualStyleBackColor = true;
@@ -353,9 +355,9 @@
             // 
             // NetworkLearning
             // 
-            this.NetworkLearning.Location = new System.Drawing.Point(13, 226);
+            this.NetworkLearning.Location = new System.Drawing.Point(15, 279);
             this.NetworkLearning.Name = "NetworkLearning";
-            this.NetworkLearning.Size = new System.Drawing.Size(171, 47);
+            this.NetworkLearning.Size = new System.Drawing.Size(88, 47);
             this.NetworkLearning.TabIndex = 10;
             this.NetworkLearning.Text = "Обучение Нейронной сети";
             this.NetworkLearning.UseVisualStyleBackColor = true;
@@ -363,9 +365,9 @@
             // 
             // TestNetwork
             // 
-            this.TestNetwork.Location = new System.Drawing.Point(13, 280);
+            this.TestNetwork.Location = new System.Drawing.Point(109, 279);
             this.TestNetwork.Name = "TestNetwork";
-            this.TestNetwork.Size = new System.Drawing.Size(171, 49);
+            this.TestNetwork.Size = new System.Drawing.Size(88, 47);
             this.TestNetwork.TabIndex = 11;
             this.TestNetwork.Text = "Тест Нейронной сети";
             this.TestNetwork.UseVisualStyleBackColor = true;
@@ -591,12 +593,34 @@
             this.GetPrediction.UseVisualStyleBackColor = true;
             this.GetPrediction.Click += new System.EventHandler(this.GetPrediction_Click);
             // 
+            // ReloadWeights
+            // 
+            this.ReloadWeights.Location = new System.Drawing.Point(109, 332);
+            this.ReloadWeights.Name = "ReloadWeights";
+            this.ReloadWeights.Size = new System.Drawing.Size(88, 47);
+            this.ReloadWeights.TabIndex = 16;
+            this.ReloadWeights.Text = "Сбросить значение весов";
+            this.ReloadWeights.UseVisualStyleBackColor = true;
+            this.ReloadWeights.Click += new System.EventHandler(this.ReloadWeights_Click);
+            // 
+            // SaveWeights
+            // 
+            this.SaveWeights.Location = new System.Drawing.Point(15, 332);
+            this.SaveWeights.Name = "SaveWeights";
+            this.SaveWeights.Size = new System.Drawing.Size(88, 47);
+            this.SaveWeights.TabIndex = 17;
+            this.SaveWeights.Text = "Сохранить текущие настройки";
+            this.SaveWeights.UseVisualStyleBackColor = true;
+            this.SaveWeights.Click += new System.EventHandler(this.SaveWeights_Click);
+            // 
             // MainWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.ClientSize = new System.Drawing.Size(800, 459);
+            this.Controls.Add(this.SaveWeights);
+            this.Controls.Add(this.ReloadWeights);
             this.Controls.Add(this.GetPrediction);
             this.Controls.Add(this.AddTeam);
             this.Controls.Add(this.PredictionPanel);
@@ -682,6 +706,8 @@
         private System.Windows.Forms.Button GetPrediction;
         private System.Windows.Forms.Label MatchesCount;
         private System.Windows.Forms.Label MatchesCountLabel;
+        private System.Windows.Forms.Button ReloadWeights;
+        private System.Windows.Forms.Button SaveWeights;
     }
 }
 

@@ -4,3 +4,9 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.cspr
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.csproj.CoreCompileInputs.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.pdb
+E:\Test\NeiroBettingWithDB\Source\Bin\ProjectHelper.dll
+E:\Test\NeiroBettingWithDB\Source\Bin\ProjectHelper.pdb
+E:\Test\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.csprojAssemblyReference.cache
+E:\Test\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.csproj.CoreCompileInputs.cache
+E:\Test\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.dll
+E:\Test\NeiroBettingWithDB\Source\ProjectHelper\obj\Debug\ProjectHelper.pdb

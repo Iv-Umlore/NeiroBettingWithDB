@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace IInteractionController
 {
-	public interface InteractionControllerInterface
-	{
-		List<MatchWaitResult> GetWaitResultMatches();
+    public interface InteractionControllerInterface
+    {
+        List<MatchWaitResult> GetWaitResultMatches();
 
-		bool SaveMatchResult(string matchParameters);
+        bool SaveMatchResult(string matchParameters);
 
-		List<TeamInfo> GetTeamList(string withoutTeam = null);
+        List<TeamInfo> GetTeamList();
 
-		List<PastMatch> GetlastFiveTeamMatch(string teamName);
+        List<PastMatch> GetlastFiveTeamMatch(string teamName);
 
-		bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
-	}
+        bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
+    }
 }

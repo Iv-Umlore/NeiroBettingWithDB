@@ -5,3 +5,10 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Networ
 D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.pdb
+E:\Test\NeiroBettingWithDB\Source\Bin\FootBall.Network.dll
+E:\Test\NeiroBettingWithDB\Source\Bin\FootBall.Network.pdb
+E:\Test\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csprojAssemblyReference.cache
+E:\Test\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csproj.CoreCompileInputs.cache
+E:\Test\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.csproj.CopyComplete
+E:\Test\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.dll
+E:\Test\NeiroBettingWithDB\Source\FootBall.Network\obj\Debug\FootBall.Network.pdb

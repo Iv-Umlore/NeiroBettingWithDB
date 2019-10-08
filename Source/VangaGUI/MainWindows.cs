@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,7 +29,7 @@ namespace VangaGUI
         {
             _mainController = new BridgeToInterfaceController();
         }
-        
+
         private void TeamA_Box_SelectedIndexChanged(object sender, EventArgs e)
         {
             var list = new List<string>();
@@ -37,7 +38,7 @@ namespace VangaGUI
             else list = _mainController.GetTeamList(TeamB_Box.SelectedItem.ToString());
             foreach (var name in list)
                 TeamA_Box.Items.Add(name);
-            
+
         }
 
         private void TeamB_Box_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace VangaGUI
         {
             MatchesCount.Text = "250";
         }
-        
+
         private void GetPrediction_Click(object sender, EventArgs e)
         {
             PredictionPanel.Show();
@@ -63,22 +64,24 @@ namespace VangaGUI
 
         private void AddTeam_Click(object sender, EventArgs e)
         {
-
+            // Открыть новое окно, вызвать оттуда AddNewTeam
         }
-        
+
         private void AddMatch_TeamA_Click(object sender, EventArgs e)
         {
-
+            // Открыть новое окно, вызвать оттуда SaveMatchResult с кодом 0
         }
 
         private void AddMatch_TeamB_Click(object sender, EventArgs e)
         {
-
+            // Открыть новое окно, вызвать оттуда SaveLastMatchresult
         }
 
         private void TestNetwork_Click(object sender, EventArgs e)
         {
-
+            var result = _mainController.TestNetwork();
+            MatchesCount.Text = _mainController.MatchesCount.ToString();
+            AverageResultValue.Text = result.ToString();
         }
 
         private void NetworkLearning_Click(object sender, EventArgs e)
@@ -89,7 +92,17 @@ namespace VangaGUI
 
         private void ChangeDiscipline_Click(object sender, EventArgs e)
         {
-            Console.Write("Была нажата кнопка");
+            _mainController.ChangeDiscipline(Discipline.Foorball);
+        }
+
+        private void SaveWeights_Click(object sender, EventArgs e)
+        {
+            _mainController.SaveCurrentWeights();
+        }
+
+        private void ReloadWeights_Click(object sender, EventArgs e)
+        {
+            _mainController.ReloadWeights();
         }
     }
 }
