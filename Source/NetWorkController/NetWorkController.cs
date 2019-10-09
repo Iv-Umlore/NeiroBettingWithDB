@@ -25,10 +25,10 @@ namespace NetWorkController
 
         }
 
-        /*public List<Prediction> GetPrediction(List<PastMatches> teamAMatches, List<PastMatches> teamBMatches, Tournament tournament, string[] parameters)
+        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, Tournament tournament, string[] parameters)
         {
             return _network.GetPrediction(teamAMatches, teamBMatches, tournament, parameters);
-        }*/
+        }
 
         public double TestNetwork()
         {

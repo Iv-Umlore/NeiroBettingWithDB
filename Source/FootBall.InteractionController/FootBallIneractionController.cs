@@ -44,11 +44,15 @@ namespace FootBall.InteractionController
             return res;
         }
 
-        public List<PastMatch> GetlastFiveTeamMatch(string teamName)
+        public List<LastMatch> GetlastFiveTeamMatch(string teamName)
         {
-            var res = new List<PastMatch>();
+            var res = new List<LastMatch>();
             // Достать 5 последних матчей для команды.
             // Преобразовать и вернуть
+            
+            /*foreach (var match in pastMatchList)
+                lastMatchesList.Add(ConvertToLastMatch(match));*/
+
             return res;
         }
 

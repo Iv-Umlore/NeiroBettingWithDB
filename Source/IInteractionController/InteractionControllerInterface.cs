@@ -16,7 +16,7 @@ namespace IInteractionController
 
         List<TeamInfo> GetTeamList();
 
-        List<PastMatch> GetlastFiveTeamMatch(string teamName);
+        List<LastMatch> GetlastFiveTeamMatch(string teamName);
 
         bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
 

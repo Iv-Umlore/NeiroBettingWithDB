@@ -45,8 +45,8 @@ namespace InteractionController
             return _disciplineController.GetTeamList();
         }
 
-        public List<PastMatch> GetlastFiveTeamMatch(string teamName)
-        {
+        public List<LastMatch> GetlastFiveTeamMatch(string teamName)
+        {          
             return _disciplineController.GetlastFiveTeamMatch(teamName);
         }
 
@@ -67,5 +67,11 @@ namespace InteractionController
 
             return true;
         }
+        
+        private LastMatch ConvertToLastMatch(PastMatch pastMatch)
+        {
+            return new LastMatch();
+        }
+
     }
 }

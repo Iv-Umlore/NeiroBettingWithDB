@@ -53,4 +53,26 @@ namespace ProjectHelper
         public string Risk { get; set; }
     }
 
+    public class LastMatch
+    {
+        public decimal id_match { get; set; }
+        public decimal Team_A { get; set; }
+        public decimal Team_B { get; set; }
+        public short Score_A { get; set; }
+        public short Score_B { get; set; }
+        public short Important_A { get; set; }
+        public short Important_B { get; set; }
+        public short Violations_A { get; set; }
+        public short Violations_B { get; set; }
+        public short shot_on_target_A { get; set; }
+        public short shot_on_target_B { get; set; }
+        public short save_A { get; set; }
+        public short save_B { get; set; }
+        public decimal tournament { get; set; }
+        public bool is_ready_for_learning { get; set; }
+        public short replacements_A { get; set; }
+        public short replacements_B { get; set; }
+        public DateTime match_date { get; set; }
+    }
+
 }
