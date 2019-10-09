@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FootballNetwork.cs" />
+    <Compile Include="Layer.cs" />
     <Compile Include="Neiron.cs" />
     <Compile Include="Network.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

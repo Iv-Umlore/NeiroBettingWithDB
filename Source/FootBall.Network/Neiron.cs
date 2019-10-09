@@ -10,7 +10,6 @@ namespace Network.Football
     public class Neiron
     {
         private List<double> _weights;
-        private double result;
         private const int ChangeSize = 10;
         private const int RandomSize = 5;
         private const double learningSpeed = 0.01;
@@ -23,7 +22,7 @@ namespace Network.Football
 
         public double ActivationFunction(List<double> values)
         {
-            result = 0.0;
+            var result = 0.0;
             for (int i = 0; i < _weights.Count; i++)
                 result += _weights[i] * values[i];
 
@@ -31,10 +30,10 @@ namespace Network.Football
             return result;
         }
 
-        public List<double> Learning(double error, List<double> output)
+        public List<double> Learning(double error, double result, List<double> output)
         {
             List<double> res = new List<double>();
-            // нен помню почему так
+            // не помню почему так
             double deltaW = Derivate(result) * error;
             for (int i = 0; i < _weights.Count; i++)
             {
@@ -42,7 +41,7 @@ namespace Network.Football
                 res.Add(_weights[i] * deltaW);
             }
 
-            return new List<double>();
+            return res;
         }
 
         public void ChangeWeights()

@@ -8,5 +8,9 @@ namespace Network.Football
 {
     public class Network
     {
+        public Network(int LayerNumber, int inputParametersCount, int outputParametersCount, List<int> inputParametersInLayer)
+        {
+
+        }
     }
 }
