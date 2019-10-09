@@ -40,3 +40,7 @@
 Source/.vs/
 
 Source/Bin/
+
+*.pdb
+
+*.cache

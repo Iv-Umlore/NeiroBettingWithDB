@@ -19,5 +19,7 @@ namespace IInteractionController
         List<PastMatch> GetlastFiveTeamMatch(string teamName);
 
         bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
+
+        bool ChangeDiscipline(Discipline type);
     }
 }

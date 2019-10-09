@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.779
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseConnect", "DataBaseConnect\DataBaseConnect.csproj", "{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHelper", "ProjectHelper\ProjectHelper.csproj", "{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VangaGUI", "VangaGUI\VangaGUI.csproj", "{A6AF3796-95E8-446A-9BFC-C85791666A5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionController", "InteractionController\InteractionController.csproj", "{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetWorkController", "NetWorkController\NetWorkController.csproj", "{C70B9BFE-276E-4B7B-892E-30FE83EAD739}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{A6AF3796-95E8-446A-9BFC-C85791666A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6AF3796-95E8-446A-9BFC-C85791666A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6AF3796-95E8-446A-9BFC-C85791666A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

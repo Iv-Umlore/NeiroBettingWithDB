@@ -1,5 +1,4 @@
-﻿using FootBall.InteractionController;
-using FootBall.Network;
+﻿using FootBall.Network;
 using IInteractionController;
 using INetwork;
 using ProjectHelper;
@@ -11,38 +10,42 @@ namespace BridgeToInterface
     public class BridgeToInterfaceController
     {
         private InteractionControllerInterface _interactionController;
-        private NetworkInterface _network;
+        private INetworkInterface _network;
         private List<TeamInfo> teamList;
         public int MatchesCount;
+        public double learningResult;
 
         public BridgeToInterfaceController()
         {
-            _interactionController = new FootBallIneractionController();
-            _network = new FootBallNetwork();
+            _interactionController = new InteractionController.InteractionController(Discipline.Football);
+            _network = new NetWorkController.NetWorkController(Discipline.Football);
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
+            learningResult = 1000.0;
         }
 
         public bool ChangeDiscipline(Discipline discipline)
         {
+            _interactionController.ChangeDiscipline(discipline);
+            _network.ChangeDiscipline(discipline);
             return true;
         }
 
         public List<MatchWaitResult> GetWaitResultMatches()
         {
-            var result = new List<MatchWaitResult>();
-            // Changes
+            var result = _interactionController.GetWaitResultMatches();
             return result;
         }
 
         public bool SaveMatchResult(MatchWaitResult lastMatch, int scoreA, int scoreB,
             int ViolationsA, int ViolationsB, int shotOnTargetA, int shotOnTargetB, int SaveA, int SaveB, bool IsReadyForLerning)
         {
-            return true;
+            return _interactionController.SaveMatchResult("parameters with 1");
         }
 
         public bool SaveLastMatchresult(string[] parameters)
         {
+            _interactionController.SaveMatchResult("paremeters with 0");
             return true;
         }
 
@@ -57,33 +60,43 @@ namespace BridgeToInterface
 
         public bool AddNewTeam(string abbreviature, string TeamName, int tier_team, int teamPoint)
         {
+            _interactionController.AddNewTeam(abbreviature, TeamName, tier_team);
+            teamList = _interactionController.GetTeamList();
             return true;
         }
 
         public List<Prediction> GetPrediction(int teamA_id, int teamB_id)
         {
             var result = new List<Prediction>();
-            // Changes
+            //var teamAMatches = _interactionController.GetlastFiveTeamMatch(teamList.First(it => it.Team_id == teamA_id).Team_name);
+            //var teamBMatches = _interactionController.GetlastFiveTeamMatch(teamList.First(it => it.Team_id == teamB_id).Team_name);
+
+            //result = _network.GetPrediction(teamAMatches, teamBMatches);
+
             return result;
         }
 
         public double TestNetwork()
         {
-            return 0.0;
+            return _network.TestNetwork();
         }
 
         public double LearningNetwork()
         {
-            return 0.0;
+            for (int i = 0; i < 500; i++)
+                learningResult = _network.Learning();
+            return learningResult;
         }
 
         public bool SaveCurrentWeights()
         {
+            _network.SaveCurrentWeights();
             return true;
         }
 
         public bool ReloadWeights()
         {
+            _network.ReloadWeights();
             return true;
         }
     }

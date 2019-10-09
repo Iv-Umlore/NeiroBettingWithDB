@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectHelper;
 
 namespace INetwork
 {
-	public interface NetworkInterface
-	{
-		string GetPrediction();
+    public interface INetworkInterface
+    {
 
-		double TestNetwork();
+        //List<Prediction> GetPrediction(List<PastMatches> teamAMatches, List<PastMatches> teamBMatches, Tournament tournament, string[] parameters);
 
-		double Learning();
+        double TestNetwork();
 
-		void SaveCurrentWeights();
+        double Learning();
 
-		void ReloadWeights();
-	}
+        void SaveCurrentWeights();
+
+        void ReloadWeights();
+
+        bool ChangeDiscipline(Discipline type);
+    }
 }

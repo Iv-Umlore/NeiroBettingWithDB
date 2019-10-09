@@ -1,0 +1,7 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\InteractionController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\InteractionController.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\InteractionController\obj\Debug\InteractionController.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\InteractionController\obj\Debug\InteractionController.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\InteractionController\obj\Debug\InteractionController.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\InteractionController\obj\Debug\InteractionController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\InteractionController\obj\Debug\InteractionController.pdb

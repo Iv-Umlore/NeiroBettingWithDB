@@ -36,6 +36,9 @@
             this.Label_TeamA = new System.Windows.Forms.Label();
             this.Label_TeamB = new System.Windows.Forms.Label();
             this.VangaPanel = new System.Windows.Forms.Panel();
+            this.AddTournament = new System.Windows.Forms.Button();
+            this.TournamentBox = new System.Windows.Forms.ComboBox();
+            this.TournamentLabel = new System.Windows.Forms.Label();
             this.LastFiveMatchesA = new System.Windows.Forms.Panel();
             this.FirstMatchPanelA = new System.Windows.Forms.Panel();
             this.AddMatch_TeamA = new System.Windows.Forms.Button();
@@ -50,10 +53,10 @@
             this.FifthMatchTotalB = new System.Windows.Forms.Panel();
             this.ThirdMatchPanelB = new System.Windows.Forms.Panel();
             this.FourthMatchPanelB = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.FiveLastMatchesLabel = new System.Windows.Forms.Label();
             this.TeamB_Box = new System.Windows.Forms.ComboBox();
             this.TeamA_Box = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.VersusLabel = new System.Windows.Forms.Label();
             this.OpenWaitResultMatches = new System.Windows.Forms.Button();
             this.DisciplinePanel = new System.Windows.Forms.Panel();
             this.NetworkLearning = new System.Windows.Forms.Button();
@@ -147,7 +150,7 @@
             // Label_TeamA
             // 
             this.Label_TeamA.AutoSize = true;
-            this.Label_TeamA.Location = new System.Drawing.Point(3, 14);
+            this.Label_TeamA.Location = new System.Drawing.Point(3, 61);
             this.Label_TeamA.Name = "Label_TeamA";
             this.Label_TeamA.Size = new System.Drawing.Size(61, 13);
             this.Label_TeamA.TabIndex = 5;
@@ -156,7 +159,7 @@
             // Label_TeamB
             // 
             this.Label_TeamB.AutoSize = true;
-            this.Label_TeamB.Location = new System.Drawing.Point(524, 14);
+            this.Label_TeamB.Location = new System.Drawing.Point(524, 61);
             this.Label_TeamB.Name = "Label_TeamB";
             this.Label_TeamB.Size = new System.Drawing.Size(61, 13);
             this.Label_TeamB.TabIndex = 6;
@@ -165,18 +168,48 @@
             // VangaPanel
             // 
             this.VangaPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(254)))), ((int)(((byte)(193)))));
+            this.VangaPanel.Controls.Add(this.AddTournament);
+            this.VangaPanel.Controls.Add(this.TournamentBox);
+            this.VangaPanel.Controls.Add(this.TournamentLabel);
             this.VangaPanel.Controls.Add(this.LastFiveMatchesA);
             this.VangaPanel.Controls.Add(this.LastFiveMatchesB);
-            this.VangaPanel.Controls.Add(this.label2);
+            this.VangaPanel.Controls.Add(this.FiveLastMatchesLabel);
             this.VangaPanel.Controls.Add(this.TeamB_Box);
             this.VangaPanel.Controls.Add(this.TeamA_Box);
-            this.VangaPanel.Controls.Add(this.label1);
+            this.VangaPanel.Controls.Add(this.VersusLabel);
             this.VangaPanel.Controls.Add(this.Label_TeamA);
             this.VangaPanel.Controls.Add(this.Label_TeamB);
             this.VangaPanel.Location = new System.Drawing.Point(200, 13);
             this.VangaPanel.Name = "VangaPanel";
             this.VangaPanel.Size = new System.Drawing.Size(588, 369);
             this.VangaPanel.TabIndex = 7;
+            // 
+            // AddTournament
+            // 
+            this.AddTournament.Location = new System.Drawing.Point(369, 23);
+            this.AddTournament.Name = "AddTournament";
+            this.AddTournament.Size = new System.Drawing.Size(169, 21);
+            this.AddTournament.TabIndex = 18;
+            this.AddTournament.Text = "Добавить турнир";
+            this.AddTournament.UseVisualStyleBackColor = true;
+            this.AddTournament.Click += new System.EventHandler(this.AddTournament_Click);
+            // 
+            // TournamentBox
+            // 
+            this.TournamentBox.FormattingEnabled = true;
+            this.TournamentBox.Location = new System.Drawing.Point(71, 23);
+            this.TournamentBox.Name = "TournamentBox";
+            this.TournamentBox.Size = new System.Drawing.Size(289, 21);
+            this.TournamentBox.TabIndex = 19;
+            // 
+            // TournamentLabel
+            // 
+            this.TournamentLabel.AutoSize = true;
+            this.TournamentLabel.Location = new System.Drawing.Point(6, 27);
+            this.TournamentLabel.Name = "TournamentLabel";
+            this.TournamentLabel.Size = new System.Drawing.Size(46, 13);
+            this.TournamentLabel.TabIndex = 18;
+            this.TournamentLabel.Text = "Турнир:";
             // 
             // LastFiveMatchesA
             // 
@@ -187,21 +220,21 @@
             this.LastFiveMatchesA.Controls.Add(this.FifthMatchPanelA);
             this.LastFiveMatchesA.Controls.Add(this.ThirdMatchPanelA);
             this.LastFiveMatchesA.Controls.Add(this.FourthMatchPanelA);
-            this.LastFiveMatchesA.Location = new System.Drawing.Point(6, 70);
+            this.LastFiveMatchesA.Location = new System.Drawing.Point(6, 132);
             this.LastFiveMatchesA.Name = "LastFiveMatchesA";
-            this.LastFiveMatchesA.Size = new System.Drawing.Size(273, 296);
+            this.LastFiveMatchesA.Size = new System.Drawing.Size(273, 234);
             this.LastFiveMatchesA.TabIndex = 17;
             // 
             // FirstMatchPanelA
             // 
             this.FirstMatchPanelA.Location = new System.Drawing.Point(3, 3);
             this.FirstMatchPanelA.Name = "FirstMatchPanelA";
-            this.FirstMatchPanelA.Size = new System.Drawing.Size(267, 47);
+            this.FirstMatchPanelA.Size = new System.Drawing.Size(267, 33);
             this.FirstMatchPanelA.TabIndex = 13;
             // 
             // AddMatch_TeamA
             // 
-            this.AddMatch_TeamA.Location = new System.Drawing.Point(65, 268);
+            this.AddMatch_TeamA.Location = new System.Drawing.Point(65, 199);
             this.AddMatch_TeamA.Name = "AddMatch_TeamA";
             this.AddMatch_TeamA.Size = new System.Drawing.Size(149, 23);
             this.AddMatch_TeamA.TabIndex = 15;
@@ -211,30 +244,30 @@
             // 
             // SecondMatchPanelA
             // 
-            this.SecondMatchPanelA.Location = new System.Drawing.Point(3, 56);
+            this.SecondMatchPanelA.Location = new System.Drawing.Point(3, 42);
             this.SecondMatchPanelA.Name = "SecondMatchPanelA";
-            this.SecondMatchPanelA.Size = new System.Drawing.Size(267, 47);
+            this.SecondMatchPanelA.Size = new System.Drawing.Size(267, 32);
             this.SecondMatchPanelA.TabIndex = 14;
             // 
             // FifthMatchPanelA
             // 
-            this.FifthMatchPanelA.Location = new System.Drawing.Point(3, 215);
+            this.FifthMatchPanelA.Location = new System.Drawing.Point(3, 160);
             this.FifthMatchPanelA.Name = "FifthMatchPanelA";
-            this.FifthMatchPanelA.Size = new System.Drawing.Size(267, 47);
+            this.FifthMatchPanelA.Size = new System.Drawing.Size(267, 33);
             this.FifthMatchPanelA.TabIndex = 14;
             // 
             // ThirdMatchPanelA
             // 
-            this.ThirdMatchPanelA.Location = new System.Drawing.Point(3, 109);
+            this.ThirdMatchPanelA.Location = new System.Drawing.Point(3, 80);
             this.ThirdMatchPanelA.Name = "ThirdMatchPanelA";
-            this.ThirdMatchPanelA.Size = new System.Drawing.Size(267, 47);
+            this.ThirdMatchPanelA.Size = new System.Drawing.Size(267, 31);
             this.ThirdMatchPanelA.TabIndex = 14;
             // 
             // FourthMatchPanelA
             // 
-            this.FourthMatchPanelA.Location = new System.Drawing.Point(3, 162);
+            this.FourthMatchPanelA.Location = new System.Drawing.Point(3, 117);
             this.FourthMatchPanelA.Name = "FourthMatchPanelA";
-            this.FourthMatchPanelA.Size = new System.Drawing.Size(267, 47);
+            this.FourthMatchPanelA.Size = new System.Drawing.Size(267, 37);
             this.FourthMatchPanelA.TabIndex = 14;
             // 
             // LastFiveMatchesB
@@ -246,21 +279,21 @@
             this.LastFiveMatchesB.Controls.Add(this.FifthMatchTotalB);
             this.LastFiveMatchesB.Controls.Add(this.ThirdMatchPanelB);
             this.LastFiveMatchesB.Controls.Add(this.FourthMatchPanelB);
-            this.LastFiveMatchesB.Location = new System.Drawing.Point(305, 70);
+            this.LastFiveMatchesB.Location = new System.Drawing.Point(305, 132);
             this.LastFiveMatchesB.Name = "LastFiveMatchesB";
-            this.LastFiveMatchesB.Size = new System.Drawing.Size(280, 296);
+            this.LastFiveMatchesB.Size = new System.Drawing.Size(280, 234);
             this.LastFiveMatchesB.TabIndex = 16;
             // 
             // FirstMatchPanelB
             // 
             this.FirstMatchPanelB.Location = new System.Drawing.Point(3, 3);
             this.FirstMatchPanelB.Name = "FirstMatchPanelB";
-            this.FirstMatchPanelB.Size = new System.Drawing.Size(271, 47);
+            this.FirstMatchPanelB.Size = new System.Drawing.Size(267, 33);
             this.FirstMatchPanelB.TabIndex = 13;
             // 
             // AddMatch_TeamB
             // 
-            this.AddMatch_TeamB.Location = new System.Drawing.Point(73, 268);
+            this.AddMatch_TeamB.Location = new System.Drawing.Point(69, 199);
             this.AddMatch_TeamB.Name = "AddMatch_TeamB";
             this.AddMatch_TeamB.Size = new System.Drawing.Size(149, 23);
             this.AddMatch_TeamB.TabIndex = 15;
@@ -270,45 +303,45 @@
             // 
             // SecondMatchPanelB
             // 
-            this.SecondMatchPanelB.Location = new System.Drawing.Point(3, 56);
+            this.SecondMatchPanelB.Location = new System.Drawing.Point(3, 42);
             this.SecondMatchPanelB.Name = "SecondMatchPanelB";
-            this.SecondMatchPanelB.Size = new System.Drawing.Size(271, 47);
+            this.SecondMatchPanelB.Size = new System.Drawing.Size(267, 32);
             this.SecondMatchPanelB.TabIndex = 14;
             // 
             // FifthMatchTotalB
             // 
-            this.FifthMatchTotalB.Location = new System.Drawing.Point(3, 215);
+            this.FifthMatchTotalB.Location = new System.Drawing.Point(3, 160);
             this.FifthMatchTotalB.Name = "FifthMatchTotalB";
-            this.FifthMatchTotalB.Size = new System.Drawing.Size(271, 47);
+            this.FifthMatchTotalB.Size = new System.Drawing.Size(267, 33);
             this.FifthMatchTotalB.TabIndex = 14;
             // 
             // ThirdMatchPanelB
             // 
-            this.ThirdMatchPanelB.Location = new System.Drawing.Point(3, 109);
+            this.ThirdMatchPanelB.Location = new System.Drawing.Point(3, 80);
             this.ThirdMatchPanelB.Name = "ThirdMatchPanelB";
-            this.ThirdMatchPanelB.Size = new System.Drawing.Size(271, 47);
+            this.ThirdMatchPanelB.Size = new System.Drawing.Size(267, 30);
             this.ThirdMatchPanelB.TabIndex = 14;
             // 
             // FourthMatchPanelB
             // 
-            this.FourthMatchPanelB.Location = new System.Drawing.Point(3, 162);
+            this.FourthMatchPanelB.Location = new System.Drawing.Point(3, 117);
             this.FourthMatchPanelB.Name = "FourthMatchPanelB";
-            this.FourthMatchPanelB.Size = new System.Drawing.Size(271, 47);
+            this.FourthMatchPanelB.Size = new System.Drawing.Size(267, 37);
             this.FourthMatchPanelB.TabIndex = 14;
             // 
-            // label2
+            // FiveLastMatchesLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(236, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "5 Последних матчей: ";
+            this.FiveLastMatchesLabel.AutoSize = true;
+            this.FiveLastMatchesLabel.Location = new System.Drawing.Point(234, 105);
+            this.FiveLastMatchesLabel.Name = "FiveLastMatchesLabel";
+            this.FiveLastMatchesLabel.Size = new System.Drawing.Size(116, 13);
+            this.FiveLastMatchesLabel.TabIndex = 12;
+            this.FiveLastMatchesLabel.Text = "5 Последних матчей: ";
             // 
             // TeamB_Box
             // 
             this.TeamB_Box.FormattingEnabled = true;
-            this.TeamB_Box.Location = new System.Drawing.Point(320, 14);
+            this.TeamB_Box.Location = new System.Drawing.Point(320, 61);
             this.TeamB_Box.Name = "TeamB_Box";
             this.TeamB_Box.Size = new System.Drawing.Size(198, 21);
             this.TeamB_Box.TabIndex = 11;
@@ -317,20 +350,20 @@
             // TeamA_Box
             // 
             this.TeamA_Box.FormattingEnabled = true;
-            this.TeamA_Box.Location = new System.Drawing.Point(71, 14);
+            this.TeamA_Box.Location = new System.Drawing.Point(71, 61);
             this.TeamA_Box.Name = "TeamA_Box";
             this.TeamA_Box.Size = new System.Drawing.Size(192, 21);
             this.TeamA_Box.TabIndex = 10;
             this.TeamA_Box.SelectedIndexChanged += new System.EventHandler(this.TeamA_Box_SelectedIndexChanged);
             // 
-            // label1
+            // VersusLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Против";
+            this.VersusLabel.AutoSize = true;
+            this.VersusLabel.Location = new System.Drawing.Point(269, 61);
+            this.VersusLabel.Name = "VersusLabel";
+            this.VersusLabel.Size = new System.Drawing.Size(44, 13);
+            this.VersusLabel.TabIndex = 9;
+            this.VersusLabel.Text = "Против";
             // 
             // OpenWaitResultMatches
             // 
@@ -661,10 +694,10 @@
         private System.Windows.Forms.Label Label_TeamA;
         private System.Windows.Forms.Label Label_TeamB;
         private System.Windows.Forms.Panel VangaPanel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label VersusLabel;
         private System.Windows.Forms.ComboBox TeamB_Box;
         private System.Windows.Forms.ComboBox TeamA_Box;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label FiveLastMatchesLabel;
         private System.Windows.Forms.Panel LastFiveMatchesA;
         private System.Windows.Forms.Panel FirstMatchPanelA;
         private System.Windows.Forms.Button AddMatch_TeamA;
@@ -708,6 +741,9 @@
         private System.Windows.Forms.Label MatchesCountLabel;
         private System.Windows.Forms.Button ReloadWeights;
         private System.Windows.Forms.Button SaveWeights;
+        private System.Windows.Forms.Button AddTournament;
+        private System.Windows.Forms.ComboBox TournamentBox;
+        private System.Windows.Forms.Label TournamentLabel;
     }
 }
 
