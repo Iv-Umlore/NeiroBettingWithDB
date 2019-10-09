@@ -7,8 +7,7 @@ SET ANSI_NULLS ON
 SET ANSI_PADDING ON
 SET ANSI_WARNINGS ON
 COMMIT
-BEGIN TRANSACTION
-GO
+
 CREATE TABLE football.Tournament
 	(
 	id_Tournament numeric(38, 0) NOT NULL,
@@ -25,12 +24,7 @@ ALTER TABLE football.Tournament ADD CONSTRAINT
 GO
 ALTER TABLE football.Tournament SET (LOCK_ESCALATION = TABLE)
 GO
-COMMIT
 
----------------------------------------------
-
-BEGIN TRANSACTION
-GO
 CREATE TABLE football.Comands
 	(
 	id_team numeric(38, 0) NOT NULL IDENTITY (1, 1),
@@ -49,12 +43,7 @@ ALTER TABLE football.Comands ADD CONSTRAINT
 GO
 ALTER TABLE football.Comands SET (LOCK_ESCALATION = TABLE)
 GO
-COMMIT
 
---------------------------------------------------------------------------
-
-BEGIN TRANSACTION
-GO
 CREATE TABLE football.PastMatches
 	(
 	id_match numeric(38, 0) NOT NULL IDENTITY (1, 1),
@@ -104,23 +93,18 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
 
-COMMIT
-
-----------------------------------------------------------------------
-
-BEGIN TRANSACTION
-GO
 CREATE TABLE football.WaitResults
 	(
 	id_game numeric(38, 0) NOT NULL IDENTITY (1, 1),
 	[Team-A] numeric(38,0) NOT NULL,
 	[Team-B] numeric(38,0) NOT NULL,
 	tournament numeric(38,0) NOT NULL,
-	[replacements-A] nchar(10) NOT NULL,
-	[replacements-B] nchar(10) NOT NULL,
-	[important-A] nchar(10) NOT NULL,
-	[important-B] nchar(10) NOT NULL,
-	date date NOT NULL
+	[replacements-A] int NOT NULL,
+	[replacements-B] int NOT NULL,
+	[important-A] int NOT NULL,
+	[important-B] int NOT NULL,
+	[prediction] nvarchar(30) NULL,
+	[date] date NOT NULL
 	)  ON [PRIMARY]
 GO
 ALTER TABLE football.WaitResults ADD CONSTRAINT
@@ -132,7 +116,6 @@ ALTER TABLE football.WaitResults ADD CONSTRAINT
 GO
 ALTER TABLE football.WaitResults SET (LOCK_ESCALATION = TABLE)
 GO
-
 
 ALTER TABLE football.WaitResults
 ADD CONSTRAINT FK_WR_A FOREIGN KEY([Team-A]) REFERENCES football.Comands(id_team)
@@ -151,5 +134,3 @@ ADD CONSTRAINT FK_WR_Tournament FOREIGN KEY(tournament) REFERENCES football.Tour
 ON DELETE CASCADE
 ON UPDATE CASCADE
 GO
-
-COMMIT

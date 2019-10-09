@@ -10,7 +10,7 @@ namespace INetwork
     public interface INetworkInterface
     {
 
-        List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, Tournament tournament, string[] parameters);
+        List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters);
 
         double TestNetwork();
 

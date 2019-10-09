@@ -19,7 +19,7 @@ namespace Network.Football
             pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
         }
 
-        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, Tournament tournament, string[] parameters)
+        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
         {
             return new List<Prediction>();
         }

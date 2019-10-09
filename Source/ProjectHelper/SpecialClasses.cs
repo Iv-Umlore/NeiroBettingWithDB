@@ -20,7 +20,7 @@ namespace ProjectHelper
 
         public TeamInfo TeamB { get; set; }
 
-        public Tournament Tournament { get; set; }
+        public TournamentShort Tournament { get; set; }
 
         public short ReplasmentA { get; set; }
 
@@ -40,7 +40,7 @@ namespace ProjectHelper
         public string Team_name { get; set; }
     }
 
-    public class Tournament
+    public class TournamentShort
     {
         public int Tournament_id { get; set; }
 
@@ -55,7 +55,6 @@ namespace ProjectHelper
 
     public class LastMatch
     {
-        public decimal id_match { get; set; }
         public decimal Team_A { get; set; }
         public decimal Team_B { get; set; }
         public short Score_A { get; set; }
@@ -69,6 +68,7 @@ namespace ProjectHelper
         public short save_A { get; set; }
         public short save_B { get; set; }
         public decimal tournament { get; set; }
+        public int tier_tournament { get; set; }
         public bool is_ready_for_learning { get; set; }
         public short replacements_A { get; set; }
         public short replacements_B { get; set; }

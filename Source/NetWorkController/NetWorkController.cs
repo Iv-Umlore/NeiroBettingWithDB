@@ -25,7 +25,7 @@ namespace NetWorkController
 
         }
 
-        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, Tournament tournament, string[] parameters)
+        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
         {
             return _network.GetPrediction(teamAMatches, teamBMatches, tournament, parameters);
         }

@@ -11,7 +11,7 @@ namespace DataBaseConnect
 		public MatchResult_Entities NewEntities {
 			get
 			{
-				var res = new MatchResult_Entities();
+                MatchResult_Entities res = new MatchResult_Entities();
 				res.Database.Connection.Open();
 				return res;
 			}

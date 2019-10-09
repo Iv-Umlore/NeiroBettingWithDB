@@ -49,10 +49,11 @@
     <Property Name="Team-A" Type="numeric" Precision="38" Scale="0" Nullable="false" />
     <Property Name="Team-B" Type="numeric" Precision="38" Scale="0" Nullable="false" />
     <Property Name="tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
-    <Property Name="replacements-A" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="replacements-B" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="important-A" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="important-B" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="replacements-A" Type="int" Nullable="false" />
+    <Property Name="replacements-B" Type="int" Nullable="false" />
+    <Property Name="important-A" Type="int" Nullable="false" />
+    <Property Name="important-B" Type="int" Nullable="false" />
+    <Property Name="prediction" Type="nvarchar" MaxLength="30" />
     <Property Name="date" Type="date" Nullable="false" />
   </EntityType>
   <Association Name="FK_TeamA">

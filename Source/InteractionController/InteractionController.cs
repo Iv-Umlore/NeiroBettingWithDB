@@ -68,10 +68,5 @@ namespace InteractionController
             return true;
         }
 
-        private LastMatch ConvertToLastMatch(PastMatch pastMatch)
-        {
-            return new LastMatch();
-        }
-
     }
 }
