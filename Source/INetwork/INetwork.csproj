@@ -44,5 +44,11 @@
     <Compile Include="NetworkInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectHelper\ProjectHelper.csproj">
+      <Project>{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}</Project>
+      <Name>ProjectHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

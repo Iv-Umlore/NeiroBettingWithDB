@@ -88,11 +88,12 @@ namespace VangaGUI
         {
             PredictionPanel.Hide();
             LearningProgressPanel.Show();
+            _mainController.LearningNetwork();
         }
 
         private void ChangeDiscipline_Click(object sender, EventArgs e)
         {
-            _mainController.ChangeDiscipline(Discipline.Foorball);
+            _mainController.ChangeDiscipline(Discipline.Football);
         }
 
         private void SaveWeights_Click(object sender, EventArgs e)
@@ -103,6 +104,11 @@ namespace VangaGUI
         private void ReloadWeights_Click(object sender, EventArgs e)
         {
             _mainController.ReloadWeights();
+        }
+
+        private void AddTournament_Click(object sender, EventArgs e)
+        {
+            // Открыть окно и добавить турнир
         }
     }
 }

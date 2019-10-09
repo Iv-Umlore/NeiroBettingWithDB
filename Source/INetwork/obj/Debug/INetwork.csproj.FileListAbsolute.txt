@@ -9,3 +9,5 @@ E:\Test\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csprojAssemblyRefe
 E:\Test\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csproj.CoreCompileInputs.cache
 E:\Test\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.dll
 E:\Test\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\INetwork\obj\Debug\INetwork.csproj.CopyComplete

@@ -49,6 +49,10 @@
       <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>
       <Name>INetwork</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProjectHelper\ProjectHelper.csproj">
+      <Project>{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}</Project>
+      <Name>ProjectHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
