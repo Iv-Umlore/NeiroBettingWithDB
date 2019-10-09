@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}</ProjectGuid>
+    <ProjectGuid>{50FD2848-798D-4C89-8F8F-F64E298C3597}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FootBall.Network</RootNamespace>
-    <AssemblyName>FootBall.Network</AssemblyName>
+    <RootNamespace>FootBall.InteractionController</RootNamespace>
+    <AssemblyName>FootBall.InteractionController</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,13 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FootBallNetwork.cs" />
+    <Compile Include="FootballIneractionController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\INetwork\INetwork.csproj">
-      <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>
-      <Name>INetwork</Name>
+    <ProjectReference Include="..\DataBaseConnect\DataBaseConnect.csproj">
+      <Project>{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}</Project>
+      <Name>DataBaseConnect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IInteractionController\IInteractionController.csproj">
+      <Project>{77EC09A7-6E9C-42CB-811D-CEBC2242209A}</Project>
+      <Name>IInteractionController</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectHelper\ProjectHelper.csproj">
       <Project>{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}</Project>

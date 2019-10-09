@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataBaseConnect;
-using FootBall.InteractionController;
 using IInteractionController;
+using InteractionController.Football;
 using ProjectHelper;
 
 namespace InteractionController
@@ -23,7 +23,7 @@ namespace InteractionController
             switch (type)
             {
                 case Discipline.Football:
-                    _disciplineController = new FootBallIneractionController();
+                    _disciplineController = new FootballIneractionController();
                     break;
                 default: break;
             }
@@ -46,7 +46,7 @@ namespace InteractionController
         }
 
         public List<LastMatch> GetlastFiveTeamMatch(string teamName)
-        {          
+        {
             return _disciplineController.GetlastFiveTeamMatch(teamName);
         }
 
@@ -60,14 +60,14 @@ namespace InteractionController
             switch (type)
             {
                 case Discipline.Football:
-                    _disciplineController = new FootBallIneractionController();
+                    _disciplineController = new FootballIneractionController();
                     break;
                 default: break;
             }
 
             return true;
         }
-        
+
         private LastMatch ConvertToLastMatch(PastMatch pastMatch)
         {
             return new LastMatch();

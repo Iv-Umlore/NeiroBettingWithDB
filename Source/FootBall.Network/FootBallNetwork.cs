@@ -6,14 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectHelper;
 
-namespace FootBall.Network
+namespace Network.Football
 {
-    public class FootBallNetwork : INetworkInterface
+    public class FootballNetwork : INetworkInterface
     {
         private string pathToWeights;
         private string pathToWeightHistory;
 
-        public FootBallNetwork()
+        public FootballNetwork()
         {
             pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
             pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
