@@ -18,7 +18,7 @@ namespace BridgeToInterface
         public BridgeToInterfaceController()
         {
             _interactionController = new InteractionController.InteractionController(Discipline.Football);
-            _network = new NetWorkController.NetWorkController(Discipline.Football);
+            _network = new NetWorkController.NetworkController(Discipline.Football);
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
             learningResult = 1000.0;

@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootBall.InteractionController
+namespace InteractionController.Football
 {
-    public class FootBallIneractionController : InteractionControllerInterface
+    public class FootballIneractionController : InteractionControllerInterface
     {
         private DalExecute _dalExecute;
 
-        public FootBallIneractionController()
+        public FootballIneractionController()
         {
             _dalExecute = new DalExecute();
         }
@@ -49,7 +49,7 @@ namespace FootBall.InteractionController
             var res = new List<LastMatch>();
             // Достать 5 последних матчей для команды.
             // Преобразовать и вернуть
-            
+
             /*foreach (var match in pastMatchList)
                 lastMatchesList.Add(ConvertToLastMatch(match));*/
 

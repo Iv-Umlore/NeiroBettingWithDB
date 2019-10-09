@@ -41,13 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NetWorkController.cs" />
+    <Compile Include="NetworkController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FootBall.Network\FootBall.Network.csproj">
+    <ProjectReference Include="..\FootBall.Network\Network.FootBall.csproj">
       <Project>{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}</Project>
-      <Name>FootBall.Network</Name>
+      <Name>Network.FootBall</Name>
     </ProjectReference>
     <ProjectReference Include="..\INetwork\INetwork.csproj">
       <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>

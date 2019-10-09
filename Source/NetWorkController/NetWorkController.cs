@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FootBall.Network;
 using INetwork;
+using Network.Football;
 using ProjectHelper;
 
 namespace NetWorkController
 {
-    public class NetWorkController : INetworkInterface
+    public class NetworkController : INetworkInterface
     {
         private INetworkInterface _network;
 
-        public NetWorkController(Discipline type)
+        public NetworkController(Discipline type)
         {
             switch (type)
             {
                 case Discipline.Football:
-                    _network = new FootBallNetwork();
+                    _network = new FootballNetwork();
                     break;
                 default: break;
             }
@@ -56,7 +56,7 @@ namespace NetWorkController
             switch (type)
             {
                 case Discipline.Football:
-                    _network = new FootBallNetwork();
+                    _network = new FootballNetwork();
                     break;
                 default: break;
             }

@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IInteractionController", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeToInterface", "BridgeToInterface\BridgeToInterface.csproj", "{CCCF669B-2904-493C-B19B-2B56764BFA2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootBall.Network", "FootBall.Network\FootBall.Network.csproj", "{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.FootBall", "FootBall.Network\Network.FootBall.csproj", "{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootBall.InteractionController", "FootBall.InteractionController\FootBall.InteractionController.csproj", "{50FD2848-798D-4C89-8F8F-F64E298C3597}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionController.Football", "FootBall.InteractionController\InteractionController.Football.csproj", "{50FD2848-798D-4C89-8F8F-F64E298C3597}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHelper", "ProjectHelper\ProjectHelper.csproj", "{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}"
 EndProject
@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VangaGUI", "VangaGUI\VangaG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionController", "InteractionController\InteractionController.csproj", "{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetWorkController", "NetWorkController\NetWorkController.csproj", "{C70B9BFE-276E-4B7B-892E-30FE83EAD739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkController", "NetWorkController\NetworkController.csproj", "{C70B9BFE-276E-4B7B-892E-30FE83EAD739}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
