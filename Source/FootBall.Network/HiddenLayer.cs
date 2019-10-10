@@ -8,7 +8,7 @@ using Network.Football;
 
 namespace FootBall.Network
 {
-    public class Layer
+    public class HiddenLayer
     {
         private List<double> InputValueList;
         private List<double> OutputValueList;
@@ -16,7 +16,7 @@ namespace FootBall.Network
         private int _inputValuesCount;
         private int _outputValuesCount;
 
-        public Layer(int InputParametersCount, int NeironCount, List<List<double>> weightList)
+        public HiddenLayer(int InputParametersCount, int NeironCount, List<List<double>> weightList)
         {
             _inputValuesCount = InputParametersCount;
             _outputValuesCount = NeironCount;
