@@ -8,10 +8,18 @@ namespace DataBaseConnect
 {
 	public class DalExecute
 	{
+        
+        public DalExecute()
+        {
+            var res = new MatchResult_Entities();
+            res.Database.Connection.Open();
+            res.Database.Connection.Close();
+        }
+
 		public MatchResult_Entities NewEntities {
 			get
 			{
-                MatchResult_Entities res = new MatchResult_Entities();
+                var res = new MatchResult_Entities();
 				res.Database.Connection.Open();
 				return res;
 			}
