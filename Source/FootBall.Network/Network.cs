@@ -14,6 +14,7 @@ namespace Network.Football
         private InputLayer _inputLayer;
         private List<HiddenLayer> _hiddenLayers;
         // private OutputLayer _outputLayer;
+        private string _networkName;
         /// <summary>
         /// HiddenLayerNumber - Число скрытых слоёв. Помимо них существуют Входной и Выходной слой
         /// </summary>
@@ -21,12 +22,13 @@ namespace Network.Football
         /// <param name="inputParametersCount"></param>
         /// <param name="outputParametersCount"></param>
         /// <param name="inputParametersInLayers"></param>
-        public Network(int HiddenLayerNumber, int inputParametersCount, int outputParametersCount, List<int> inputParametersInLayers)
+        public Network(string networkName, int HiddenLayerNumber, int inputParametersCount, int outputParametersCount, List<int> inputParametersInLayers)
         {
+            _networkName = networkName;
             _inputParametersCount = inputParametersCount;
             _outputParametersCount = outputParametersCount;
 
-            _inputLayer = new InputLayer(120, inputParametersInLayers[0]);
+            _inputLayer = new InputLayer(_inputParametersCount, inputParametersInLayers[0]);
 
             for (int i = 0; i < inputParametersInLayers.Count - 1; i++)
                 _hiddenLayers.Add(new HiddenLayer(inputParametersInLayers[i], inputParametersInLayers[i + 1], new List<List<double>>()));
@@ -39,5 +41,7 @@ namespace Network.Football
         {
             return new List<double>(_outputParametersCount);
         }
+
+        public string NetworkName => _networkName;
     }
 }
