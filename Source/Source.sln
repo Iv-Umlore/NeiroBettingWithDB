@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IInteractionController", "IInteractionController\IInteractionController.csproj", "{77EC09A7-6E9C-42CB-811D-CEBC2242209A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeToInterface", "BridgeToInterface\BridgeToInterface.csproj", "{CCCF669B-2904-493C-B19B-2B56764BFA2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F} = {FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.FootBall", "FootBall.Network\Network.FootBall.csproj", "{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}"
 EndProject

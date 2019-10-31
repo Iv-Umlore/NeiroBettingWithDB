@@ -345,7 +345,7 @@
             this.TeamB_Box.Name = "TeamB_Box";
             this.TeamB_Box.Size = new System.Drawing.Size(198, 21);
             this.TeamB_Box.TabIndex = 11;
-            this.TeamB_Box.SelectedIndexChanged += new System.EventHandler(this.TeamB_Box_SelectedIndexChanged);
+            this.TeamB_Box.Click += new System.EventHandler(this.TeamB_Box_Click);
             // 
             // TeamA_Box
             // 
@@ -354,7 +354,7 @@
             this.TeamA_Box.Name = "TeamA_Box";
             this.TeamA_Box.Size = new System.Drawing.Size(192, 21);
             this.TeamA_Box.TabIndex = 10;
-            this.TeamA_Box.SelectedIndexChanged += new System.EventHandler(this.TeamA_Box_SelectedIndexChanged);
+            this.TeamA_Box.Click += new System.EventHandler(this.TeamA_Box_Click);
             // 
             // VersusLabel
             // 
