@@ -15,3 +15,5 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.CoreCom
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.exe
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.AddNewTeam.resources
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.AddNewTournament.resources

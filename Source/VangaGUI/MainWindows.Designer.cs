@@ -201,6 +201,7 @@
             this.TournamentBox.Name = "TournamentBox";
             this.TournamentBox.Size = new System.Drawing.Size(289, 21);
             this.TournamentBox.TabIndex = 19;
+            this.TournamentBox.Click += new System.EventHandler(this.TournamentBox_Click);
             // 
             // TournamentLabel
             // 

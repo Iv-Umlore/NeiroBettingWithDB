@@ -45,6 +45,11 @@ namespace InteractionController
             return _disciplineController.GetTeamList();
         }
 
+        public List<TournamentShort> GetTournamentList()
+        {
+            return _disciplineController.GetTournamentList();
+        }
+
         public List<LastMatch> GetlastFiveTeamMatch(string teamName)
         {
             return _disciplineController.GetlastFiveTeamMatch(teamName);
@@ -53,6 +58,11 @@ namespace InteractionController
         public bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0)
         {
             return _disciplineController.AddNewTeam(abbrevitions, teamName, tier_team, teamPoint);
+        }
+
+        public bool AddNewTournament(string TournamentName, int size)
+        {
+            return _disciplineController.AddNewTournament(TournamentName, size);
         }
 
         public bool ChangeDiscipline(Discipline type)

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewTeam.Designer.cs">
+      <DependentUpon>AddNewTeam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTournament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTournament.Designer.cs">
+      <DependentUpon>AddTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindows.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +66,12 @@
     </Compile>
     <Compile Include="VangaBegin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddNewTeam.resx">
+      <DependentUpon>AddNewTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTournament.resx">
+      <DependentUpon>AddTournament.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindows.resx">
       <DependentUpon>MainWindows.cs</DependentUpon>
     </EmbeddedResource>

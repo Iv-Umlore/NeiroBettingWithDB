@@ -139,6 +139,20 @@ namespace InteractionController.Football
             return res;
         }
 
+        public List<TournamentShort> GetTournamentList()
+        {
+            var entities = _dalExecute.NewEntities;
+            var tournamentList = entities.Tournaments.ToList();
+            var TournamentInfoList = new List<TournamentShort>();
+            foreach (var tournament in tournamentList)
+                TournamentInfoList.Add(new TournamentShort()
+                {
+                    Tournament_name = tournament.Tournament_name,
+                    Tournament_id = (int)tournament.id_Tournament
+                });
+            return TournamentInfoList;
+        }
+
         public bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0)
         {
             var entities = _dalExecute.NewEntities;
@@ -150,6 +164,18 @@ namespace InteractionController.Football
                 team_point = teamPoint
             });
 
+            _dalExecute.CloseConnection(entities);
+            return true;
+        }
+
+        public bool AddNewTournament(string TournamentName, int size)
+        {
+            var entities = _dalExecute.NewEntities;
+            entities.Tournaments.Add(new Tournament()
+            {
+                Tournament_name = TournamentName,
+                Tournament_size = (short)size
+            });
             _dalExecute.CloseConnection(entities);
             return true;
         }

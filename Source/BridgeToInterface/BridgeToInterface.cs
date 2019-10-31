@@ -12,6 +12,7 @@ namespace BridgeToInterface
         private InteractionControllerInterface _interactionController;
         private INetworkInterface _network;
         private List<TeamInfo> teamList;
+        private List<TournamentShort> tournamentList;
         public int MatchesCount;
         public double learningResult;
 
@@ -51,17 +52,28 @@ namespace BridgeToInterface
 
         public List<string> GetTeamList(string withoutTeam_name = "")
         {
-            if (teamList == null)
-                teamList = _interactionController.GetTeamList();
+            teamList = _interactionController.GetTeamList();
             if (withoutTeam_name == "")
                 return teamList.Select(it => it.Team_name).ToList();
             else return teamList.Where(it => it.Team_name != withoutTeam_name).Select(it => it.Team_name).ToList();
+        }
+
+        public List<string> GetTournamentList(string withoutTeam_name = "")
+        {
+            tournamentList = _interactionController.GetTournamentList();
+            return tournamentList.Select(it => it.Tournament_name).ToList();
         }
 
         public bool AddNewTeam(string abbreviature, string TeamName, int tier_team, int teamPoint)
         {
             _interactionController.AddNewTeam(abbreviature, TeamName, tier_team);
             teamList = _interactionController.GetTeamList();
+            return true;
+        }
+
+        public bool AddNewTournament(string TournamentName, int size)
+        {
+            _interactionController.AddNewTournament(TournamentName, size);
             return true;
         }
 

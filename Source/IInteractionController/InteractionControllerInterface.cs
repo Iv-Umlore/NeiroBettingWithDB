@@ -16,9 +16,13 @@ namespace IInteractionController
 
         List<TeamInfo> GetTeamList();
 
+        List<TournamentShort> GetTournamentList();
+
         List<LastMatch> GetlastFiveTeamMatch(string teamName);
 
         bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0);
+
+        bool AddNewTournament(string TournamentName, int size);
 
         bool ChangeDiscipline(Discipline type);
     }

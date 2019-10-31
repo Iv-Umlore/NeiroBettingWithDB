@@ -37,7 +37,7 @@
     <Key>
       <PropertyRef Name="id_Tournament" />
     </Key>
-    <Property Name="id_Tournament" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="id_Tournament" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Tournament_name" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="Tournament_size" Type="smallint" Nullable="false" />
   </EntityType>

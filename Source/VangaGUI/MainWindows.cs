@@ -48,7 +48,8 @@ namespace VangaGUI
 
         private void AddTeam_Click(object sender, EventArgs e)
         {
-            // Открыть новое окно, вызвать оттуда AddNewTeam
+            var wind = new AddNewTeam(_mainController);
+            wind.Show();
         }
 
         private void AddMatch_TeamA_Click(object sender, EventArgs e)
@@ -92,7 +93,8 @@ namespace VangaGUI
 
         private void AddTournament_Click(object sender, EventArgs e)
         {
-            // Открыть окно и добавить турнир
+            var wind = new AddNewTournament(_mainController);
+            wind.Show();
         }
         
         private void TeamB_Box_Click(object sender, EventArgs e)
@@ -115,6 +117,14 @@ namespace VangaGUI
             else list = _mainController.GetTeamList(TeamB_Box.SelectedItem.ToString());
             foreach (var name in list)
                 TeamA_Box.Items.Add(name);
+        }
+
+        private void TournamentBox_Click(object sender, EventArgs e)
+        {
+            TournamentBox.Items.Clear();
+            var list = _mainController.GetTournamentList();
+            foreach (var tournament in list)
+                TournamentBox.Items.Add(tournament);                
         }
     }
 }
