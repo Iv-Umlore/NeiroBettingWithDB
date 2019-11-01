@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using FootBall.Network;
@@ -12,10 +13,11 @@ namespace Network.Football
 {
     public class Network
     {
+        private string separator = ";";
         private int _inputParametersCount, _outputParametersCount;
         private InputLayer _inputLayer;
         private List<HiddenLayer> _hiddenLayers;
-        // private OutputLayer _outputLayer;
+        //private OutputLayer _outputLayer;
         private string _networkName;
         /// <summary>
         /// HiddenLayerNumber - Число скрытых слоёв. Помимо них существуют Входной и Выходной слой
@@ -40,6 +42,23 @@ namespace Network.Football
             }
 
             // _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count-1],_outputParametersCount);
+            // OUTPUT ЕСТЬ
+        }
+
+        public void SetLoadWeight(XElement weights)
+        {
+            var elements = weights.Elements("Neiron").ToList();
+
+            for (int i = 0; i < _hiddenLayers.Count; i++)
+            {
+                var listList = new List<List<string>>();
+                foreach (var neironW in elements[i].Elements("NeironW").ToList())
+                    listList.Add(Regex.Split(neironW.Value, separator).ToList());
+
+                _hiddenLayers[i].SetWeights(listList);
+            }
+
+            // OUTPUT ЕСТЬ
 
         }
 
@@ -51,9 +70,11 @@ namespace Network.Football
                 var weightList = _hiddenLayers[i].GetWeights();
                 var tmp = new XElement("Neiron", i);
                 foreach (var wList in weightList)
-                    tmp.Add(new XElement("NeironW", String.Join(";", wList)));
+                    tmp.Add(new XElement("NeironW", String.Join(separator, wList)));
                 result.Add(tmp);
             }
+
+            // OUTPUT ЕСТЬ
 
             return result;
         }

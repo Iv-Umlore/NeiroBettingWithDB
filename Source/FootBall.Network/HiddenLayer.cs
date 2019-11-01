@@ -25,9 +25,14 @@ namespace FootBall.Network
             OutputValueList = new List<double>();
 
             NeironList = new List<Neiron>();
-            if (weightList.Count != _inputValuesCount) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer");
-            for (int i = 0; i < weightList.Count; i++)
-                NeironList.Add(new Neiron(weightList[i]));
+
+            List<double> tmp = new List<double>();
+            for (int i = 0; i < InputParametersCount; i++)
+                tmp.Add(0.0);
+
+            if (tmp.Count != _inputValuesCount) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer");
+            for (int i = 0; i < NeironCount; i++)
+                NeironList.Add(new Neiron(tmp));
 
         }
 
@@ -54,6 +59,19 @@ namespace FootBall.Network
 
             if (_outputValuesCount != result.Count) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer.GetWeights()");
             return result;
+        }
+
+        public bool SetWeights(List<List<string>> weights)
+        {
+            for (int i = 0; i < weights.Count; i++)
+            {
+                var tmp = new List<double>();
+                foreach (var value in weights[i])
+                    tmp.Add(double.Parse(value));
+                NeironList[i].SetWeights(tmp);
+
+            }
+            return true;
         }
 
         public List<double> LearningLayer(List<double> errors)

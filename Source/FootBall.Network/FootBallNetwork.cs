@@ -32,6 +32,8 @@ namespace Network.Football
             netNetwork.Add(new Network("Shot_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
             // + tournament
             netNetwork.Add(new Network("Vanga", 2, 10, 10, new List<int>() { 8, 8, 10 }));
+
+            SetLoadWeights();
         }
 
         public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
@@ -53,8 +55,11 @@ namespace Network.Football
         public void SetLoadWeights()
         {
             XDocument xDoc = new XDocument();
-            XmlTextReader xmlTextReader = new XmlTextReader(pathToWeights + "Current.xml");
-            xDoc = XDocument.Parse(xmlTextReader.ReadString());
+            xDoc = XDocument.Load(pathToWeights + "Current.xml");
+
+            var elements = xDoc.Element("Value");
+            foreach (var network in netNetwork)
+                network.SetLoadWeight(elements.Element(network.NetworkName));
         }
 
         // think about good save
@@ -71,9 +76,9 @@ namespace Network.Football
 
             XmlTextWriter xmlCurrWriter = new XmlTextWriter(pathToWeights + "Current.xml", null);
             XmlTextWriter xmlWriter = new XmlTextWriter(pathToWeightHistory +
-                                                        DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() +
-                                                        DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() +
-                                                        DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() +
+                                                        DateTime.Now.Year + DateTime.Now.Month +
+                                                        DateTime.Now.Day + DateTime.Now.Hour +
+                                                        DateTime.Now.Minute + DateTime.Now.Second +
                                                         ".xml", null);
 
             xDoc.Save(xmlWriter);
