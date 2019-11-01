@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using FootBall.Network;
 using ProjectHelper;
 
@@ -35,6 +37,28 @@ namespace Network.Football
 
             // _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count-1],_outputParametersCount);
 
+        }
+
+        public XElement GetXmlWeights()
+        {
+            XElement result = new XElement(_networkName);
+            for (int i = 0; i < _hiddenLayers.Count; i++)
+            {
+                var weightList = _hiddenLayers[i].GetWeights();
+                var tmp = new XElement(i.ToString());
+                foreach (var wList in weightList)
+                    tmp.Add(new XElement("NeironW", String.Join(";", wList)));
+                result.Add(tmp);
+            }
+
+            return result;
+        }
+
+        public bool ReloadWeight()
+        {
+            foreach (var HL in _hiddenLayers)
+                HL.ReloadWeights();
+            return true;
         }
 
         public List<double> GetPrediction(List<List<double>> InputParameters)

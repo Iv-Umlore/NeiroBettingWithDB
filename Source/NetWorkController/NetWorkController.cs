@@ -40,6 +40,11 @@ namespace NetWorkController
             return _network.Learning();
         }
 
+        public void SetLoadWeights()
+        {
+            _network.SetLoadWeights();
+        }
+
         public void SaveCurrentWeights()
         {
             _network.SaveCurrentWeights();
