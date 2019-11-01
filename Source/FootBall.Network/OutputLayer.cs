@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Network.Football;
 
 namespace FootBall.Network
 {
-    public class HiddenLayer
+    public class OutputLayer
     {
+        private List<double> _weights;
         private List<double> InputValueList;
         private List<double> OutputValueList;
         private List<Neiron> NeironList;
         private int _inputValuesCount;
         private int _outputValuesCount;
 
-        public HiddenLayer(int InputParametersCount, int NeironCount, List<List<double>> weightList)
+        public OutputLayer(int numberInputPar, int numberOutPar)
         {
-            _inputValuesCount = InputParametersCount;
-            _outputValuesCount = NeironCount;
+            _inputValuesCount = numberInputPar;
+            _outputValuesCount = numberOutPar;
 
             InputValueList = new List<double>();
             OutputValueList = new List<double>();
@@ -27,25 +27,24 @@ namespace FootBall.Network
             NeironList = new List<Neiron>();
 
             List<double> tmp = new List<double>();
-            for (int i = 0; i < InputParametersCount; i++)
+            for (int i = 0; i < numberInputPar; i++)
                 tmp.Add(0.0);
 
-            if (tmp.Count != _inputValuesCount) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer");
-            for (int i = 0; i < NeironCount; i++)
+            if (tmp.Count != _inputValuesCount) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. OutLayer");
+            for (int i = 0; i < numberOutPar; i++)
                 NeironList.Add(new Neiron(tmp));
-
         }
 
         public List<double> CalculateValues(List<double> inputValues)
         {
-            if (InputValueList.Count != inputValues.Count) throw new Exception("Несоответствие размерности входного вектора и количества входных параметров. Layer.CalculateValues()");
+            if (InputValueList.Count != inputValues.Count) throw new Exception("Несоответствие размерности входного вектора и количества входных параметров. OutLayer.CalculateValues()");
             InputValueList = inputValues;
 
             var result = new List<double>();
             foreach (var neiron in NeironList)
                 result.Add(neiron.ActivationFunction(inputValues));
 
-            if (_outputValuesCount != result.Count) throw new Exception("Несоответствие размерности выходного вектора и количества выходных параметров. Layer.CalculateValues()");
+            if (_outputValuesCount != result.Count) throw new Exception("Несоответствие размерности выходного вектора и количества выходных параметров. OutLayer.CalculateValues()");
             OutputValueList = result;
 
             return result;
@@ -57,7 +56,7 @@ namespace FootBall.Network
             foreach (var neiron in NeironList)
                 result.Add(neiron.GetWeights());
 
-            if (_outputValuesCount != result.Count) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer.GetWeights()");
+            if (_outputValuesCount != result.Count) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. OutLayer.GetWeights()");
             return result;
         }
 

@@ -56,6 +56,12 @@ namespace Network.Football
             return _weights;
         }
 
+        public void SetWeights(List<double> weights)
+        {
+            if (weights.Count != _weights.Count) throw new Exception("Neiron. Проблема с размерностью при загрузке весов");
+            _weights = weights;
+        }
+
         public void DropWeights()
         {
             var rand = new Random();
