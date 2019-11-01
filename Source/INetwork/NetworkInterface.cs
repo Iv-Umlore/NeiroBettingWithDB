@@ -16,6 +16,8 @@ namespace INetwork
 
         double Learning();
 
+        void SetLoadWeights();
+
         void SaveCurrentWeights();
 
         void ReloadWeights();

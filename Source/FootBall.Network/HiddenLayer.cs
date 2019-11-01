@@ -24,10 +24,10 @@ namespace FootBall.Network
             InputValueList = new List<double>();
             OutputValueList = new List<double>();
 
-            NeironList = new List<Neiron>(NeironCount);
+            NeironList = new List<Neiron>();
             if (weightList.Count != _inputValuesCount) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer");
-            for (int i = 0; i < NeironList.Count; i++)
-                NeironList[i] = new Neiron(weightList[i]);
+            for (int i = 0; i < weightList.Count; i++)
+                NeironList.Add(new Neiron(weightList[i]));
 
         }
 
