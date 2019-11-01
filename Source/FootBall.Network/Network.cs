@@ -17,7 +17,7 @@ namespace Network.Football
         private int _inputParametersCount, _outputParametersCount;
         private InputLayer _inputLayer;
         private List<HiddenLayer> _hiddenLayers;
-        //private OutputLayer _outputLayer;
+        private OutputLayer _outputLayer;
         private string _networkName;
         /// <summary>
         /// HiddenLayerNumber - Число скрытых слоёв. Помимо них существуют Входной и Выходной слой
@@ -41,8 +41,7 @@ namespace Network.Football
                     new List<List<double>>()));
             }
 
-            // _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count-1],_outputParametersCount);
-            // OUTPUT ЕСТЬ
+            _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count - 1], _outputParametersCount);
         }
 
         public void SetLoadWeight(XElement weights)
@@ -58,7 +57,10 @@ namespace Network.Football
                 _hiddenLayers[i].SetWeights(listList);
             }
 
-            // OUTPUT ЕСТЬ
+            var listOutList = new List<List<string>>();
+            foreach (var neironW in weights.Element("OutNeiron").Elements("NeironW").ToList())
+                listOutList.Add(Regex.Split(neironW.Value, separator).ToList());
+            _outputLayer.SetWeights(listOutList);
 
         }
 
@@ -74,7 +76,11 @@ namespace Network.Football
                 result.Add(tmp);
             }
 
-            // OUTPUT ЕСТЬ
+            var OutWeightList = _outputLayer.GetWeights();
+            var tmpOut = new XElement("OutNeiron");
+            foreach (var wList in OutWeightList)
+                tmpOut.Add(new XElement("NeironW", String.Join(separator, wList)));
+            result.Add(tmpOut);
 
             return result;
         }
@@ -83,6 +89,7 @@ namespace Network.Football
         {
             foreach (var HL in _hiddenLayers)
                 HL.ReloadWeights();
+            _outputLayer.ReloadWeights();
             return true;
         }
 
