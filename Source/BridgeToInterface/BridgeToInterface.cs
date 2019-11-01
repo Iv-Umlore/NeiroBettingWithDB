@@ -13,6 +13,8 @@ namespace BridgeToInterface
         private INetworkInterface _network;
         private List<TeamInfo> teamList;
         private List<TournamentShort> tournamentList;
+        private List<LastMatch> lastMatchesA;
+        private List<LastMatch> lastMatchesB;
         public int MatchesCount;
         public double learningResult;
 
@@ -23,7 +25,11 @@ namespace BridgeToInterface
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
             learningResult = 1000.0;
-        }
+
+            lastMatchesA = new List<LastMatch>();
+            lastMatchesB = new List<LastMatch>();
+
+    }
 
         public bool ChangeDiscipline(Discipline discipline)
         {
@@ -76,6 +82,16 @@ namespace BridgeToInterface
             _interactionController.AddNewTournament(TournamentName, size);
             return true;
         }
+
+        public List<LastMatch> GetLastFiveMatch(bool isItA, string TeamName)
+        {
+            if (isItA)
+                return lastMatchesA = _interactionController.GetlastFiveTeamMatch(TeamName);
+            else
+                return lastMatchesB = _interactionController.GetlastFiveTeamMatch(TeamName);
+        }
+
+        //public bool AddNewMatch(string )
 
         public List<Prediction> GetPrediction(int teamA_id, int teamB_id)
         {

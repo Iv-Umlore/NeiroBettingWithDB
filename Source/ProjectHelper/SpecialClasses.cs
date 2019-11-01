@@ -56,8 +56,10 @@ namespace ProjectHelper
     public class LastMatch
     {
         public decimal Team_A { get; set; }
+        public string Name_A { get; set; }
         public int tier_A { get; set; }
         public decimal Team_B { get; set; }
+        public string Name_B { get; set; }
         public int tier_B { get; set; }
         public short Score_A { get; set; }
         public short Score_B { get; set; }

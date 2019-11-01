@@ -21,7 +21,7 @@ namespace VangaGUI
         public MainWindows()
         {
             InitializeComponent();
-            FootBall_Radio.Focus();
+            FootBall_Radio.Select();
             ChangeController();
         }
 
@@ -29,12 +29,7 @@ namespace VangaGUI
         {
             _mainController = new BridgeToInterfaceController();
         }
-
-        private void TeamB_Box_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void OpenWaitResultMatches_Click(object sender, EventArgs e)
         {
             MatchesCount.Text = "250";
@@ -125,6 +120,32 @@ namespace VangaGUI
             var list = _mainController.GetTournamentList();
             foreach (var tournament in list)
                 TournamentBox.Items.Add(tournament);                
+        }
+
+        private void TeamA_Box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var list = _mainController.GetLastFiveMatch(true, TeamA_Box.Text);
+            A1.Text = (list.Count > 0) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[0].match_date), list[0].Name_A, list[0].Score_A, list[0].Score_B, list[0].Name_B) : "Отсутствует";
+            A2.Text = (list.Count > 1) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[1].match_date), list[1].Name_A, list[1].Score_A, list[1].Score_B, list[1].Name_B) : "Отсутствует";
+            A3.Text = (list.Count > 2) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[2].match_date), list[2].Name_A, list[2].Score_A, list[2].Score_B, list[2].Name_B) : "Отсутствует";
+            A4.Text = (list.Count > 3) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[3].match_date), list[3].Name_A, list[3].Score_A, list[3].Score_B, list[3].Name_B) : "Отсутствует";
+            A5.Text = (list.Count > 4) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[4].match_date), list[4].Name_A, list[4].Score_A, list[4].Score_B, list[4].Name_B) : "Отсутствует";
+        }
+
+        private void TeamB_Box_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var list = _mainController.GetLastFiveMatch(false, TeamB_Box.Text);
+            B1.Text = (list.Count > 0) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[0].match_date), list[0].Name_A, list[0].Score_A, list[0].Score_B, list[0].Name_B) : "Отсутствует";
+            B2.Text = (list.Count > 1) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[1].match_date), list[1].Name_A, list[1].Score_A, list[1].Score_B, list[1].Name_B) : "Отсутствует";
+            B3.Text = (list.Count > 2) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[2].match_date), list[2].Name_A, list[2].Score_A, list[2].Score_B, list[2].Name_B) : "Отсутствует";
+            B4.Text = (list.Count > 3) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[3].match_date), list[3].Name_A, list[3].Score_A, list[3].Score_B, list[3].Name_B) : "Отсутствует";
+            B5.Text = (list.Count > 4) ? String.Format("{0} | {1} {2} vs {3} {4}", GetDate(list[4].match_date), list[4].Name_A, list[4].Score_A, list[4].Score_B, list[4].Name_B) : "Отсутствует";
+
+        }
+
+        private string GetDate(DateTime dt)
+        {
+            return String.Format("{0}.{1}.{2}", dt.Day, dt.Month, dt.Year);
         }
     }
 }

@@ -65,10 +65,16 @@ namespace InteractionController.Football
 
         private LastMatch ConvertToLastMatch(PastMatch match)
         {
+            var entities = _dalExecute.NewEntities;
+            var nameA = entities.Comands.First(it => it.id_team == match.Team_A).team_name;
+            var nameB = entities.Comands.First(it => it.id_team == match.Team_B).team_name;
+
             return new LastMatch()
             {
                 Team_A = match.Team_A,
                 Team_B = match.Team_B,
+                Name_A = nameA,
+                Name_B = nameB,
                 Score_A = match.Score_A,
                 Score_B = match.Score_B,
                 Important_A = match.Important_A,
