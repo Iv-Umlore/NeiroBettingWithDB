@@ -1,6 +1,7 @@
 ﻿using INetwork;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,15 +60,26 @@ namespace Network.Football
         // think about good save
         public void SaveCurrentWeights()
         {
-            XDocument xDoc = new XDocument("Weights");
+            XDocument xDoc = new XDocument(new XElement("Value"));
+            var value = xDoc.Element("Value");
             foreach (var singleNetwork in netNetwork)
-                xDoc.Add(singleNetwork.GetXmlWeights());
+                value.Add(singleNetwork.GetXmlWeights());
 
             // Сохранить
+            if (!Directory.Exists(pathToWeights)) Directory.CreateDirectory(pathToWeights);
+            if (!Directory.Exists(pathToWeightHistory)) Directory.CreateDirectory(pathToWeightHistory);
+
             XmlTextWriter xmlCurrWriter = new XmlTextWriter(pathToWeights + "Current.xml", null);
-            XmlTextWriter xmlWriter = new XmlTextWriter(pathToWeightHistory + DateTime.Now.ToString() + ".xml", null);
+            XmlTextWriter xmlWriter = new XmlTextWriter(pathToWeightHistory +
+                                                        DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() +
+                                                        DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() +
+                                                        DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() +
+                                                        ".xml", null);
+
             xDoc.Save(xmlWriter);
             xDoc.Save(xmlCurrWriter);
+            xmlWriter.Close();
+            xmlCurrWriter.Close();
         }
 
         public void ReloadWeights()
