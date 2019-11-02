@@ -202,6 +202,31 @@ namespace InteractionController.Football
             return true;
         }
 
+        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date)
+        {
+            var entities = _dalExecute.NewEntities;
+
+            var idA = teams.First(it => it.Team_name == parameters[1]).Team_id;
+            var idB = teams.First(it => it.Team_name == parameters[2]).Team_id;
+
+            entities.WaitResults.Add(new WaitResult()
+            {
+                Team_A = idA,
+                Team_B = idB,
+                tournament = tournament.Tournament_id,
+                replacements_A = int.Parse(parameters[5]),
+                replacements_B = int.Parse(parameters[6]),
+                important_A = int.Parse(parameters[3]),
+                important_B = int.Parse(parameters[4]),
+                date = date
+            });
+
+            entities.DeleteSpace();
+
+            _dalExecute.CloseConnection(entities);
+            return true;
+        }
+
         public bool ChangeDiscipline(Discipline type)
         {
             // Заглушка

@@ -5,8 +5,8 @@
       <PropertyRef Name="id_team" />
     </Key>
     <Property Name="id_team" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="abbrevitions" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="team_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="abbrevitions" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="team_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="tier_team" Type="Int16" Nullable="false" />
     <Property Name="team_point" Type="Int32" Nullable="false" />
     <NavigationProperty Name="PastMatches" Relationship="Self.FK_TeamA" FromRole="Comands" ToRole="PastMatches" />
@@ -42,7 +42,7 @@
       <PropertyRef Name="id_Tournament" />
     </Key>
     <Property Name="id_Tournament" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-    <Property Name="Tournament_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Tournament_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Tournament_size" Type="Int16" Nullable="false" />
     <NavigationProperty Name="PastMatches" Relationship="Self.FK_Tournament" FromRole="Tournament" ToRole="PastMatches" />
     <NavigationProperty Name="WaitResults" Relationship="Self.FK_WR_Tournament" FromRole="Tournament" ToRole="WaitResults" />
@@ -141,5 +141,6 @@
       <End Role="Tournament" EntitySet="Tournaments" />
       <End Role="WaitResults" EntitySet="WaitResults" />
     </AssociationSet>
+    <FunctionImport Name="DeleteSpace" />
   </EntityContainer>
 </Schema>
