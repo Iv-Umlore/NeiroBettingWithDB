@@ -12,7 +12,7 @@ namespace IInteractionController
     {
         List<MatchWaitResult> GetWaitResultMatches();
 
-        bool SaveMatchResult(string matchParameters);
+        bool SaveMatchResult(string[] matchParameters, DateTime date, bool isReadyForLearning);
 
         List<TeamInfo> GetTeamList();
 

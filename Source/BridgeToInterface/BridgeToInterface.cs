@@ -2,6 +2,7 @@
 using IInteractionController;
 using INetwork;
 using ProjectHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,16 +44,10 @@ namespace BridgeToInterface
             var result = _interactionController.GetWaitResultMatches();
             return result;
         }
-
-        public bool SaveMatchResult(MatchWaitResult lastMatch, int scoreA, int scoreB,
-            int ViolationsA, int ViolationsB, int shotOnTargetA, int shotOnTargetB, int SaveA, int SaveB, bool IsReadyForLerning)
+        
+        public bool SaveLastMatchResult(bool ReadyForLearning, DateTime dateTime, string[] parameters)
         {
-            return _interactionController.SaveMatchResult("parameters with 1");
-        }
-
-        public bool SaveLastMatchresult(string[] parameters)
-        {
-            _interactionController.SaveMatchResult("paremeters with 0");
+            _interactionController.SaveMatchResult(parameters, dateTime, ReadyForLearning);
             return true;
         }
 

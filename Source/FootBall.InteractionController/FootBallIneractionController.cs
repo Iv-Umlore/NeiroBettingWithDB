@@ -12,6 +12,8 @@ namespace InteractionController.Football
     public class FootballIneractionController : InteractionControllerInterface
     {
         private DalExecute _dalExecute;
+        private List<TeamInfo> teams;
+        private List<TournamentShort> tournaments;
 
         public FootballIneractionController()
         {
@@ -26,14 +28,18 @@ namespace InteractionController.Football
             var matchResultList = entities.WaitResults.ToList();
 
             res = GetMatchWaitResults(matchResultList);
-            
+
             _dalExecute.CloseConnection(entities);
             return res;
         }
 
-        public bool SaveMatchResult(string matchParameters)
+        public bool SaveMatchResult(string[] matchParameters, DateTime date, bool isReadyForLearning)
         {
-            // Разработать систему сохранения. И колличество параметров.
+            var entities = _dalExecute.NewEntities;
+
+            entities.PastMatches.Add(CreatepastMatchForParameters(matchParameters, date, isReadyForLearning));
+
+            _dalExecute.CloseConnection(entities);
             return true;
         }
 
@@ -44,6 +50,8 @@ namespace InteractionController.Football
             var team = entities.Comands.ToList();
             res = ToTeamInfoList(team);
 
+            teams = res;
+
             _dalExecute.CloseConnection(entities);
             return res;
         }
@@ -53,8 +61,8 @@ namespace InteractionController.Football
             var entities = _dalExecute.NewEntities;
             var res = new List<LastMatch>();
             var teamId = entities.Comands.Where(it => it.team_name == teamName).Select(it => it.id_team).FirstOrDefault();
-            
-            var pastMatchList = entities.PastMatches.Where(it=>it.Team_A == teamId || it.Team_B == teamId)
+
+            var pastMatchList = entities.PastMatches.Where(it => it.Team_A == teamId || it.Team_B == teamId)
                 .OrderByDescending(it => it.match_date).Take(5).ToList();
             foreach (var match in pastMatchList)
                 res.Add(ConvertToLastMatch(match));
@@ -156,19 +164,24 @@ namespace InteractionController.Football
                     Tournament_name = tournament.Tournament_name,
                     Tournament_id = (int)tournament.id_Tournament
                 });
+
+            tournaments = TournamentInfoList;
             return TournamentInfoList;
         }
 
         public bool AddNewTeam(string abbrevitions, string teamName, int tier_team, int teamPoint = 0)
         {
             var entities = _dalExecute.NewEntities;
-            // добавить новую команду
-            entities.Comands.Add( new Comand{
+            
+            entities.Comands.Add(new Comand
+            {
                 abbrevitions = abbrevitions,
                 team_name = teamName,
                 tier_team = (short)tier_team,
                 team_point = teamPoint
             });
+
+            entities.DeleteSpace();
 
             _dalExecute.CloseConnection(entities);
             return true;
@@ -182,6 +195,9 @@ namespace InteractionController.Football
                 Tournament_name = TournamentName,
                 Tournament_size = (short)size
             });
+
+            entities.DeleteSpace();
+
             _dalExecute.CloseConnection(entities);
             return true;
         }
@@ -190,6 +206,34 @@ namespace InteractionController.Football
         {
             // Заглушка
             return true;
+        }
+
+        private PastMatch CreatepastMatchForParameters(string[] parameters, DateTime date, bool isReadyForLerning)
+        {
+            var idA = teams.First(it => it.Team_name == parameters[1]).Team_id;
+            var idB = teams.First(it => it.Team_name == parameters[2]).Team_id;
+            var idTournament = tournaments.First(it => it.Tournament_name == parameters[0]).Tournament_id;
+
+            return new PastMatch()
+            {
+                Team_A = idA,
+                Team_B = idB,
+                tournament = idTournament,
+                replacements_A = short.Parse(parameters[3]),
+                replacements_B = short.Parse(parameters[4]),
+                Important_A = short.Parse(parameters[5]),
+                Important_B = short.Parse(parameters[6]),
+                Score_A = short.Parse(parameters[7]),
+                Score_B = short.Parse(parameters[8]),
+                shot_on_target_A = short.Parse(parameters[9]),
+                shot_on_target_B = short.Parse(parameters[10]),
+                save_A = short.Parse(parameters[11]),
+                save_B = short.Parse(parameters[12]),
+                Violations_A = short.Parse(parameters[13]),
+                Violations_B = short.Parse(parameters[14]),
+                match_date = date,
+                is_ready_for_learning = isReadyForLerning
+            };
         }
     }
 }

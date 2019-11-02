@@ -12,6 +12,8 @@ namespace DataBaseConnect
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MatchResult_Entities : DbContext
     {
@@ -29,5 +31,10 @@ namespace DataBaseConnect
         public virtual DbSet<PastMatch> PastMatches { get; set; }
         public virtual DbSet<Tournament> Tournaments { get; set; }
         public virtual DbSet<WaitResult> WaitResults { get; set; }
+    
+        public virtual int DeleteSpace()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteSpace");
+        }
     }
 }

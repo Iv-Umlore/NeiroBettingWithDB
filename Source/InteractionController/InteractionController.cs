@@ -34,10 +34,9 @@ namespace InteractionController
             return _disciplineController.GetWaitResultMatches();
         }
 
-        public bool SaveMatchResult(string matchParameters)
+        public bool SaveMatchResult(string[] matchParameters, DateTime date , bool isReadyForLearning)
         {
-
-            return _disciplineController.SaveMatchResult(matchParameters);
+            return _disciplineController.SaveMatchResult(matchParameters, date, isReadyForLearning);
         }
 
         public List<TeamInfo> GetTeamList()

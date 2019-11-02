@@ -10,8 +10,8 @@
             <PropertyRef Name="id_team" />
           </Key>
           <Property Name="id_team" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="abbrevitions" Type="nchar" MaxLength="6" Nullable="false" />
-          <Property Name="team_name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="abbrevitions" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="team_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tier_team" Type="smallint" Nullable="false" />
           <Property Name="team_point" Type="int" Nullable="false" />
         </EntityType>
@@ -43,7 +43,7 @@
             <PropertyRef Name="id_Tournament" />
           </Key>
           <Property Name="id_Tournament" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tournament_name" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tournament_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Tournament_size" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="WaitResults">
@@ -117,6 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="DeleteSpace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="football" />
         <EntityContainer Name="Хранилище MatchesResultModelContainer">
           <EntitySet Name="Comands" EntityType="Self.Comands" Schema="football" store:Type="Tables" />
           <EntitySet Name="PastMatches" EntityType="Self.PastMatches" Schema="football" store:Type="Tables" />
@@ -148,8 +149,8 @@
             <PropertyRef Name="id_team" />
           </Key>
           <Property Name="id_team" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="abbrevitions" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="team_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="abbrevitions" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="team_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tier_team" Type="Int16" Nullable="false" />
           <Property Name="team_point" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PastMatches" Relationship="Self.FK_TeamA" FromRole="Comands" ToRole="PastMatches" />
@@ -185,7 +186,7 @@
             <PropertyRef Name="id_Tournament" />
           </Key>
           <Property Name="id_Tournament" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="Tournament_name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tournament_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Tournament_size" Type="Int16" Nullable="false" />
           <NavigationProperty Name="PastMatches" Relationship="Self.FK_Tournament" FromRole="Tournament" ToRole="PastMatches" />
           <NavigationProperty Name="WaitResults" Relationship="Self.FK_WR_Tournament" FromRole="Tournament" ToRole="WaitResults" />
@@ -284,6 +285,7 @@
             <End Role="Tournament" EntitySet="Tournaments" />
             <End Role="WaitResults" EntitySet="WaitResults" />
           </AssociationSet>
+          <FunctionImport Name="DeleteSpace" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -351,6 +353,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteSpace" FunctionName="Хранилище MatchesResultModel.DeleteSpace" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
