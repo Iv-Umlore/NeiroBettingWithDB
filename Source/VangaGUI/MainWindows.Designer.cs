@@ -86,9 +86,29 @@
             this.GetPrediction = new System.Windows.Forms.Button();
             this.ReloadWeights = new System.Windows.Forms.Button();
             this.SaveWeights = new System.Windows.Forms.Button();
+            this.A1 = new System.Windows.Forms.TextBox();
+            this.A2 = new System.Windows.Forms.TextBox();
+            this.A3 = new System.Windows.Forms.TextBox();
+            this.A4 = new System.Windows.Forms.TextBox();
+            this.A5 = new System.Windows.Forms.TextBox();
+            this.B1 = new System.Windows.Forms.TextBox();
+            this.B2 = new System.Windows.Forms.TextBox();
+            this.B3 = new System.Windows.Forms.TextBox();
+            this.B4 = new System.Windows.Forms.TextBox();
+            this.B5 = new System.Windows.Forms.TextBox();
             this.VangaPanel.SuspendLayout();
             this.LastFiveMatchesA.SuspendLayout();
+            this.FirstMatchPanelA.SuspendLayout();
+            this.SecondMatchPanelA.SuspendLayout();
+            this.FifthMatchPanelA.SuspendLayout();
+            this.ThirdMatchPanelA.SuspendLayout();
+            this.FourthMatchPanelA.SuspendLayout();
             this.LastFiveMatchesB.SuspendLayout();
+            this.FirstMatchPanelB.SuspendLayout();
+            this.SecondMatchPanelB.SuspendLayout();
+            this.FifthMatchTotalB.SuspendLayout();
+            this.ThirdMatchPanelB.SuspendLayout();
+            this.FourthMatchPanelB.SuspendLayout();
             this.DisciplinePanel.SuspendLayout();
             this.LearningProgressPanel.SuspendLayout();
             this.PredictionPanel.SuspendLayout();
@@ -228,6 +248,7 @@
             // 
             // FirstMatchPanelA
             // 
+            this.FirstMatchPanelA.Controls.Add(this.A1);
             this.FirstMatchPanelA.Location = new System.Drawing.Point(3, 3);
             this.FirstMatchPanelA.Name = "FirstMatchPanelA";
             this.FirstMatchPanelA.Size = new System.Drawing.Size(267, 33);
@@ -245,6 +266,7 @@
             // 
             // SecondMatchPanelA
             // 
+            this.SecondMatchPanelA.Controls.Add(this.A2);
             this.SecondMatchPanelA.Location = new System.Drawing.Point(3, 42);
             this.SecondMatchPanelA.Name = "SecondMatchPanelA";
             this.SecondMatchPanelA.Size = new System.Drawing.Size(267, 32);
@@ -252,6 +274,7 @@
             // 
             // FifthMatchPanelA
             // 
+            this.FifthMatchPanelA.Controls.Add(this.A5);
             this.FifthMatchPanelA.Location = new System.Drawing.Point(3, 160);
             this.FifthMatchPanelA.Name = "FifthMatchPanelA";
             this.FifthMatchPanelA.Size = new System.Drawing.Size(267, 33);
@@ -259,6 +282,7 @@
             // 
             // ThirdMatchPanelA
             // 
+            this.ThirdMatchPanelA.Controls.Add(this.A3);
             this.ThirdMatchPanelA.Location = new System.Drawing.Point(3, 80);
             this.ThirdMatchPanelA.Name = "ThirdMatchPanelA";
             this.ThirdMatchPanelA.Size = new System.Drawing.Size(267, 31);
@@ -266,6 +290,7 @@
             // 
             // FourthMatchPanelA
             // 
+            this.FourthMatchPanelA.Controls.Add(this.A4);
             this.FourthMatchPanelA.Location = new System.Drawing.Point(3, 117);
             this.FourthMatchPanelA.Name = "FourthMatchPanelA";
             this.FourthMatchPanelA.Size = new System.Drawing.Size(267, 37);
@@ -287,6 +312,7 @@
             // 
             // FirstMatchPanelB
             // 
+            this.FirstMatchPanelB.Controls.Add(this.B1);
             this.FirstMatchPanelB.Location = new System.Drawing.Point(3, 3);
             this.FirstMatchPanelB.Name = "FirstMatchPanelB";
             this.FirstMatchPanelB.Size = new System.Drawing.Size(267, 33);
@@ -304,6 +330,7 @@
             // 
             // SecondMatchPanelB
             // 
+            this.SecondMatchPanelB.Controls.Add(this.B2);
             this.SecondMatchPanelB.Location = new System.Drawing.Point(3, 42);
             this.SecondMatchPanelB.Name = "SecondMatchPanelB";
             this.SecondMatchPanelB.Size = new System.Drawing.Size(267, 32);
@@ -311,6 +338,7 @@
             // 
             // FifthMatchTotalB
             // 
+            this.FifthMatchTotalB.Controls.Add(this.B5);
             this.FifthMatchTotalB.Location = new System.Drawing.Point(3, 160);
             this.FifthMatchTotalB.Name = "FifthMatchTotalB";
             this.FifthMatchTotalB.Size = new System.Drawing.Size(267, 33);
@@ -318,6 +346,7 @@
             // 
             // ThirdMatchPanelB
             // 
+            this.ThirdMatchPanelB.Controls.Add(this.B3);
             this.ThirdMatchPanelB.Location = new System.Drawing.Point(3, 80);
             this.ThirdMatchPanelB.Name = "ThirdMatchPanelB";
             this.ThirdMatchPanelB.Size = new System.Drawing.Size(267, 30);
@@ -325,6 +354,7 @@
             // 
             // FourthMatchPanelB
             // 
+            this.FourthMatchPanelB.Controls.Add(this.B4);
             this.FourthMatchPanelB.Location = new System.Drawing.Point(3, 117);
             this.FourthMatchPanelB.Name = "FourthMatchPanelB";
             this.FourthMatchPanelB.Size = new System.Drawing.Size(267, 37);
@@ -346,6 +376,7 @@
             this.TeamB_Box.Name = "TeamB_Box";
             this.TeamB_Box.Size = new System.Drawing.Size(198, 21);
             this.TeamB_Box.TabIndex = 11;
+            this.TeamB_Box.SelectedIndexChanged += new System.EventHandler(this.TeamB_Box_SelectedIndexChanged);
             this.TeamB_Box.Click += new System.EventHandler(this.TeamB_Box_Click);
             // 
             // TeamA_Box
@@ -355,6 +386,7 @@
             this.TeamA_Box.Name = "TeamA_Box";
             this.TeamA_Box.Size = new System.Drawing.Size(192, 21);
             this.TeamA_Box.TabIndex = 10;
+            this.TeamA_Box.SelectedIndexChanged += new System.EventHandler(this.TeamA_Box_SelectedIndexChanged);
             this.TeamA_Box.Click += new System.EventHandler(this.TeamA_Box_Click);
             // 
             // VersusLabel
@@ -647,6 +679,96 @@
             this.SaveWeights.UseVisualStyleBackColor = true;
             this.SaveWeights.Click += new System.EventHandler(this.SaveWeights_Click);
             // 
+            // A1
+            // 
+            this.A1.Enabled = false;
+            this.A1.Location = new System.Drawing.Point(3, 10);
+            this.A1.Name = "A1";
+            this.A1.Size = new System.Drawing.Size(261, 20);
+            this.A1.TabIndex = 0;
+            this.A1.Text = "Отсутсвует";
+            // 
+            // A2
+            // 
+            this.A2.Enabled = false;
+            this.A2.Location = new System.Drawing.Point(3, 9);
+            this.A2.Name = "A2";
+            this.A2.Size = new System.Drawing.Size(261, 20);
+            this.A2.TabIndex = 1;
+            this.A2.Text = "Отсутсвует";
+            // 
+            // A3
+            // 
+            this.A3.Enabled = false;
+            this.A3.Location = new System.Drawing.Point(3, 8);
+            this.A3.Name = "A3";
+            this.A3.Size = new System.Drawing.Size(261, 20);
+            this.A3.TabIndex = 2;
+            this.A3.Text = "Отсутсвует";
+            // 
+            // A4
+            // 
+            this.A4.Enabled = false;
+            this.A4.Location = new System.Drawing.Point(3, 14);
+            this.A4.Name = "A4";
+            this.A4.Size = new System.Drawing.Size(261, 20);
+            this.A4.TabIndex = 3;
+            this.A4.Text = "Отсутсвует";
+            // 
+            // A5
+            // 
+            this.A5.Enabled = false;
+            this.A5.Location = new System.Drawing.Point(3, 10);
+            this.A5.Name = "A5";
+            this.A5.Size = new System.Drawing.Size(261, 20);
+            this.A5.TabIndex = 4;
+            this.A5.Text = "Отсутсвует";
+            // 
+            // B1
+            // 
+            this.B1.Enabled = false;
+            this.B1.Location = new System.Drawing.Point(3, 10);
+            this.B1.Name = "B1";
+            this.B1.Size = new System.Drawing.Size(261, 20);
+            this.B1.TabIndex = 1;
+            this.B1.Text = "Отсутсвует";
+            // 
+            // B2
+            // 
+            this.B2.Enabled = false;
+            this.B2.Location = new System.Drawing.Point(3, 9);
+            this.B2.Name = "B2";
+            this.B2.Size = new System.Drawing.Size(261, 20);
+            this.B2.TabIndex = 2;
+            this.B2.Text = "Отсутсвует";
+            // 
+            // B3
+            // 
+            this.B3.Enabled = false;
+            this.B3.Location = new System.Drawing.Point(3, 8);
+            this.B3.Name = "B3";
+            this.B3.Size = new System.Drawing.Size(261, 20);
+            this.B3.TabIndex = 3;
+            this.B3.Text = "Отсутсвует";
+            // 
+            // B4
+            // 
+            this.B4.Enabled = false;
+            this.B4.Location = new System.Drawing.Point(3, 14);
+            this.B4.Name = "B4";
+            this.B4.Size = new System.Drawing.Size(261, 20);
+            this.B4.TabIndex = 4;
+            this.B4.Text = "Отсутсвует";
+            // 
+            // B5
+            // 
+            this.B5.Enabled = false;
+            this.B5.Location = new System.Drawing.Point(3, 10);
+            this.B5.Name = "B5";
+            this.B5.Size = new System.Drawing.Size(261, 20);
+            this.B5.TabIndex = 5;
+            this.B5.Text = "Отсутсвует";
+            // 
             // MainWindows
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -669,7 +791,27 @@
             this.VangaPanel.ResumeLayout(false);
             this.VangaPanel.PerformLayout();
             this.LastFiveMatchesA.ResumeLayout(false);
+            this.FirstMatchPanelA.ResumeLayout(false);
+            this.FirstMatchPanelA.PerformLayout();
+            this.SecondMatchPanelA.ResumeLayout(false);
+            this.SecondMatchPanelA.PerformLayout();
+            this.FifthMatchPanelA.ResumeLayout(false);
+            this.FifthMatchPanelA.PerformLayout();
+            this.ThirdMatchPanelA.ResumeLayout(false);
+            this.ThirdMatchPanelA.PerformLayout();
+            this.FourthMatchPanelA.ResumeLayout(false);
+            this.FourthMatchPanelA.PerformLayout();
             this.LastFiveMatchesB.ResumeLayout(false);
+            this.FirstMatchPanelB.ResumeLayout(false);
+            this.FirstMatchPanelB.PerformLayout();
+            this.SecondMatchPanelB.ResumeLayout(false);
+            this.SecondMatchPanelB.PerformLayout();
+            this.FifthMatchTotalB.ResumeLayout(false);
+            this.FifthMatchTotalB.PerformLayout();
+            this.ThirdMatchPanelB.ResumeLayout(false);
+            this.ThirdMatchPanelB.PerformLayout();
+            this.FourthMatchPanelB.ResumeLayout(false);
+            this.FourthMatchPanelB.PerformLayout();
             this.DisciplinePanel.ResumeLayout(false);
             this.DisciplinePanel.PerformLayout();
             this.LearningProgressPanel.ResumeLayout(false);
@@ -745,6 +887,16 @@
         private System.Windows.Forms.Button AddTournament;
         private System.Windows.Forms.ComboBox TournamentBox;
         private System.Windows.Forms.Label TournamentLabel;
+        private System.Windows.Forms.TextBox A1;
+        private System.Windows.Forms.TextBox A2;
+        private System.Windows.Forms.TextBox A5;
+        private System.Windows.Forms.TextBox A3;
+        private System.Windows.Forms.TextBox A4;
+        private System.Windows.Forms.TextBox B1;
+        private System.Windows.Forms.TextBox B2;
+        private System.Windows.Forms.TextBox B5;
+        private System.Windows.Forms.TextBox B3;
+        private System.Windows.Forms.TextBox B4;
     }
 }
 

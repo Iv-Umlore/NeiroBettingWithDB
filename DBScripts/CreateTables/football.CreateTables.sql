@@ -10,8 +10,8 @@ COMMIT
 
 CREATE TABLE football.Tournament
 	(
-	id_Tournament numeric(38, 0) NOT NULL,
-	Tournament_name nchar(50) NOT NULL,
+	id_Tournament numeric(38, 0) NOT NULL IDENTITY (1, 1),
+	Tournament_name nvarchar(50) NOT NULL,
 	Tournament_size smallint NOT NULL
 	)  ON [PRIMARY]
 GO
@@ -28,8 +28,8 @@ GO
 CREATE TABLE football.Comands
 	(
 	id_team numeric(38, 0) NOT NULL IDENTITY (1, 1),
-	abbrevitions nchar(6) NOT NULL,
-	team_name nchar(50) NOT NULL,
+	abbrevitions nvarchar(6) NOT NULL,
+	team_name nvarchar(50) NOT NULL,
 	tier_team smallint NOT NULL,
 	team_point int NOT NULL 
 	)  ON [PRIMARY]
