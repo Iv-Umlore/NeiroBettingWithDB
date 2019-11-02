@@ -70,6 +70,12 @@
     <Compile Include="MainWindows.Designer.cs">
       <DependentUpon>MainWindows.cs</DependentUpon>
     </Compile>
+    <Compile Include="PredictionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PredictionWindow.Designer.cs">
+      <DependentUpon>PredictionWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="VangaBegin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddMatch.resx">
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindows.resx">
       <DependentUpon>MainWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PredictionWindow.resx">
+      <DependentUpon>PredictionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

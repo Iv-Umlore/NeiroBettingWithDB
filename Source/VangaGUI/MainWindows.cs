@@ -37,8 +37,14 @@ namespace VangaGUI
 
         private void GetPrediction_Click(object sender, EventArgs e)
         {
-            PredictionPanel.Show();
+
             LearningProgressPanel.Hide();
+            PredictionPanel.Show();
+            if (!string.IsNullOrEmpty(TeamA_Box.Text) && !string.IsNullOrEmpty(TeamB_Box.Text) && !string.IsNullOrEmpty(TournamentBox.Text))
+            {
+                var wind = new PredictionWindow(_mainController, TeamA_Box.Text, TeamB_Box.Text, TournamentBox.Text);
+                wind.ShowDialog();
+            }
         }
 
         private void AddTeam_Click(object sender, EventArgs e)

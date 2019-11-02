@@ -24,6 +24,8 @@ namespace IInteractionController
 
         bool AddNewTournament(string TournamentName, int size);
 
+        bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date);
+
         bool ChangeDiscipline(Discipline type);
     }
 }

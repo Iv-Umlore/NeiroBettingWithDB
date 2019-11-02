@@ -28,13 +28,21 @@ namespace VangaGUI
 
         private void SendButton_Click(object sender, EventArgs e)
         {
-            _mainController.AddNewTeam(teamAbbr.Text, TeamName.Text, int.Parse(tier_team.Text), 0);
+            var abbr = (teamAbbr.Text.Length > 6) ? teamAbbr.Text.Substring(0, 6) : teamAbbr.Text;
+            _mainController.AddNewTeam(abbr, TeamName.Text, int.Parse(tier_team.Text), 0);
             Close();
         }
 
         private void TeamName_TextChanged(object sender, EventArgs e)
         {
-            teamAbbr.Text = TeamName.Text.Take(4).ToString();
+            try
+            {
+                teamAbbr.Text = TeamName.Text.Substring(0, 5);
+            }
+            catch
+            {
+                teamAbbr.Text = TeamName.Text;
+            }
         }
     }
 }

@@ -88,13 +88,14 @@ namespace BridgeToInterface
 
         //public bool AddNewMatch(string )
 
-        public List<Prediction> GetPrediction(int teamA_id, int teamB_id)
+        public List<Prediction> GetPrediction(string[] parameters, DateTime date)
         {
             var result = new List<Prediction>();
-            //var teamAMatches = _interactionController.GetlastFiveTeamMatch(teamList.First(it => it.Team_id == teamA_id).Team_name);
-            //var teamBMatches = _interactionController.GetlastFiveTeamMatch(teamList.First(it => it.Team_id == teamB_id).Team_name);
+            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);
+            
+            //result = _network.GetPrediction(lastMatchesA, lastMatchesB,tournament, parameters);
 
-            //result = _network.GetPrediction(teamAMatches, teamBMatches);
+            _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction
 
             return result;
         }

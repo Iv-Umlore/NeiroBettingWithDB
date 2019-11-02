@@ -18,3 +18,4 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.pdb
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.AddNewTeam.resources
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.AddNewTournament.resources
 D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.AddMatch.resources
+D:\PROGRAMS\NeiroBettingWithDB\Source\VangaGUI\obj\Debug\VangaGUI.PredictionWindow.resources

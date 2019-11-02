@@ -61,5 +61,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteSpace" FunctionName="Хранилище MatchesResultModel.DeleteSpace" />
   </EntityContainerMapping>
 </Mapping>
