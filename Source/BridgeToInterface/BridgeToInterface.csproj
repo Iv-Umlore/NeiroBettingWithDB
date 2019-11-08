@@ -45,29 +45,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FootBall.InteractionController\InteractionController.Football.csproj">
-      <Project>{50FD2848-798D-4C89-8F8F-F64E298C3597}</Project>
-      <Name>InteractionController.Football</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FootBall.Network\Network.FootBall.csproj">
-      <Project>{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}</Project>
-      <Name>Network.FootBall</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IInteractionController\IInteractionController.csproj">
-      <Project>{77EC09A7-6E9C-42CB-811D-CEBC2242209A}</Project>
-      <Name>IInteractionController</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\INetwork\INetwork.csproj">
-      <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>
-      <Name>INetwork</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\InteractionController\InteractionController.csproj">
+    <ProjectReference Include="..\Controller.Interaction\Controller.Interaction.csproj">
       <Project>{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}</Project>
-      <Name>InteractionController</Name>
+      <Name>Controller.Interaction</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NetWorkController\NetworkController.csproj">
+    <ProjectReference Include="..\Controller.Interpritator\Controller.Interpritator.csproj">
+      <Project>{8459E21E-5F00-42D4-B9A9-155A1A510DB3}</Project>
+      <Name>Controller.Interpritator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Controller.Network\Controller.Network.csproj">
       <Project>{C70B9BFE-276E-4B7B-892E-30FE83EAD739}</Project>
-      <Name>NetworkController</Name>
+      <Name>Controller.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootBall.Network\Football.Network.csproj">
+      <Project>{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}</Project>
+      <Name>Football.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interface.Interaction\Interface.Interaction.csproj">
+      <Project>{77EC09A7-6E9C-42CB-811D-CEBC2242209A}</Project>
+      <Name>Interface.Interaction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interface.Interpritator\Interface.Interpritator.csproj">
+      <Project>{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}</Project>
+      <Name>Interface.Interpritator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interface.Network\Interface.Network.csproj">
+      <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>
+      <Name>Interface.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectHelper\ProjectHelper.csproj">
       <Project>{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}</Project>

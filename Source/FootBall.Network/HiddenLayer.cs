@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Network.Football;
 
-namespace FootBall.Network
+namespace Football.Network
 {
     public class HiddenLayer
     {
@@ -63,6 +58,7 @@ namespace FootBall.Network
 
         public bool SetWeights(List<List<string>> weights)
         {
+            if (weights.Count != NeironList.Count) throw new Exception("Несоответствие размерности вектора весов и количества нейронов. Layer.SetWeights()");
             for (int i = 0; i < weights.Count; i++)
             {
                 var tmp = new List<double>();

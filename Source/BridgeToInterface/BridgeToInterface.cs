@@ -1,6 +1,7 @@
-﻿using FootBall.Network;
-using IInteractionController;
-using INetwork;
+﻿using InteractionInterface;
+using InterpritatorController;
+using InterpritatorInterface;
+using NetworkInterface;
 using ProjectHelper;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,9 @@ namespace BridgeToInterface
 {
     public class BridgeToInterfaceController
     {
-        private InteractionControllerInterface _interactionController;
+        private IInteractionControllerInterface _interactionController;
         private INetworkInterface _network;
+        private IInterpritatorInterface _interpritator;
         private List<TeamInfo> teamList;
         private List<TournamentShort> tournamentList;
         private List<LastMatch> lastMatchesA;
@@ -22,7 +24,8 @@ namespace BridgeToInterface
         public BridgeToInterfaceController()
         {
             _interactionController = new InteractionController.InteractionController(Discipline.Football);
-            _network = new NetWorkController.NetworkController(Discipline.Football);
+            _network = new NetworkController.NetworkController(Discipline.Football);
+            _interpritator = new InterpritatorController.InterpritatorController(Discipline.Football);
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
             learningResult = 1000.0;
@@ -36,6 +39,7 @@ namespace BridgeToInterface
         {
             _interactionController.ChangeDiscipline(discipline);
             _network.ChangeDiscipline(discipline);
+            _interpritator.ChangeDiscipline(discipline);
             return true;
         }
 

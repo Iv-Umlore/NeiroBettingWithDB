@@ -1,10 +1,10 @@
 E:\Test\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csprojAssemblyReference.cache
 E:\Test\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csproj.CoreCompileInputs.cache
 E:\Test\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.pdb
-D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\BridgeToInterface.dll
-D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\BridgeToInterface.pdb
 D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csprojAssemblyReference.cache
 D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\BridgeToInterface.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\BridgeToInterface.pdb
 D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\BridgeToInterface\obj\Debug\BridgeToInterface.pdb

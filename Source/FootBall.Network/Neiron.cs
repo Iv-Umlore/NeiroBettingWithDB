@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Network.Football
+namespace Football.Network
 {
     public class Neiron
     {
@@ -44,6 +40,9 @@ namespace Network.Football
             return res;
         }
 
+        /// <summary>
+        /// Возможно понадобиться при застое в обучении
+        /// </summary>
         public void ChangeWeights()
         {
             var rand = new Random();
@@ -71,12 +70,16 @@ namespace Network.Football
 
         private double SigmaFunction(double value)
         {
-            return value;
+            double result = 2 / (1 + Math.Pow(Math.E, -5 * value)) - 1;
+            return result;
         }
 
         private double Derivate(double value)
         {
-            return 1.0;
+            double E = Math.E;
+            double pow = Math.Pow(E, -5 * value);
+            double result = 10 * pow / Math.Pow(1 + pow, 2);
+            return result;
         }
 
     }

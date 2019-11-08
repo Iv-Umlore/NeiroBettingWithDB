@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ProjectHelper;
 
-namespace FootBall.Network
+namespace Football.Network
 {
     public class InputLayer
     {

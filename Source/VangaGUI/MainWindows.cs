@@ -29,17 +29,15 @@ namespace VangaGUI
         {
             _mainController = new BridgeToInterfaceController();
         }
-        
+
         private void OpenWaitResultMatches_Click(object sender, EventArgs e)
         {
-            MatchesCount.Text = "250";
+            var wind = new MatchWaitResultWindow(_mainController);
+            wind.ShowDialog();
         }
 
         private void GetPrediction_Click(object sender, EventArgs e)
         {
-
-            LearningProgressPanel.Hide();
-            PredictionPanel.Show();
             if (!string.IsNullOrEmpty(TeamA_Box.Text) && !string.IsNullOrEmpty(TeamB_Box.Text) && !string.IsNullOrEmpty(TournamentBox.Text))
             {
                 var wind = new PredictionWindow(_mainController, TeamA_Box.Text, TeamB_Box.Text, TournamentBox.Text);
@@ -69,33 +67,9 @@ namespace VangaGUI
             TeamB_Box_SelectedIndexChanged(sender, e);
         }
 
-        private void TestNetwork_Click(object sender, EventArgs e)
-        {
-            var result = _mainController.TestNetwork();
-            MatchesCount.Text = _mainController.MatchesCount.ToString();
-            AverageResultValue.Text = result.ToString();
-        }
-
-        private void NetworkLearning_Click(object sender, EventArgs e)
-        {
-            PredictionPanel.Hide();
-            LearningProgressPanel.Show();
-            _mainController.LearningNetwork();
-        }
-
         private void ChangeDiscipline_Click(object sender, EventArgs e)
         {
             _mainController.ChangeDiscipline(Discipline.Football);
-        }
-
-        private void SaveWeights_Click(object sender, EventArgs e)
-        {
-            _mainController.SaveCurrentWeights();
-        }
-
-        private void ReloadWeights_Click(object sender, EventArgs e)
-        {
-            _mainController.ReloadWeights();
         }
 
         private void AddTournament_Click(object sender, EventArgs e)
@@ -103,7 +77,7 @@ namespace VangaGUI
             var wind = new AddNewTournament(_mainController);
             wind.Show();
         }
-        
+
         private void TeamB_Box_Click(object sender, EventArgs e)
         {
             TeamB_Box.Items.Clear();
@@ -133,7 +107,7 @@ namespace VangaGUI
             TournamentBox.Items.Clear();
             var list = _mainController.GetTournamentList();
             foreach (var tournament in list)
-                TournamentBox.Items.Add(tournament);                
+                TournamentBox.Items.Add(tournament);
         }
 
         private void TeamA_Box_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,6 +134,13 @@ namespace VangaGUI
         private string GetDate(DateTime dt)
         {
             return String.Format("{0}.{1}.{2}", dt.Day, dt.Month, dt.Year);
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            // Подумать над сохранением весов перед обучение и выход с (без) сохранением
+            var wind = new LearningWindow(_mainController);
+            wind.ShowDialog();
         }
     }
 }
