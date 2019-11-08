@@ -9,8 +9,11 @@ namespace NetworkInterface
 {
     public interface INetworkInterface
     {
+        // По статистике
+        List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters);
 
-        List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters);
+        // Итоговый
+        List<double> GetFinalPrediction(List<int> inputParameters);
 
         double TestNetwork();
 

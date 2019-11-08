@@ -46,13 +46,7 @@ namespace ProjectHelper
 
         public string Tournament_name { get; set; }
     }
-
-    public class Prediction
-    {
-        public string Predict { get; set; }
-        public string Risk { get; set; }
-    }
-
+    
     public class LastMatch
     {
         public decimal Team_A { get; set; }

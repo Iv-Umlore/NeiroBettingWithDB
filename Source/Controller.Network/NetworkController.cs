@@ -22,14 +22,8 @@ namespace NetworkController
                     break;
                 default: break;
             }
-
         }
-
-        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
-        {
-            return _network.GetPrediction(teamAMatches, teamBMatches, tournament, parameters);
-        }
-
+        
         public double TestNetwork()
         {
             return _network.TestNetwork();
@@ -67,6 +61,16 @@ namespace NetworkController
             }
 
             return true;
+        }
+
+        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
+        {
+            return _network.GetHistoryPrediction(teamAMatches, teamBMatches, tournament, parameters);
+        }
+
+        public List<double> GetFinalPrediction(List<int> inputParameters)
+        {
+            return _network.GetFinalPrediction(inputParameters);
         }
     }
 }

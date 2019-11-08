@@ -1,6 +1,7 @@
 ﻿using Football.Interpritator;
 using InterpritatorInterface;
 using ProjectHelper;
+using System.Collections.Generic;
 
 namespace InterpritatorController
 {
@@ -33,7 +34,7 @@ namespace InterpritatorController
             return true;
         }
 
-        public double[] GetPerfectArrayValue(int correctScorePoints)
+        public List<double> GetPerfectArrayValue(int correctScorePoints)
         {
             return _mainInterpritator.GetPerfectArrayValue(correctScorePoints);
         }
@@ -48,9 +49,9 @@ namespace InterpritatorController
             return _mainInterpritator.GetPrediction(outputNeironResult);
         }
 
-        public string GetPrediction(double[] _outOutputNeironResults)
+        public string GetPrediction(List<double> _outOutputNeironResults)
         {
-            return GetPrediction(_outOutputNeironResults);
+            return _mainInterpritator.GetPrediction(_outOutputNeironResults);
         }
     }
 }
