@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCCF669B-2904-493C-B19B-2B56764BFA2B}</ProjectGuid>
+    <ProjectGuid>{C70B9BFE-276E-4B7B-892E-30FE83EAD739}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BridgeToInterface</RootNamespace>
-    <AssemblyName>BridgeToInterface</AssemblyName>
+    <RootNamespace>NetWorkController</RootNamespace>
+    <AssemblyName>NetWorkController</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,33 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BridgeToInterface.cs" />
+    <Compile Include="NetworkController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Controller.Interaction\Controller.Interaction.csproj">
-      <Project>{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}</Project>
-      <Name>Controller.Interaction</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Controller.Interpritator\Controller.Interpritator.csproj">
-      <Project>{8459E21E-5F00-42D4-B9A9-155A1A510DB3}</Project>
-      <Name>Controller.Interpritator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Controller.Network\Controller.Network.csproj">
-      <Project>{C70B9BFE-276E-4B7B-892E-30FE83EAD739}</Project>
-      <Name>Controller.Network</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FootBall.Network\Football.Network.csproj">
       <Project>{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}</Project>
       <Name>Football.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interface.Interaction\Interface.Interaction.csproj">
-      <Project>{77EC09A7-6E9C-42CB-811D-CEBC2242209A}</Project>
-      <Name>Interface.Interaction</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Interface.Interpritator\Interface.Interpritator.csproj">
-      <Project>{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}</Project>
-      <Name>Interface.Interpritator</Name>
     </ProjectReference>
     <ProjectReference Include="..\Interface.Network\Interface.Network.csproj">
       <Project>{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}</Project>

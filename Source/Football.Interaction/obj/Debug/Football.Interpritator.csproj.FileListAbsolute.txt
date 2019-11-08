@@ -1,0 +1,7 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.Interaction\obj\Debug\Football.Interpritator.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\Interaction.Football.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\Interaction.Football.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.Interaction\obj\Debug\Football.Interpritator.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.Interaction\obj\Debug\Football.Interpritator.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.Interaction\obj\Debug\Interaction.Football.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.Interaction\obj\Debug\Interaction.Football.pdb

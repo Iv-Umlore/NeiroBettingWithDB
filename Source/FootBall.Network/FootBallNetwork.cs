@@ -1,5 +1,4 @@
-﻿using INetwork;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,8 +7,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using ProjectHelper;
+using NetworkInterface;
 
-namespace Network.Football
+namespace Football.Network
 {
     public class FootballNetwork : INetworkInterface
     {
@@ -19,21 +19,29 @@ namespace Network.Football
 
         public FootballNetwork()
         {
-            pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
-            pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
+            try
+            {
+                pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
+                pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
 
-            netNetwork = new List<Network>();
-            netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Save_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Violations_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Violations_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Shot_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            netNetwork.Add(new Network("Shot_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-            // + tournament
-            netNetwork.Add(new Network("Vanga", 2, 10, 10, new List<int>() { 8, 8, 10 }));
+                netNetwork = new List<Network>();
+                netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Save_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Violations_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Violations_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Shot_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                netNetwork.Add(new Network("Shot_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
+                // + tournament
+                netNetwork.Add(new Network("Vanga", 2, 10, 10, new List<int>() { 8, 8, 10 }));
 
-            SetLoadWeights();
+                SetLoadWeights();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Network ERROR. Football Network");
+                Console.WriteLine("Error message: " + ex.Message);
+            }
         }
 
         public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
@@ -54,12 +62,20 @@ namespace Network.Football
 
         public void SetLoadWeights()
         {
-            XDocument xDoc = new XDocument();
-            xDoc = XDocument.Load(pathToWeights + "Current.xml");
+            try
+            {
+                XDocument xDoc = new XDocument();
+                xDoc = XDocument.Load(pathToWeights + "Current.xml");
 
-            var elements = xDoc.Element("Value");
-            foreach (var network in netNetwork)
-                network.SetLoadWeight(elements.Element(network.NetworkName));
+                var elements = xDoc.Element("Value");
+                foreach (var network in netNetwork)
+                    network.SetLoadWeight(elements.Element(network.NetworkName));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка установки весов...");
+                throw ex;
+            }
         }
 
         // think about good save

@@ -1,0 +1,7 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\NetWorkController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\NetWorkController.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Controller.Network\obj\Debug\Controller.Network.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Controller.Network\obj\Debug\Controller.Network.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Controller.Network\obj\Debug\Controller.Network.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\Controller.Network\obj\Debug\NetWorkController.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Controller.Network\obj\Debug\NetWorkController.pdb

@@ -1,0 +1,11 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\IInterpritatorInterface\obj\Debug\Interface.Interpritator.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\IInterpritatorInterface\obj\Debug\Interface.Interpritator.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\IInterpritatorInterface\obj\Debug\IInterpritatorInterface.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\IInterpritatorInterface\obj\Debug\IInterpritatorInterface.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\IInterpritatorInterface.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\IInterpritatorInterface.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Interface.Interpritator\obj\Debug\Interface.Interpritator.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Interface.Interpritator\obj\Debug\IInterpritatorInterface.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Interface.Interpritator\obj\Debug\IInterpritatorInterface.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Interface.Interpritator\obj\Debug\Interface.Interpritator.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Interface.Interpritator\obj\Debug\Interface.Interpritator.csproj.CopyComplete

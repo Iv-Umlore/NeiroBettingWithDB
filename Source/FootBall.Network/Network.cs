@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using FootBall.Network;
-using ProjectHelper;
 
-namespace Network.Football
+namespace Football.Network
 {
     public class Network
     {
@@ -36,10 +31,8 @@ namespace Network.Football
             _hiddenLayers = new List<HiddenLayer>(HiddenLayerNumber);
 
             for (int i = 0; i < inputParametersInLayers.Count - 1; i++)
-            {
                 _hiddenLayers.Add(new HiddenLayer(inputParametersInLayers[i], inputParametersInLayers[i + 1],
                     new List<List<double>>()));
-            }
 
             _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count - 1], _outputParametersCount);
         }

@@ -5,26 +5,43 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseConnect", "DataBaseConnect\DataBaseConnect.csproj", "{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INetwork", "INetwork\INetwork.csproj", "{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IInteractionController", "IInteractionController\IInteractionController.csproj", "{77EC09A7-6E9C-42CB-811D-CEBC2242209A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeToInterface", "BridgeToInterface\BridgeToInterface.csproj", "{CCCF669B-2904-493C-B19B-2B56764BFA2B}"
 	ProjectSection(ProjectDependencies) = postProject
+		{8459E21E-5F00-42D4-B9A9-155A1A510DB3} = {8459E21E-5F00-42D4-B9A9-155A1A510DB3}
+		{50FD2848-798D-4C89-8F8F-F64E298C3597} = {50FD2848-798D-4C89-8F8F-F64E298C3597}
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871} = {05D19E57-0D2E-4B18-BD9E-8803D8A4C871}
+		{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4} = {AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}
+		{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0} = {B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A} = {77EC09A7-6E9C-42CB-811D-CEBC2242209A}
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F} = {FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}
+		{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE} = {DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}
+		{C70B9BFE-276E-4B7B-892E-30FE83EAD739} = {C70B9BFE-276E-4B7B-892E-30FE83EAD739}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.FootBall", "FootBall.Network\Network.FootBall.csproj", "{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionController.Football", "FootBall.InteractionController\InteractionController.Football.csproj", "{50FD2848-798D-4C89-8F8F-F64E298C3597}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.Network", "FootBall.Network\Football.Network.csproj", "{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHelper", "ProjectHelper\ProjectHelper.csproj", "{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VangaGUI", "VangaGUI\VangaGUI.csproj", "{A6AF3796-95E8-446A-9BFC-C85791666A5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionController", "InteractionController\InteractionController.csproj", "{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Interaction", "Controller.Interaction\Controller.Interaction.csproj", "{AE1FCB8B-41DD-4DD5-9FB2-35295E6B39D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkController", "NetWorkController\NetworkController.csproj", "{C70B9BFE-276E-4B7B-892E-30FE83EAD739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Network", "Controller.Network\Controller.Network.csproj", "{C70B9BFE-276E-4B7B-892E-30FE83EAD739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.InteractionController", "Football.ControllerInteraction\Football.InteractionController.csproj", "{50FD2848-798D-4C89-8F8F-F64E298C3597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.Interpritator", "Football.Interaction\Football.Interpritator.csproj", "{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{343CB888-D6D5-4968-BD51-53A1BE2DF6E1} = {343CB888-D6D5-4968-BD51-53A1BE2DF6E1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface.Interaction", "Interface.Interaction\Interface.Interaction.csproj", "{77EC09A7-6E9C-42CB-811D-CEBC2242209A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface.Interpritator", "Interface.Interpritator\Interface.Interpritator.csproj", "{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface.Network", "Interface.Network\Interface.Network.csproj", "{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Interpritator", "Controller.Interpritator\Controller.Interpritator.csproj", "{8459E21E-5F00-42D4-B9A9-155A1A510DB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +53,6 @@ Global
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE87DBCA-AECF-4838-BDB0-9CE65EC3449F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCCF669B-2904-493C-B19B-2B56764BFA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,10 +61,6 @@ Global
 		{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8076E44C-F1E2-470D-A5E0-A8F149FEDEC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Release|Any CPU.Build.0 = Release|Any CPU
 		{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{343CB888-D6D5-4968-BD51-53A1BE2DF6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,6 +77,30 @@ Global
 		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C70B9BFE-276E-4B7B-892E-30FE83EAD739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50FD2848-798D-4C89-8F8F-F64E298C3597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAED8F0-8C16-41C5-AD88-8D40D04C0ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EC09A7-6E9C-42CB-811D-CEBC2242209A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B060F4A0-4AE0-4E9B-8DC4-8742BB7969A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D19E57-0D2E-4B18-BD9E-8803D8A4C871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
