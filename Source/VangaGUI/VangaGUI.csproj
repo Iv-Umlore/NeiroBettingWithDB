@@ -64,11 +64,23 @@
     <Compile Include="AddTournament.Designer.cs">
       <DependentUpon>AddTournament.cs</DependentUpon>
     </Compile>
+    <Compile Include="LearningWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LearningWindow.Designer.cs">
+      <DependentUpon>LearningWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindows.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindows.Designer.cs">
       <DependentUpon>MainWindows.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MatchWaitResultWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatchWaitResultWindow.Designer.cs">
+      <DependentUpon>MatchWaitResultWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="PredictionWindow.cs">
       <SubType>Form</SubType>
@@ -87,8 +99,14 @@
     <EmbeddedResource Include="AddTournament.resx">
       <DependentUpon>AddTournament.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LearningWindow.resx">
+      <DependentUpon>LearningWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindows.resx">
       <DependentUpon>MainWindows.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MatchWaitResultWindow.resx">
+      <DependentUpon>MatchWaitResultWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PredictionWindow.resx">
       <DependentUpon>PredictionWindow.cs</DependentUpon>
