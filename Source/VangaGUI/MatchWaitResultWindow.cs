@@ -52,7 +52,14 @@ namespace VangaGUI
 
         private void AddResult_Click(object sender, EventArgs e)
         {
+            var key = MyMatchWaitResult.SelectedItem.ToString();
+            var MWRes = matches.First(it => it.Key == key).Value;
 
+            var addMatchWindow = new AddMatch(BIC, MWRes);
+            addMatchWindow.ShowDialog();
+
+            MyMatchWaitResult.Items.Clear();
+            matches.Clear();
         }
     }
 }

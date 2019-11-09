@@ -89,9 +89,7 @@ namespace BridgeToInterface
             else
                 return lastMatchesB = _interactionController.GetlastFiveTeamMatch(TeamName);
         }
-
-        //public bool AddNewMatch(string )
-
+        
         public string GetPrediction(string[] parameters, DateTime date)
         {
             var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);            

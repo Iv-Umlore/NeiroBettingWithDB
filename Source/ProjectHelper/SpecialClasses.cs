@@ -24,7 +24,7 @@ namespace ProjectHelper
 
         public short ReplasmentA { get; set; }
 
-        public short RepalsmentB { get; set; }
+        public short ReplasmentB { get; set; }
 
         public short ImportantA { get; set; }
 

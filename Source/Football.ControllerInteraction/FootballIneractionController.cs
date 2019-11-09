@@ -36,7 +36,16 @@ namespace Football.InteractionController
         {
             var entities = _dalExecute.NewEntities;
 
-            entities.PastMatches.Add(CreatepastMatchForParameters(matchParameters, date, isReadyForLearning));
+            ResiveMainLists();
+
+            var currentMatch = CreatepastMatchForParameters(matchParameters, date, isReadyForLearning);
+            entities.PastMatches.Add(currentMatch);
+
+            if (isReadyForLearning)
+            {
+                var MWR = entities.WaitResults.First(it => it.Team_A == currentMatch.Team_A && it.Team_B == currentMatch.Team_B && it.date == currentMatch.match_date);
+                entities.WaitResults.Remove(MWR);
+            }
 
             _dalExecute.CloseConnection(entities);
             return true;
@@ -131,7 +140,7 @@ namespace Football.InteractionController
                     TeamB = teamB,
                     Tournament = tournament,
                     ReplasmentA = (short)matchWaitResult.replacements_A,
-                    RepalsmentB = (short)matchWaitResult.replacements_B,
+                    ReplasmentB = (short)matchWaitResult.replacements_B,
                     ImportantA = (short)matchWaitResult.important_A,
                     ImportantB = (short)matchWaitResult.important_B,
                     Prediction = matchWaitResult.prediction,
@@ -206,6 +215,8 @@ namespace Football.InteractionController
         {
             var entities = _dalExecute.NewEntities;
 
+            ResiveMainLists();
+
             var idA = teams.First(it => it.Team_name == parameters[1]).Team_id;
             var idB = teams.First(it => it.Team_name == parameters[2]).Team_id;
 
@@ -234,7 +245,8 @@ namespace Football.InteractionController
         }
 
         private PastMatch CreatepastMatchForParameters(string[] parameters, DateTime date, bool isReadyForLerning)
-        {
+        {           
+
             var idA = teams.First(it => it.Team_name == parameters[1]).Team_id;
             var idB = teams.First(it => it.Team_name == parameters[2]).Team_id;
             var idTournament = tournaments.First(it => it.Tournament_name == parameters[0]).Tournament_id;
@@ -259,6 +271,16 @@ namespace Football.InteractionController
                 match_date = date,
                 is_ready_for_learning = isReadyForLerning
             };
+        }
+
+        private void ResiveMainLists()
+        {
+            var entities = _dalExecute.NewEntities;
+            if (teams == null)
+                teams = ToTeamInfoList(entities.Comands.ToList());
+
+            if (tournaments == null)
+                tournaments = GetTournamentList();
         }
     }
 }
