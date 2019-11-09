@@ -89,19 +89,23 @@ namespace BridgeToInterface
             else
                 return lastMatchesB = _interactionController.GetlastFiveTeamMatch(TeamName);
         }
-
-        //public bool AddNewMatch(string )
-
-        public List<Prediction> GetPrediction(string[] parameters, DateTime date)
+        
+        public string GetPrediction(string[] parameters, DateTime date)
         {
-            var result = new List<Prediction>();
-            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);
-            
-            //result = _network.GetPrediction(lastMatchesA, lastMatchesB,tournament, parameters);
+            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);            
 
+            var statisticPredicts = _network.GetHistoryPrediction(lastMatchesA, lastMatchesB,tournament, parameters);
+
+            var finalInputParameters = new List<int>();
+            foreach (var predict in statisticPredicts)
+                finalInputParameters.Add(_interpritator.GetPrediction(predict));
+
+            var finalPredict = _network.GetFinalPrediction(finalInputParameters);
+            var prediction = _interpritator.GetPrediction(finalPredict);
+           
             _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction
 
-            return result;
+            return prediction;
         }
 
         public double TestNetwork()

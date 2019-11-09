@@ -33,7 +33,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PredictionPanel = new System.Windows.Forms.Panel();
+            this.Impotant_B_comboBox = new System.Windows.Forms.ComboBox();
+            this.Impotant_A_comboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Replace_B = new System.Windows.Forms.TextBox();
+            this.Replace_A = new System.Windows.Forms.TextBox();
             this.ResultMatchPanel = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.Violations_B = new System.Windows.Forms.TextBox();
+            this.Violations_A = new System.Windows.Forms.TextBox();
+            this.Save_B = new System.Windows.Forms.TextBox();
+            this.Save_A = new System.Windows.Forms.TextBox();
+            this.Shot_on_target_B = new System.Windows.Forms.TextBox();
+            this.Shot_on_target_A = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Score_B = new System.Windows.Forms.TextBox();
+            this.Score_A = new System.Windows.Forms.TextBox();
             this.Cansel = new System.Windows.Forms.Button();
             this.Send = new System.Windows.Forms.Button();
             this.TournamentBox = new System.Windows.Forms.ComboBox();
@@ -41,25 +60,6 @@
             this.TeamA_Box = new System.Windows.Forms.ComboBox();
             this.AddTournament = new System.Windows.Forms.Button();
             this.AddTeam = new System.Windows.Forms.Button();
-            this.Replace_A = new System.Windows.Forms.TextBox();
-            this.Replace_B = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.Score_A = new System.Windows.Forms.TextBox();
-            this.Score_B = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Shot_on_target_B = new System.Windows.Forms.TextBox();
-            this.Shot_on_target_A = new System.Windows.Forms.TextBox();
-            this.Save_B = new System.Windows.Forms.TextBox();
-            this.Save_A = new System.Windows.Forms.TextBox();
-            this.Violations_B = new System.Windows.Forms.TextBox();
-            this.Violations_A = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.Impotant_A_comboBox = new System.Windows.Forms.ComboBox();
-            this.Impotant_B_comboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.PredictionPanel.SuspendLayout();
@@ -116,6 +116,63 @@
             this.PredictionPanel.Size = new System.Drawing.Size(463, 73);
             this.PredictionPanel.TabIndex = 7;
             // 
+            // Impotant_B_comboBox
+            // 
+            this.Impotant_B_comboBox.FormattingEnabled = true;
+            this.Impotant_B_comboBox.Location = new System.Drawing.Point(196, 28);
+            this.Impotant_B_comboBox.Name = "Impotant_B_comboBox";
+            this.Impotant_B_comboBox.Size = new System.Drawing.Size(119, 21);
+            this.Impotant_B_comboBox.TabIndex = 26;
+            // 
+            // Impotant_A_comboBox
+            // 
+            this.Impotant_A_comboBox.FormattingEnabled = true;
+            this.Impotant_A_comboBox.Location = new System.Drawing.Point(44, 29);
+            this.Impotant_A_comboBox.Name = "Impotant_A_comboBox";
+            this.Impotant_A_comboBox.Size = new System.Drawing.Size(119, 21);
+            this.Impotant_A_comboBox.TabIndex = 25;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(312, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "1 - Наиважнейший, 2 - Неизвестно или средне, 3 - Не важен";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(343, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Важность матча";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(343, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Количество замен";
+            // 
+            // Replace_B
+            // 
+            this.Replace_B.Location = new System.Drawing.Point(196, 4);
+            this.Replace_B.Name = "Replace_B";
+            this.Replace_B.Size = new System.Drawing.Size(118, 20);
+            this.Replace_B.TabIndex = 1;
+            // 
+            // Replace_A
+            // 
+            this.Replace_A.Location = new System.Drawing.Point(44, 4);
+            this.Replace_A.Name = "Replace_A";
+            this.Replace_A.Size = new System.Drawing.Size(119, 20);
+            this.Replace_A.TabIndex = 0;
+            // 
             // ResultMatchPanel
             // 
             this.ResultMatchPanel.Controls.Add(this.label11);
@@ -134,6 +191,98 @@
             this.ResultMatchPanel.Name = "ResultMatchPanel";
             this.ResultMatchPanel.Size = new System.Drawing.Size(463, 120);
             this.ResultMatchPanel.TabIndex = 8;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(323, 81);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(125, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Нарушения ( карточки )";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(323, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(106, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Количество Сейвов";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(323, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(86, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Ударов в створ";
+            // 
+            // Violations_B
+            // 
+            this.Violations_B.Location = new System.Drawing.Point(196, 81);
+            this.Violations_B.Name = "Violations_B";
+            this.Violations_B.Size = new System.Drawing.Size(118, 20);
+            this.Violations_B.TabIndex = 8;
+            // 
+            // Violations_A
+            // 
+            this.Violations_A.Location = new System.Drawing.Point(44, 82);
+            this.Violations_A.Name = "Violations_A";
+            this.Violations_A.Size = new System.Drawing.Size(119, 20);
+            this.Violations_A.TabIndex = 7;
+            // 
+            // Save_B
+            // 
+            this.Save_B.Location = new System.Drawing.Point(196, 55);
+            this.Save_B.Name = "Save_B";
+            this.Save_B.Size = new System.Drawing.Size(118, 20);
+            this.Save_B.TabIndex = 6;
+            // 
+            // Save_A
+            // 
+            this.Save_A.Location = new System.Drawing.Point(44, 56);
+            this.Save_A.Name = "Save_A";
+            this.Save_A.Size = new System.Drawing.Size(119, 20);
+            this.Save_A.TabIndex = 5;
+            // 
+            // Shot_on_target_B
+            // 
+            this.Shot_on_target_B.Location = new System.Drawing.Point(196, 29);
+            this.Shot_on_target_B.Name = "Shot_on_target_B";
+            this.Shot_on_target_B.Size = new System.Drawing.Size(118, 20);
+            this.Shot_on_target_B.TabIndex = 4;
+            // 
+            // Shot_on_target_A
+            // 
+            this.Shot_on_target_A.Location = new System.Drawing.Point(44, 30);
+            this.Shot_on_target_A.Name = "Shot_on_target_A";
+            this.Shot_on_target_A.Size = new System.Drawing.Size(119, 20);
+            this.Shot_on_target_A.TabIndex = 3;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(323, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(98, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Количество голов";
+            // 
+            // Score_B
+            // 
+            this.Score_B.Location = new System.Drawing.Point(196, 3);
+            this.Score_B.Name = "Score_B";
+            this.Score_B.Size = new System.Drawing.Size(118, 20);
+            this.Score_B.TabIndex = 1;
+            // 
+            // Score_A
+            // 
+            this.Score_A.Location = new System.Drawing.Point(44, 4);
+            this.Score_A.Name = "Score_A";
+            this.Score_A.Size = new System.Drawing.Size(119, 20);
+            this.Score_A.TabIndex = 0;
             // 
             // Cansel
             // 
@@ -202,155 +351,6 @@
             this.AddTeam.UseVisualStyleBackColor = true;
             this.AddTeam.Click += new System.EventHandler(this.AddTeam_Click);
             // 
-            // Replace_A
-            // 
-            this.Replace_A.Location = new System.Drawing.Point(44, 4);
-            this.Replace_A.Name = "Replace_A";
-            this.Replace_A.Size = new System.Drawing.Size(119, 20);
-            this.Replace_A.TabIndex = 0;
-            // 
-            // Replace_B
-            // 
-            this.Replace_B.Location = new System.Drawing.Point(196, 4);
-            this.Replace_B.Name = "Replace_B";
-            this.Replace_B.Size = new System.Drawing.Size(118, 20);
-            this.Replace_B.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(343, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Количество замен";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Важность матча";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(312, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "1 - Наиважнейший, 2 - Неизвестно или средне, 3 - Не важен";
-            // 
-            // Score_A
-            // 
-            this.Score_A.Location = new System.Drawing.Point(44, 4);
-            this.Score_A.Name = "Score_A";
-            this.Score_A.Size = new System.Drawing.Size(119, 20);
-            this.Score_A.TabIndex = 0;
-            // 
-            // Score_B
-            // 
-            this.Score_B.Location = new System.Drawing.Point(196, 3);
-            this.Score_B.Name = "Score_B";
-            this.Score_B.Size = new System.Drawing.Size(118, 20);
-            this.Score_B.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(323, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Количество голов";
-            // 
-            // Shot_on_target_B
-            // 
-            this.Shot_on_target_B.Location = new System.Drawing.Point(196, 29);
-            this.Shot_on_target_B.Name = "Shot_on_target_B";
-            this.Shot_on_target_B.Size = new System.Drawing.Size(118, 20);
-            this.Shot_on_target_B.TabIndex = 4;
-            // 
-            // Shot_on_target_A
-            // 
-            this.Shot_on_target_A.Location = new System.Drawing.Point(44, 30);
-            this.Shot_on_target_A.Name = "Shot_on_target_A";
-            this.Shot_on_target_A.Size = new System.Drawing.Size(119, 20);
-            this.Shot_on_target_A.TabIndex = 3;
-            // 
-            // Save_B
-            // 
-            this.Save_B.Location = new System.Drawing.Point(196, 55);
-            this.Save_B.Name = "Save_B";
-            this.Save_B.Size = new System.Drawing.Size(118, 20);
-            this.Save_B.TabIndex = 6;
-            // 
-            // Save_A
-            // 
-            this.Save_A.Location = new System.Drawing.Point(44, 56);
-            this.Save_A.Name = "Save_A";
-            this.Save_A.Size = new System.Drawing.Size(119, 20);
-            this.Save_A.TabIndex = 5;
-            // 
-            // Violations_B
-            // 
-            this.Violations_B.Location = new System.Drawing.Point(196, 81);
-            this.Violations_B.Name = "Violations_B";
-            this.Violations_B.Size = new System.Drawing.Size(118, 20);
-            this.Violations_B.TabIndex = 8;
-            // 
-            // Violations_A
-            // 
-            this.Violations_A.Location = new System.Drawing.Point(44, 82);
-            this.Violations_A.Name = "Violations_A";
-            this.Violations_A.Size = new System.Drawing.Size(119, 20);
-            this.Violations_A.TabIndex = 7;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(323, 32);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Ударов в створ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(323, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Количество Сейвов";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(323, 81);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Нарушения ( карточки )";
-            // 
-            // Impotant_A_comboBox
-            // 
-            this.Impotant_A_comboBox.FormattingEnabled = true;
-            this.Impotant_A_comboBox.Location = new System.Drawing.Point(44, 29);
-            this.Impotant_A_comboBox.Name = "Impotant_A_comboBox";
-            this.Impotant_A_comboBox.Size = new System.Drawing.Size(119, 21);
-            this.Impotant_A_comboBox.TabIndex = 25;
-            // 
-            // Impotant_B_comboBox
-            // 
-            this.Impotant_B_comboBox.FormattingEnabled = true;
-            this.Impotant_B_comboBox.Location = new System.Drawing.Point(196, 28);
-            this.Impotant_B_comboBox.Name = "Impotant_B_comboBox";
-            this.Impotant_B_comboBox.Size = new System.Drawing.Size(119, 21);
-            this.Impotant_B_comboBox.TabIndex = 26;
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -371,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(233)))), ((int)(((byte)(156)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(249)))), ((int)(((byte)(170)))));
             this.ClientSize = new System.Drawing.Size(488, 326);
             this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.label12);

@@ -19,7 +19,7 @@ namespace InterpritatorInterface
         /// </summary>
         /// <param name="_outOutputNeironResults"></param>
         /// <returns></returns>
-        string GetPrediction(double[] _outOutputNeironResults);
+        string GetPrediction(List<double> _outOutputNeironResults);
 
         /// <summary>
         /// Обучение. Возвращает значение, к которому должна прийти вспомогательная нейронная сеть
@@ -33,7 +33,7 @@ namespace InterpritatorInterface
         /// </summary>
         /// <param name="correctScorePoints"></param>
         /// <returns></returns>
-        double[] GetPerfectArrayValue(int correctScorePoints);
+        List<double> GetPerfectArrayValue(int correctScorePoints);
 
         /// <summary>
         /// Смена типа интерпритатора

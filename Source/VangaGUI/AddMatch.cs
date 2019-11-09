@@ -30,9 +30,27 @@ namespace VangaGUI
                 TeamA_Box.Text = waitR.TeamA.Team_name;
                 TeamB_Box.Enabled = false;
                 TeamB_Box.Text = waitR.TeamB.Team_name;
+
+                Replace_A.Enabled = false;
+                Replace_A.Text = waitR.ReplasmentA.ToString();
+                Replace_B.Enabled = false;
+                Replace_B.Text = waitR.ReplasmentB.ToString();
+
+                Impotant_A_comboBox.Enabled = false;
+                Impotant_A_comboBox.Text = waitR.ImportantA.ToString();
+                Impotant_B_comboBox.Enabled = false;
+                Impotant_B_comboBox.Text = waitR.ImportantB.ToString();
+
+                DatePicker.Enabled = false;
+                DatePicker.Value = waitR.date;
+
+                isGoodMatch = true;
             }
-            Impotant_A_comboBox.Items.AddRange(new string[] { "1", "2", "3" });
-            Impotant_B_comboBox.Items.AddRange(new string[] { "1", "2", "3" });
+            else
+            {
+                Impotant_A_comboBox.Items.AddRange(new string[] { "1", "2", "3" });
+                Impotant_B_comboBox.Items.AddRange(new string[] { "1", "2", "3" });
+            }
         }
 
         private void Send_Click(object sender, EventArgs e)

@@ -43,13 +43,7 @@ namespace Football.Network
                 Console.WriteLine("Error message: " + ex.Message);
             }
         }
-
-        public List<Prediction> GetPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
-        {
-            // 15 параметров для 1 матча + турнир
-            return new List<Prediction>();
-        }
-
+        
         public double TestNetwork()
         {
             return 0.0;
@@ -113,6 +107,19 @@ namespace Football.Network
         {
             // Заглушка
             return true;
+        }
+
+        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
+        {
+            // Засунуть всю хуйню в вспомогательные сети, получить от них Double ответы, собрать их в массив - отдать мосту
+            // GetFitstPrediction()
+            return new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        }
+
+        public List<double> GetFinalPrediction(List<int> inputParameters)
+        {
+            var final = netNetwork.First(it => it.NetworkName == "Vanga");
+            return final.GetFinalPrediction(inputParameters);
         }
     }
 }

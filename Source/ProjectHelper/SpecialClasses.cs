@@ -24,13 +24,15 @@ namespace ProjectHelper
 
         public short ReplasmentA { get; set; }
 
-        public short RepalsmentB { get; set; }
+        public short ReplasmentB { get; set; }
 
         public short ImportantA { get; set; }
 
         public short ImportantB { get; set; }
 
         public string Prediction { get; set; }
+
+        public DateTime date { get; set; }
     }
 
     public class TeamInfo
@@ -46,13 +48,7 @@ namespace ProjectHelper
 
         public string Tournament_name { get; set; }
     }
-
-    public class Prediction
-    {
-        public string Predict { get; set; }
-        public string Risk { get; set; }
-    }
-
+    
     public class LastMatch
     {
         public decimal Team_A { get; set; }

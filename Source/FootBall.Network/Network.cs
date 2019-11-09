@@ -86,8 +86,15 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetPrediction(List<List<double>> InputParameters)
+        public List<double> GetFitstPrediction(List<List<double>> InputParameters)
         {
+            // Собираем ответы по одному в кучу
+            return new List<double>(_outputParametersCount);
+        }
+
+        public List<double> GetFinalPrediction(List<int> inputParameters)
+        {
+            // Запихиваем все выходные ответы
             return new List<double>(_outputParametersCount);
         }
 
