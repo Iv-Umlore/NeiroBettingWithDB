@@ -31,6 +31,8 @@ namespace ProjectHelper
         public short ImportantB { get; set; }
 
         public string Prediction { get; set; }
+
+        public DateTime date { get; set; }
     }
 
     public class TeamInfo

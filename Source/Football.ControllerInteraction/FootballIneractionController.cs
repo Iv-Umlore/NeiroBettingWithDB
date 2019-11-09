@@ -134,7 +134,8 @@ namespace Football.InteractionController
                     RepalsmentB = (short)matchWaitResult.replacements_B,
                     ImportantA = (short)matchWaitResult.important_A,
                     ImportantB = (short)matchWaitResult.important_B,
-                    Prediction = matchWaitResult.prediction
+                    Prediction = matchWaitResult.prediction,
+                    date = matchWaitResult.date
                 });
             }
             return resList;
