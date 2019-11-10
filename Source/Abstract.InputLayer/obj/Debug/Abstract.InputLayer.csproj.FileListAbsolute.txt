@@ -1,0 +1,5 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Abstract.InputLayer\bin\Debug\Abstract.InputLayer.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Abstract.InputLayer\bin\Debug\Abstract.InputLayer.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Abstract.InputLayer\obj\Debug\Abstract.InputLayer.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Abstract.InputLayer\obj\Debug\Abstract.InputLayer.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Abstract.InputLayer\obj\Debug\Abstract.InputLayer.pdb

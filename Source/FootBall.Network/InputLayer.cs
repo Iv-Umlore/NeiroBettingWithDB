@@ -15,7 +15,7 @@ namespace Football.Network
             outputParameters = new double[_outputParametersCount];
         }
 
-        public List<double> CalculateValues(List<LastMatch> pastmatches)
+        public List<double> CalculateValues(List<double> staticsticValues, List<int> importantValues)
         {
             return new List<double>(_outputParametersCount);
         }

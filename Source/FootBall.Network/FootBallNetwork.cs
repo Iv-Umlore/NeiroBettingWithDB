@@ -24,6 +24,16 @@ namespace Football.Network
                 pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
                 pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
 
+                var a = new TestAnstract();
+                var b = a.Item("spec");
+                var c = a.Item("stringABC");
+                var d = a.Item("value");
+                var err = a.Item("empty");
+                b.GetType();
+                c.GetType();
+                d.GetType();
+                err?.GetType();
+
                 netNetwork = new List<Network>();
                 netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
                 netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
@@ -109,14 +119,14 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
+        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament)
         {
             // Засунуть всю хуйню в вспомогательные сети, получить от них Double ответы, собрать их в массив - отдать мосту
             // GetFitstPrediction()
             return new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         }
 
-        public List<double> GetFinalPrediction(List<int> inputParameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters, string[] parameters)
         {
             var final = netNetwork.First(it => it.NetworkName == "Vanga");
             return final.GetFinalPrediction(inputParameters);

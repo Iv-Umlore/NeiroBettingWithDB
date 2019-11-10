@@ -133,7 +133,10 @@ namespace VangaGUI
 
         private string GetDate(DateTime dt)
         {
-            return String.Format("{0}.{1}.{2}", dt.Day, dt.Month, dt.Year);
+            return String.Format("{0}.{1}.{2}", 
+                (dt.Day < 10)? "0" + dt.Day: dt.Day.ToString(),
+                (dt.Month < 10) ? "0" + dt.Month : dt.Month.ToString(),
+                dt.Year);
         }
 
         private void Button1_Click(object sender, EventArgs e)

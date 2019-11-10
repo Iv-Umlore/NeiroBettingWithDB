@@ -13,7 +13,7 @@ namespace ProjectHelper
         CS_GO,
         Rocket_League
     };
-
+    
     public class MatchWaitResult
     {
         public TeamInfo TeamA { get; set; }
