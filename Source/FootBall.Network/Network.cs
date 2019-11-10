@@ -92,7 +92,7 @@ namespace Football.Network
             return new List<double>(_outputParametersCount);
         }
 
-        public List<double> GetFinalPrediction(List<int> inputParameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters)
         {
             // Запихиваем все выходные ответы
             return new List<double>(_outputParametersCount);

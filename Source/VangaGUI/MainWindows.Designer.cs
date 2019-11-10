@@ -351,6 +351,7 @@
             this.B1.Size = new System.Drawing.Size(261, 20);
             this.B1.TabIndex = 1;
             this.B1.Text = "Отсутсвует";
+            this.B1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AddMatch_TeamB
             // 
@@ -378,6 +379,7 @@
             this.B2.Size = new System.Drawing.Size(261, 20);
             this.B2.TabIndex = 2;
             this.B2.Text = "Отсутсвует";
+            this.B2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FifthMatchTotalB
             // 
@@ -395,6 +397,7 @@
             this.B5.Size = new System.Drawing.Size(261, 20);
             this.B5.TabIndex = 5;
             this.B5.Text = "Отсутсвует";
+            this.B5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ThirdMatchPanelB
             // 
@@ -412,6 +415,7 @@
             this.B3.Size = new System.Drawing.Size(261, 20);
             this.B3.TabIndex = 3;
             this.B3.Text = "Отсутсвует";
+            this.B3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FourthMatchPanelB
             // 
@@ -429,6 +433,7 @@
             this.B4.Size = new System.Drawing.Size(261, 20);
             this.B4.TabIndex = 4;
             this.B4.Text = "Отсутсвует";
+            this.B4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FiveLastMatchesLabel
             // 

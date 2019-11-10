@@ -109,14 +109,14 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
+        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament)
         {
             // Засунуть всю хуйню в вспомогательные сети, получить от них Double ответы, собрать их в массив - отдать мосту
             // GetFitstPrediction()
             return new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         }
 
-        public List<double> GetFinalPrediction(List<int> inputParameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters, string[] parameters)
         {
             var final = netNetwork.First(it => it.NetworkName == "Vanga");
             return final.GetFinalPrediction(inputParameters);
