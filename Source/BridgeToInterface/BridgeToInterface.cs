@@ -92,15 +92,24 @@ namespace BridgeToInterface
         
         public string GetPrediction(string[] parameters, DateTime date)
         {
-            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);            
+            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);
 
-            var statisticPredicts = _network.GetHistoryPrediction(lastMatchesA, lastMatchesB,tournament);
+            List<double> tmpValue = new List<double>();
+            foreach (var lastMatches in lastMatchesA)
+                tmpValue.AddRange(lastMatches.ToListDouble());
+
+            foreach (var lastMatches in lastMatchesB)
+                tmpValue.AddRange(lastMatches.ToListDouble());
+
+            var statisticPredicts = _network.GetHistoryPrediction(tmpValue);
 
             var finalInputParameters = new List<double>();
             foreach (var predict in statisticPredicts)
-                finalInputParameters.Add(_interpritator.GetPrediction(predict));
+                finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 
-            var finalPredict = _network.GetFinalPrediction(finalInputParameters, parameters);
+            // Вывести приколы интерпритаторов.
+
+            var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            
             _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction

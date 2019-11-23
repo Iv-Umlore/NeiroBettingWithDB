@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Football.InputLayers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,7 +11,7 @@ namespace Football.Network
     {
         private string separator = ";";
         private int _inputParametersCount, _outputParametersCount;
-        private InputLayer _inputLayer;
+        private FootballInputLayers _inputLayer;
         private List<HiddenLayer> _hiddenLayers;
         private OutputLayer _outputLayer;
         private string _networkName;
@@ -27,7 +28,7 @@ namespace Football.Network
             _inputParametersCount = inputParametersCount;
             _outputParametersCount = outputParametersCount;
 
-            _inputLayer = new InputLayer(_inputParametersCount, inputParametersInLayers[0]);
+            _inputLayer = new FootballInputLayers(_inputParametersCount, inputParametersInLayers[0], ProjectHelper.NetworkType.Football_Vanga);
             _hiddenLayers = new List<HiddenLayer>(HiddenLayerNumber);
 
             for (int i = 0; i < inputParametersInLayers.Count - 1; i++)
@@ -86,16 +87,15 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetFitstPrediction(List<List<double>> InputParameters)
+        public List<double> GetPrediction(List<double> InputParameters)
         {
             // Собираем ответы по одному в кучу
-            return new List<double>(_outputParametersCount);
-        }
+            var tmpList = _inputLayer.GetValueForNetwork(InputParameters);
+            foreach (var hLayer in _hiddenLayers)
+                tmpList = hLayer.CalculateValues(tmpList);
 
-        public List<double> GetFinalPrediction(List<double> inputParameters)
-        {
-            // Запихиваем все выходные ответы
-            return new List<double>(_outputParametersCount);
+
+            return _outputLayer.CalculateValues(tmpList);
         }
 
         public string NetworkName => _networkName;

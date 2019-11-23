@@ -44,7 +44,7 @@ namespace InterpritatorController
             return _mainInterpritator.GetPerfectValue(correctScorePoints);
         }
 
-        public int GetPrediction(double outputNeironResult)
+        public List<double> GetPrediction(double outputNeironResult)
         {
             return _mainInterpritator.GetPrediction(outputNeironResult);
         }

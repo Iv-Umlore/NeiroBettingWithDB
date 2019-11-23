@@ -63,14 +63,14 @@ namespace NetworkController
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament)
+        public List<double> GetHistoryPrediction(List<double> FullValues)
         {
-            return _network.GetHistoryPrediction(teamAMatches, teamBMatches, tournament);
+            return _network.GetHistoryPrediction(FullValues);
         }
 
-        public List<double> GetFinalPrediction(List<double> inputParameters, string[] parameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters)
         {
-            return _network.GetFinalPrediction(inputParameters, parameters);
+            return _network.GetFinalPrediction(inputParameters);
         }
     }
 }

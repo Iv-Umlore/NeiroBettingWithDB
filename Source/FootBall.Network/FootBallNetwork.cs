@@ -19,11 +19,11 @@ namespace Football.Network
 
         public FootballNetwork()
         {
-            try
-            {
-                pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
-                pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
+            pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
+            pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
 
+            try
+            {                
                 netNetwork = new List<Network>();
                 netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
                 netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
@@ -109,17 +109,22 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament)
+        public List<double> GetHistoryPrediction(List<double> FullValues/*List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament*/)
         {
-            // Засунуть всю хуйню в вспомогательные сети, получить от них Double ответы, собрать их в массив - отдать мосту
-            // GetFitstPrediction()
-            return new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
+            List<double> result = new List<double>();
+
+            foreach (var network in netNetwork)
+                if (network.NetworkName != "Vanga")
+                    result.Add(network.GetPrediction(FullValues)[0]);            
+
+            return result;
         }
 
-        public List<double> GetFinalPrediction(List<double> inputParameters, string[] parameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters)
         {
             var final = netNetwork.First(it => it.NetworkName == "Vanga");
-            return final.GetFinalPrediction(inputParameters);
+            return final.GetPrediction(inputParameters);
         }
     }
 }

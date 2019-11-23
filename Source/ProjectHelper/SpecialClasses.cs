@@ -5,14 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectHelper
-{
-
-    public enum Discipline
-    {
-        Football,
-        CS_GO,
-        Rocket_League
-    };
+{    
 
     public class MatchWaitResult
     {
@@ -73,6 +66,42 @@ namespace ProjectHelper
         public short replacements_A { get; set; }
         public short replacements_B { get; set; }
         public DateTime match_date { get; set; }
+        public bool IsA { get; set; }
+
+        /// <summary>
+        /// Score, Violations, ShotOnT,Save, TierCommand,important,replcement,tier_tournament
+        /// </summary> 
+        public List<double> ToListDouble()
+        {
+            var result = new List<double>();
+            if (IsA)
+                result.AddRange(new List<double>()
+                {
+                    Score_A, Score_B,
+                    Violations_A, Violations_B,
+                    shot_on_target_A, shot_on_target_B,
+                    save_A, save_B,
+                    tier_A, tier_B,
+                    Important_A, Important_B,
+                    replacements_A, replacements_B,
+                    tier_tournament });
+            else
+                result.AddRange(new List<double>()
+                {
+                    Score_B, Score_A,
+                    Violations_B, Violations_A,
+                    shot_on_target_B, shot_on_target_A,
+                    save_B, save_A,
+                    tier_B, tier_A,
+                    Important_B, Important_A,
+                    replacements_B, replacements_A,
+                    tier_tournament
+                });
+
+
+            return result;
+        }
+
     }
 
 }

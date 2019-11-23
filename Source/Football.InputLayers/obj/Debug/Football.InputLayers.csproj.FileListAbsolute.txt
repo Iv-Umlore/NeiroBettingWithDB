@@ -1,0 +1,11 @@
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\bin\Debug\Football.InputLayers.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\bin\Debug\Football.InputLayers.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\bin\Debug\Abstract.InputLayer.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\bin\Debug\Abstract.InputLayer.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\obj\Debug\Football.InputLayers.csprojAssemblyReference.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\obj\Debug\Football.InputLayers.csproj.CoreCompileInputs.cache
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\obj\Debug\Football.InputLayers.csproj.CopyComplete
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\obj\Debug\Football.InputLayers.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Football.InputLayers\obj\Debug\Football.InputLayers.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\Football.InputLayers.dll
+D:\PROGRAMS\NeiroBettingWithDB\Source\Bin\Football.InputLayers.pdb
