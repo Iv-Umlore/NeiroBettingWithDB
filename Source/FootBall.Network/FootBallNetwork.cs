@@ -109,14 +109,14 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<double> FullValues/*List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament*/)
+        public List<double> GetHistoryPrediction(List<double> fullValues)
         {
 
             List<double> result = new List<double>();
 
             foreach (var network in netNetwork)
                 if (network.NetworkName != "Vanga")
-                    result.Add(network.GetPrediction(FullValues)[0]);            
+                    result.Add(network.GetPrediction(fullValues)[0]);            
 
             return result;
         }

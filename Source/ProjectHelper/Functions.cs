@@ -23,7 +23,7 @@ namespace ProjectHelper
             return result;
         }
 
-        public static double GetMatchImportandCoeff(int tierA,int tierB)
+        public static double GetMatchCoeffByTier(int tierA,int tierB)
         {
             int rankA = 21 - tierA;
             int rankB = 21 - tierB;

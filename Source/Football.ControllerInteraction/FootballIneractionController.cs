@@ -73,18 +73,24 @@ namespace Football.InteractionController
             var pastMatchList = entities.PastMatches.Where(it => it.Team_A == teamId || it.Team_B == teamId)
                 .OrderByDescending(it => it.match_date).Take(5).ToList();
             foreach (var match in pastMatchList)
-                res.Add(ConvertToLastMatch(match,teamId));
+                res.Add(ConvertToLastMatch(match, teamId));
 
             _dalExecute.CloseConnection(entities);
             return res;
         }
 
+        /// <summary>
+        /// Учёт дома/ в гостях будет осущетвляться за счёт bool IsA
+        /// </summary>
+        /// <param name="match"></param>
+        /// <param name="teamId"></param>
+        /// <returns></returns>
         private LastMatch ConvertToLastMatch(PastMatch match, decimal teamId)
         {
             var entities = _dalExecute.NewEntities;
             var nameA = entities.Comands.First(it => it.id_team == match.Team_A).team_name;
             var nameB = entities.Comands.First(it => it.id_team == match.Team_B).team_name;
-            var isATeam = (match.Team_A == teamId);
+            var isHome = (match.Team_A == teamId);
 
             return new LastMatch()
             {
@@ -107,7 +113,7 @@ namespace Football.InteractionController
                 replacements_A = match.replacements_A,
                 replacements_B = match.replacements_B,
                 match_date = match.match_date,
-                IsA = isATeam
+                IsHome = isHome
             };
         }
 

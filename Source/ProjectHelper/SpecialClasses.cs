@@ -66,15 +66,16 @@ namespace ProjectHelper
         public short replacements_A { get; set; }
         public short replacements_B { get; set; }
         public DateTime match_date { get; set; }
-        public bool IsA { get; set; }
+        public bool IsHome { get; set; }
 
         /// <summary>
-        /// Score, Violations, ShotOnT,Save, TierCommand,important,replcement,tier_tournament
+        /// Score, Violations, ShotOnT,Save, TierCommand,important,replacement,tier_tournament
         /// </summary> 
         public List<double> ToListDouble()
         {
+            //TODO Начать учитывать матчи в гостях и дома (новая фича)
             var result = new List<double>();
-            if (IsA)
+            if (IsHome)
                 result.AddRange(new List<double>()
                 {
                     Score_A, Score_B,

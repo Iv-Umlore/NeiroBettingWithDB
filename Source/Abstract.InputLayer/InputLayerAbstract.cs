@@ -1,4 +1,5 @@
-﻿using ProjectHelper;
+﻿using System;
+using ProjectHelper;
 using System.Collections.Generic;
 
 namespace Abstract.InputLayer
@@ -17,7 +18,8 @@ namespace Abstract.InputLayer
         }
 
         public virtual List<double> GetValueForNetwork(List<double> values) {
-            return new List<double>();
+            Console.WriteLine("Вернулось значение по умолчанию. При вызове метода GetValueForNetwork().");
+            return values;
         }
 
         protected virtual double GetDoubleValue(List<double> OneMatch)

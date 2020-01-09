@@ -63,7 +63,7 @@ namespace BridgeToInterface
             else return teamList.Where(it => it.Team_name != withoutTeam_name).Select(it => it.Team_name).ToList();
         }
 
-        public List<string> GetTournamentList(string withoutTeam_name = "")
+        public List<string> GetTournamentList()
         {
             tournamentList = _interactionController.GetTournamentList();
             return tournamentList.Select(it => it.Tournament_name).ToList();
