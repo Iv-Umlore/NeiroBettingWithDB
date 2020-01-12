@@ -22,13 +22,13 @@ namespace Football.Network
         /// <param name="inputParametersCount"></param>
         /// <param name="outputParametersCount"></param>
         /// <param name="inputParametersInLayers"></param>
-        public Network(string networkName, int HiddenLayerNumber, int inputParametersCount, int outputParametersCount, List<int> inputParametersInLayers)
+        public Network(string networkName, int HiddenLayerNumber, int inputParametersCount, int outputParametersCount, List<int> inputParametersInLayers, ProjectHelper.NetworkType type)
         {
             _networkName = networkName;
             _inputParametersCount = inputParametersCount;
             _outputParametersCount = outputParametersCount;
 
-            _inputLayer = new FootballInputLayers(_inputParametersCount, inputParametersInLayers[0], ProjectHelper.NetworkType.Football_Vanga);
+            _inputLayer = new FootballInputLayers(_inputParametersCount, inputParametersInLayers[0], type);
             _hiddenLayers = new List<HiddenLayer>(HiddenLayerNumber);
 
             for (int i = 0; i < inputParametersInLayers.Count - 1; i++)
@@ -97,6 +97,17 @@ namespace Football.Network
 
             return _outputLayer.CalculateValues(tmpList);
         }
+
+        /// <summary>
+        /// Реализация на будущее
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private ProjectHelper.NetworkType GetNetworkTypeByName(string name)
+        {
+            return ProjectHelper.NetworkType.Football_Vanga;
+        }
+
 
         public string NetworkName => _networkName;
     }

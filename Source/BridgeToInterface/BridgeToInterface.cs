@@ -108,7 +108,6 @@ namespace BridgeToInterface
                 finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 
             // Вывести приколы интерпритаторов.
-
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            

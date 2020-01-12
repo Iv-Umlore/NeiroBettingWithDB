@@ -1,6 +1,7 @@
 ﻿using Abstract.InputLayer;
 using ProjectHelper;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Football.InputLayers
 {
@@ -15,13 +16,13 @@ namespace Football.InputLayers
 
             switch (_networkT)
             {
-                case NetworkType.Football_Total: return GetStaticsticTotalGoal(lastMatch);
+                case NetworkType.Football_Total: return GetStatisticTotalGoals(lastMatch);
                 case NetworkType.Football_SaveA: return GetStatisticSaveA(lastMatch);
                 case NetworkType.Football_SaveB: return GetStatisticSaveB(lastMatch);
-                case NetworkType.Football_ViolationsA: return GetStatisticViolationsA(lastMatch);
-                case NetworkType.Football_ViolationsB: return GetStatisticViolationsB(lastMatch);
-                case NetworkType.Football_ShotA: return GetStatisticShotA(lastMatch);
-                case NetworkType.Football_ShotB: return GetStatisticShotB(lastMatch);
+                case NetworkType.Football_ViolationsA: return GetStatisticViolationsA(lastMatch.Take(5).ToList());
+                case NetworkType.Football_ViolationsB: return GetStatisticViolationsB(lastMatch.Skip(5).ToList());
+                case NetworkType.Football_ShotA: return GetStatisticShotA(lastMatch.Take(5).ToList());
+                case NetworkType.Football_ShotB: return GetStatisticShotB(lastMatch.Skip(5).ToList());
                 case NetworkType.Football_Vanga: return GetVangaInput(values);
                 default: return base.GetValueForNetwork(values);
             }        
@@ -48,37 +49,147 @@ namespace Football.InputLayers
 
             return result;
         }
+
         private List<double> GetStatisticSaveA(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            List<double> saveArrayA = new List<double>();
+            List<double> goodShootArrayB = new List<double>();
+
+            double tmp = 0.0;
+
+            foreach (var match in values.Take(5).ToList())
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                tmp = (match.save_A / match.shot_on_target_B) * tierCoeff / importantCoeff * replasementCoeff;
+                saveArrayA.Add(tmp);
+            }
+
+            saveArrayA.OrderByDescending(it=>it);
+
+            foreach (var match in values.Skip(5).ToList())
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                tmp = (match.shot_on_target_A / match.save_B) * tierCoeff / importantCoeff * replasementCoeff;
+                goodShootArrayB.Add(tmp);
+            }
+
+            goodShootArrayB.OrderByDescending(it => it);
+
+            var result = new List<double>();
+            result.AddRange(saveArrayA);
+            result.AddRange(goodShootArrayB);
+
+            return result;
         }
+
         private List<double> GetStatisticSaveB(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            List<double> saveArrayB = new List<double>();
+            List<double> goodShootArrayA = new List<double>();
+
+            double tmp = 0.0;
+
+            foreach (var match in values.Skip(5).ToList())
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                tmp = (match.save_A / match.shot_on_target_B) * tierCoeff / importantCoeff * replasementCoeff;
+                saveArrayB.Add(tmp);
+            }
+
+            saveArrayB.OrderByDescending(it => it);
+
+            foreach (var match in values.Take(5).ToList())
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                tmp = (match.shot_on_target_A / match.save_B) * tierCoeff / importantCoeff * replasementCoeff;
+                goodShootArrayA.Add(tmp);
+            }
+
+            goodShootArrayA.OrderByDescending(it => it);
+
+            var result = new List<double>();
+            result.AddRange(saveArrayB);
+            result.AddRange(goodShootArrayA);
+
+            return result;
         }
+
         private List<double> GetStatisticViolationsA(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            var result = new List<double>();
+
+            foreach (var match in values){
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                result.Add(match.Violations_A * importantCoeff / tierCoeff);
+            }
+
+            result.OrderByDescending(it => it);
+
+            return result;
         }
+
         private List<double> GetStatisticViolationsB(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            var result = new List<double>();
+
+            foreach (var match in values)
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                result.Add(match.Violations_A * importantCoeff / tierCoeff);
+            }
+
+            result.OrderByDescending(it => it);
+
+            return result;
         }
+
         private List<double> GetStatisticShotA(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            var result = new List<double>();
+            var tmp = 0.0;
+
+            foreach (var match in values)
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff;
+                result.Add(tmp);
+            }
+
+            return result;
         }
+
         private List<double> GetStatisticShotB(List<LastMatch> values)
         {
-            return new List<double>(_outputParametersCount);
+            var result = new List<double>();
+            var tmp = 0.0;
+
+            foreach (var match in values)
+            {
+                var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
+                var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
+                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff;
+                result.Add(tmp);
+            }
+
+            return result;
         }
-        private List<double> GetStaticsticTotalGoal(List<LastMatch> values)
-        {
-            return new List<double>(_outputParametersCount);
-        }
+        
         private List<double> GetVangaInput(List<double> values)
         {
-            return new List<double>(_outputParametersCount);
+            // 4 последних числа - важность и замены команд
+            // Изменить эту хуйню в будущем
+            return values;
         }
 
         private List<LastMatch> ConvertToLastMatch(List<double> values)
@@ -86,7 +197,7 @@ namespace Football.InputLayers
             var res = new List<LastMatch>();
             int i = 0;
 
-            if (values.Count % 14 == 0)
+            if (values.Count % 15 == 0)
             {
                 while (i < 150)
                 {

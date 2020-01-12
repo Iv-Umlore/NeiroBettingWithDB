@@ -25,15 +25,15 @@ namespace Football.Network
             try
             {                
                 netNetwork = new List<Network>();
-                netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Save_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Violations_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Violations_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Shot_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Shot_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                // + tournament
-                netNetwork.Add(new Network("Vanga", 2, 10, 10, new List<int>() { 8, 8, 10 }));
+                netNetwork.Add(new Network("TotalGoals", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_Total));
+                netNetwork.Add(new Network("Save_A", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveA));
+                netNetwork.Add(new Network("Save_B", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveB));
+                netNetwork.Add(new Network("Violations_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsA));
+                netNetwork.Add(new Network("Violations_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsB));
+                netNetwork.Add(new Network("Shot_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotA));
+                netNetwork.Add(new Network("Shot_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotB));
+
+                netNetwork.Add(new Network("Vanga", 2, 150, 10, new List<int>() { 14, 10, 10 }, NetworkType.Football_Vanga));
 
                 SetLoadWeights();
             }
