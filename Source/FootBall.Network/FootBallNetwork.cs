@@ -19,21 +19,21 @@ namespace Football.Network
 
         public FootballNetwork()
         {
-            try
-            {
-                pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
-                pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
+            pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
+            pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
 
+            try
+            {                
                 netNetwork = new List<Network>();
-                netNetwork.Add(new Network("TotalGoals", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Save_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Save_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Violations_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Violations_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Shot_A", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                netNetwork.Add(new Network("Shot_B", 3, 151, 1, new List<int>() { 40, 20, 10, 5 }));
-                // + tournament
-                netNetwork.Add(new Network("Vanga", 2, 10, 10, new List<int>() { 8, 8, 10 }));
+                netNetwork.Add(new Network("TotalGoals", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_Total));
+                netNetwork.Add(new Network("Save_A", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveA));
+                netNetwork.Add(new Network("Save_B", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveB));
+                netNetwork.Add(new Network("Violations_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsA));
+                netNetwork.Add(new Network("Violations_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsB));
+                netNetwork.Add(new Network("Shot_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotA));
+                netNetwork.Add(new Network("Shot_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotB));
+
+                netNetwork.Add(new Network("Vanga", 2, 150, 10, new List<int>() { 14, 10, 10 }, NetworkType.Football_Vanga));
 
                 SetLoadWeights();
             }
@@ -109,17 +109,22 @@ namespace Football.Network
             return true;
         }
 
-        public List<double> GetHistoryPrediction(List<LastMatch> teamAMatches, List<LastMatch> teamBMatches, TournamentShort tournament, string[] parameters)
+        public List<double> GetHistoryPrediction(List<double> fullValues)
         {
-            // Засунуть всю хуйню в вспомогательные сети, получить от них Double ответы, собрать их в массив - отдать мосту
-            // GetFitstPrediction()
-            return new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+
+            List<double> result = new List<double>();
+
+            foreach (var network in netNetwork)
+                if (network.NetworkName != "Vanga")
+                    result.Add(network.GetPrediction(fullValues)[0]);            
+
+            return result;
         }
 
-        public List<double> GetFinalPrediction(List<int> inputParameters)
+        public List<double> GetFinalPrediction(List<double> inputParameters)
         {
             var final = netNetwork.First(it => it.NetworkName == "Vanga");
-            return final.GetFinalPrediction(inputParameters);
+            return final.GetPrediction(inputParameters);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace BridgeToInterface
             else return teamList.Where(it => it.Team_name != withoutTeam_name).Select(it => it.Team_name).ToList();
         }
 
-        public List<string> GetTournamentList(string withoutTeam_name = "")
+        public List<string> GetTournamentList()
         {
             tournamentList = _interactionController.GetTournamentList();
             return tournamentList.Select(it => it.Tournament_name).ToList();
@@ -92,14 +92,22 @@ namespace BridgeToInterface
         
         public string GetPrediction(string[] parameters, DateTime date)
         {
-            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);            
+            var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);
 
-            var statisticPredicts = _network.GetHistoryPrediction(lastMatchesA, lastMatchesB,tournament, parameters);
+            List<double> tmpValue = new List<double>();
+            foreach (var lastMatches in lastMatchesA)
+                tmpValue.AddRange(lastMatches.ToListDouble());
 
-            var finalInputParameters = new List<int>();
+            foreach (var lastMatches in lastMatchesB)
+                tmpValue.AddRange(lastMatches.ToListDouble());
+
+            var statisticPredicts = _network.GetHistoryPrediction(tmpValue);
+
+            var finalInputParameters = new List<double>();
             foreach (var predict in statisticPredicts)
-                finalInputParameters.Add(_interpritator.GetPrediction(predict));
+                finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 
+            // Вывести приколы интерпритаторов.
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            

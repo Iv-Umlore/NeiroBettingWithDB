@@ -22,19 +22,34 @@ namespace Football.Interpritator
 
         public double GetPerfectValue(int correctScorePoints)
         {
-            return SigmaFunction(correctScorePoints);
+            return HelpFunctions.SigmaFunction(correctScorePoints);
         }
 
-        public int GetPrediction(double outputNeironResult)
+        public List<double> GetPrediction(double outputNeironResult)
         {
+            List<double> res = new List<double>();
             var result = 0;
-            var diff = outputNeironResult - SigmaFunction(0);
-            while (Math.Pow(diff , 2) >= Math.Pow(outputNeironResult - SigmaFunction(result), 2)) {
-                diff = outputNeironResult - SigmaFunction(result);
+            var diff = outputNeironResult - HelpFunctions.SigmaFunction(0);
+            while (Math.Pow(diff , 2) >= Math.Pow(outputNeironResult - (result), 2)) {
+                diff = outputNeironResult - HelpFunctions.SigmaFunction(result);
                 result++;
             }
-                
-            return result - 1;
+
+            var prev = Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(((result - 2) < 0) ? result - 2 : 0), 2);
+            var next = Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(result), 2);
+
+            bool flag = ( prev < next);
+
+            if (flag) {
+                res.Add(((result - 2) < 0) ? result - 2 : 0);
+                res.Add(result - 1);
+            }
+            else {                
+                res.Add(result - 1);
+                res.Add(result);
+            }
+
+            return res;
         }
 
         public string GetPrediction(List<double> _outOutputNeironResults)
@@ -58,12 +73,6 @@ namespace Football.Interpritator
             }
         }
         
-        private double SigmaFunction(double value)
-        {
-            double result = 2 / (1 + Math.Pow(Math.E, -5 * value)) - 1;
-            return result;
-        }
-
     }
 }
  

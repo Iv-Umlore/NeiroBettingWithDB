@@ -33,7 +33,7 @@ namespace Football.Network
 
         public List<double> CalculateValues(List<double> inputValues)
         {
-            if (InputValueList.Count != inputValues.Count) throw new Exception("Несоответствие размерности входного вектора и количества входных параметров. Layer.CalculateValues()");
+            if (_inputValuesCount != inputValues.Count) throw new Exception("Несоответствие размерности входного вектора и количества входных параметров. Layer.CalculateValues()");
             InputValueList = inputValues;
 
             var result = new List<double>();

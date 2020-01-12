@@ -12,7 +12,7 @@ namespace InterpritatorInterface
         /// <summary>
         /// Вычисление. Вердикт вспомогательной нейронной сети
         /// </summary>
-        int GetPrediction(double outputNeironResult);
+        List<double> GetPrediction(double outputNeironResult);
 
         /// <summary>
         /// Вычисление. Строка которую надо будет распарсить для получения вердикта сети для вспомогательных сетей

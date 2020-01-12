@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectHelper;
+using System;
 using System.Collections.Generic;
 
 namespace Football.Network
@@ -22,7 +23,7 @@ namespace Football.Network
             for (int i = 0; i < _weights.Count; i++)
                 result += _weights[i] * values[i];
 
-            result = SigmaFunction(result);
+            result = HelpFunctions.SigmaFunction(result);
             return result;
         }
 
@@ -30,7 +31,7 @@ namespace Football.Network
         {
             List<double> res = new List<double>();
             // не помню почему так
-            double deltaW = Derivate(result) * error;
+            double deltaW = HelpFunctions.Derivate(result) * error;
             for (int i = 0; i < _weights.Count; i++)
             {
                 _weights[i] -= output[i] * deltaW * learningSpeed;
@@ -74,13 +75,6 @@ namespace Football.Network
             return result;
         }
 
-        private double Derivate(double value)
-        {
-            double E = Math.E;
-            double pow = Math.Pow(E, -5 * value);
-            double result = 10 * pow / Math.Pow(1 + pow, 2);
-            return result;
-        }
 
     }
 }

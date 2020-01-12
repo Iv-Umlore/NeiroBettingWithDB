@@ -43,6 +43,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface.Network", "Interf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Interpritator", "Controller.Interpritator\Controller.Interpritator.csproj", "{8459E21E-5F00-42D4-B9A9-155A1A510DB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstract.InputLayer", "Abstract.InputLayer\Abstract.InputLayer.csproj", "{1EA01EB8-BB69-4FC0-B413-E304D2101B11}"
+	ProjectSection(ProjectDependencies) = postProject
+		{343CB888-D6D5-4968-BD51-53A1BE2DF6E1} = {343CB888-D6D5-4968-BD51-53A1BE2DF6E1}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.InputLayers", "Football.InputLayers\Football.InputLayers.csproj", "{6CBC00A0-902B-4824-A82F-823219D2B6F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +108,14 @@ Global
 		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8459E21E-5F00-42D4-B9A9-155A1A510DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EA01EB8-BB69-4FC0-B413-E304D2101B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EA01EB8-BB69-4FC0-B413-E304D2101B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EA01EB8-BB69-4FC0-B413-E304D2101B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EA01EB8-BB69-4FC0-B413-E304D2101B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CBC00A0-902B-4824-A82F-823219D2B6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBC00A0-902B-4824-A82F-823219D2B6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBC00A0-902B-4824-A82F-823219D2B6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CBC00A0-902B-4824-A82F-823219D2B6F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
