@@ -45,6 +45,7 @@ namespace Football.InteractionController
             {
                 var MWR = entities.WaitResults.First(it => it.Team_A == currentMatch.Team_A && it.Team_B == currentMatch.Team_B && it.date == currentMatch.match_date);
                 entities.WaitResults.Remove(MWR);
+                // Изменение ранга команд
             }
 
             _dalExecute.CloseConnection(entities);
@@ -240,7 +241,7 @@ namespace Football.InteractionController
                 replacements_B = int.Parse(parameters[6]),
                 important_A = int.Parse(parameters[3]),
                 important_B = int.Parse(parameters[4]),
-                date = date, prediction = prediction
+                prediction = prediction,date = date
             });
 
             entities.DeleteSpace();

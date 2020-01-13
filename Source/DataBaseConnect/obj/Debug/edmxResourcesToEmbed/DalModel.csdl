@@ -59,7 +59,7 @@
     <Property Name="replacements_B" Type="Int32" Nullable="false" />
     <Property Name="important_A" Type="Int32" Nullable="false" />
     <Property Name="important_B" Type="Int32" Nullable="false" />
-    <Property Name="prediction" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="prediction" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Comand" Relationship="Self.FK_WR_A" FromRole="WaitResults" ToRole="Comands" />
     <NavigationProperty Name="Tournament1" Relationship="Self.FK_WR_Tournament" FromRole="WaitResults" ToRole="Tournament" />
