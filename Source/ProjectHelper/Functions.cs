@@ -11,19 +11,19 @@ namespace ProjectHelper
 
         public static double SigmaFunction(double value)
         {
-            double result = 2 / (1 + Math.Pow(Math.E, -5 * value)) - 1;
+            double result = 1 / (1 + Math.Pow(5 * Math.E, -value));
             return result;
         }
 
         public static double Derivate(double value)
         {
             double E = Math.E;
-            double pow = Math.Pow(E, -5 * value);
-            double result = 10 * pow / Math.Pow(1 + pow, 2);
+            double pow = Math.Pow(E, -value);
+            double result = 5 * pow / Math.Pow(1 + 5 * pow, 2);
             return result;
         }
 
-        public static double GetMatchCoeffByTier(int tierA,int tierB)
+        public static double GetMatchCoeffByTier(int tierA, int tierB)
         {
             int rankA = 21 - tierA;
             int rankB = 21 - tierB;
@@ -52,4 +52,26 @@ namespace ProjectHelper
         }
 
     }
+
+    public static class Randomaze
+    {
+        private static Random rand;
+
+        static Randomaze()
+        {
+            rand = new Random((int)DateTime.Now.Ticks);
+        }
+
+        public static int NextInt(int maxSize)
+        {
+            return rand.Next(maxSize);
+        }
+
+        public static double NextDouble()
+        {
+            return rand.NextDouble();
+        }
+
+    }
+
 }

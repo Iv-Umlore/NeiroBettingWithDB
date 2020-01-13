@@ -88,16 +88,18 @@ namespace Football.InteractionController
         private LastMatch ConvertToLastMatch(PastMatch match, decimal teamId)
         {
             var entities = _dalExecute.NewEntities;
-            var nameA = entities.Comands.First(it => it.id_team == match.Team_A).team_name;
-            var nameB = entities.Comands.First(it => it.id_team == match.Team_B).team_name;
+            var teamA = entities.Comands.First(it => it.id_team == match.Team_A);
+            var teamB = entities.Comands.First(it => it.id_team == match.Team_B);
             var isHome = (match.Team_A == teamId);
 
             return new LastMatch()
             {
                 Team_A = match.Team_A,
                 Team_B = match.Team_B,
-                Name_A = nameA,
-                Name_B = nameB,
+                Name_A = teamA.team_name,
+                Name_B = teamB.team_name,
+                tier_A = teamA.tier_team,
+                tier_B = teamB.tier_team,
                 Score_A = match.Score_A,
                 Score_B = match.Score_B,
                 Important_A = match.Important_A,
@@ -220,7 +222,7 @@ namespace Football.InteractionController
             return true;
         }
 
-        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date)
+        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date, string prediction)
         {
             var entities = _dalExecute.NewEntities;
 
@@ -238,7 +240,7 @@ namespace Football.InteractionController
                 replacements_B = int.Parse(parameters[6]),
                 important_A = int.Parse(parameters[3]),
                 important_B = int.Parse(parameters[4]),
-                date = date
+                date = date, prediction = prediction
             });
 
             entities.DeleteSpace();

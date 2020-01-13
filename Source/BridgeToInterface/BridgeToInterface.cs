@@ -101,8 +101,8 @@ namespace BridgeToInterface
             
             foreach (var lastMatches in lastMatchesB)
                 tmpValue.AddRange(lastMatches.ToListDouble());
-
-            // Проверить эту захардкоценность
+            
+            // Получение ранга команд из прошлых матчей (интересный костыль)
             tierA = tmpValue[8];
             tierB = tmpValue[83];
 
@@ -132,7 +132,7 @@ namespace BridgeToInterface
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            
-            _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction !!!!
+            _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction); // + запись Prediction !!!!
 
             return prediction;
         }
