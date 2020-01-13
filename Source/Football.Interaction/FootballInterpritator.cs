@@ -43,17 +43,17 @@ namespace Football.Interpritator
             }
             
 
-            var prev = Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(((result - 2) < 0) ? result - 2 : 0), 2);
+            var prev = Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(((result - 2) < 0) ? 0 : result - 2), 2);
             var next = Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(result), 2);
 
             bool flag = ( prev < next);
 
             if (flag) {
-                res.Add( ( result - 2 < 0) ? result - 2 : 0);
-                res.Add( ( result - 1 < 0) ? result - 1 : 0);
+                res.Add( ( result - 2 < 0) ? 0 : result - 2);
+                res.Add( ( result - 1 < 0) ? 0 : result - 1 );
             }
             else {                
-                res.Add((result - 1 < 0) ? result - 1 : 0);
+                res.Add((result - 1 < 0) ? 0 : result - 1 );
                 res.Add(result);
             }
 

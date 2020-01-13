@@ -8,7 +8,7 @@ namespace Football.Network
     {
         private List<double> _weights;
         private const int ChangeSize = 10;
-        private const int RandomSize = 5;
+        private const int RandomSize = 1;
         private const double learningSpeed = 0.01;
 
         public Neiron(List<double> weights)
