@@ -93,13 +93,18 @@ namespace BridgeToInterface
         public string GetPrediction(string[] parameters, DateTime date)
         {
             var tournament = tournamentList.First(it => it.Tournament_name == parameters[0]);
-
+            var tierA = 0.0;
+            var tierB = 0.0;
             List<double> tmpValue = new List<double>();
             foreach (var lastMatches in lastMatchesA)
                 tmpValue.AddRange(lastMatches.ToListDouble());
-
+            
             foreach (var lastMatches in lastMatchesB)
                 tmpValue.AddRange(lastMatches.ToListDouble());
+
+            // Проверить эту захардкоценность
+            tierA = tmpValue[8];
+            tierB = tmpValue[83];
 
             var statisticPredicts = _network.GetHistoryPrediction(tmpValue);
 
@@ -108,10 +113,26 @@ namespace BridgeToInterface
                 finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 
             // Вывести приколы интерпритаторов.
+
+            // Дополнительные параметры для итоговой нейронной сети
+            finalInputParameters.Add(tierA);
+            finalInputParameters.Add(tierB);
+            // Важность для домашней команды и команды гостей
+            finalInputParameters.Add(int.Parse(parameters[3]));
+            finalInputParameters.Add(int.Parse(parameters[4]));
+            // Замены у домашней команды и команды гостей
+            finalInputParameters.Add(int.Parse(parameters[5]));
+            finalInputParameters.Add(int.Parse(parameters[6]));
+            finalInputParameters.Add(tournament.Tournament_size);
+
+            /// Вычисление итогового результата.
+            /// Результат - массив из 10 чисел. Число, первым выходящее за Епсилон больше 0.1 от Единицы,
+            /// считается результатом с умеренным риском. Для преобразования результата в более понятный вид
+            /// необходимо воспользоваться интерпритатором
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            
-            _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction
+            _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction !!!!
 
             return prediction;
         }

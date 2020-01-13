@@ -40,6 +40,8 @@ namespace ProjectHelper
         public int Tournament_id { get; set; }
 
         public string Tournament_name { get; set; }
+
+        public int Tournament_size { get; set; }
     }
     
     public class LastMatch

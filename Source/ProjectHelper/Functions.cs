@@ -46,5 +46,10 @@ namespace ProjectHelper
             return 1.0;
         }
 
+        public static double GetCoeffByTournament(int tournament_size, int tierA, int tierB)
+        {
+            return 1.0;
+        }
+
     }
 }

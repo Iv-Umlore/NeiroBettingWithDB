@@ -179,7 +179,8 @@ namespace Football.InteractionController
                 TournamentInfoList.Add(new TournamentShort()
                 {
                     Tournament_name = tournament.Tournament_name,
-                    Tournament_id = (int)tournament.id_Tournament
+                    Tournament_id = (int)tournament.id_Tournament,
+                    Tournament_size = (int)tournament.Tournament_size
                 });
 
             tournaments = TournamentInfoList;

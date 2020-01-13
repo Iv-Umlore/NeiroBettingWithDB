@@ -46,7 +46,7 @@ namespace Football.Network
         /// </summary>
         public void ChangeWeights()
         {
-            var rand = new Random();
+            var rand = new Random((int)(DateTime.Now.Ticks));
             for (int i = 0; i < _weights.Count; i++)
                 _weights[i] += rand.NextDouble() / ChangeSize;
         }
@@ -64,7 +64,7 @@ namespace Football.Network
 
         public void DropWeights()
         {
-            var rand = new Random();
+            var rand = new Random((int) (DateTime.Now.Ticks));
             for (int i = 0; i < _weights.Count; i++)
                 _weights[i] = rand.Next(RandomSize) + rand.NextDouble();
         }
