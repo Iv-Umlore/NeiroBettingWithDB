@@ -222,7 +222,7 @@ namespace Football.InteractionController
             return true;
         }
 
-        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date)
+        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date, string prediction)
         {
             var entities = _dalExecute.NewEntities;
 
@@ -240,7 +240,7 @@ namespace Football.InteractionController
                 replacements_B = int.Parse(parameters[6]),
                 important_A = int.Parse(parameters[3]),
                 important_B = int.Parse(parameters[4]),
-                date = date
+                date = date, prediction = prediction
             });
 
             entities.DeleteSpace();

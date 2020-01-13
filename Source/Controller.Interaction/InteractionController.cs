@@ -60,9 +60,9 @@ namespace InteractionController
             return _disciplineController.AddNewTournament(TournamentName, size);
         }
 
-        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date)
+        public bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date, string prediction)
         {
-            return _disciplineController.AddNewWaitResultMatch(parameters, tournament, date);
+            return _disciplineController.AddNewWaitResultMatch(parameters, tournament, date, prediction);
         }
 
         public bool ChangeDiscipline(Discipline type)

@@ -132,7 +132,7 @@ namespace BridgeToInterface
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
             var prediction = _interpritator.GetPrediction(finalPredict);
            
-            _interactionController.AddNewWaitResultMatch(parameters, tournament, date); // + запись Prediction !!!!
+            _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction); // + запись Prediction !!!!
 
             return prediction;
         }
