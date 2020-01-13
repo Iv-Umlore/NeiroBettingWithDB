@@ -8,7 +8,7 @@ namespace Football.Network
     {
         private List<double> _weights;
         private const int ChangeSize = 10;
-        private const int RandomSize = 1;
+        private const int RandomSize = 2;
         private const double learningSpeed = 0.01;
 
         public Neiron(List<double> weights)
@@ -65,15 +65,8 @@ namespace Football.Network
         public void DropWeights()
         {
             for (int i = 0; i < _weights.Count; i++)
-                _weights[i] = Randomaze.NextInt(RandomSize) + Randomaze.NextDouble();
+               _weights[i] = Randomaze.NextInt(RandomSize) + Randomaze.NextDouble();
         }
-
-        private double SigmaFunction(double value)
-        {
-            double result = 2 / (1 + Math.Pow(Math.E, -5 * value)) - 1;
-            return result;
-        }
-
-
+        
     }
 }
