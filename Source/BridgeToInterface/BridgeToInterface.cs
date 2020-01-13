@@ -112,6 +112,11 @@ namespace BridgeToInterface
             foreach (var predict in statisticPredicts)
                 finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 
+            var prediction = "ТБ:  " + ((finalInputParameters[0] + finalInputParameters[1]) / 2).ToString("f1") +
+                " Нарушений А: " + ((finalInputParameters[6] + finalInputParameters[7]) / 2).ToString("f2") +
+                " Нарушений B: " + ((finalInputParameters[8] + finalInputParameters[9]) / 2).ToString("f2") +
+                " Забито А: " + (((finalInputParameters[10] + finalInputParameters[11]) / 2) / ((finalInputParameters[4] + finalInputParameters[5]) / 2)).ToString("f2") +
+                " Забито В: " + (((finalInputParameters[12] + finalInputParameters[13]) / 2) / ((finalInputParameters[2] + finalInputParameters[3]) / 2)).ToString("f2") + ";";
             // Вывести приколы интерпритаторов.
 
             // Дополнительные параметры для итоговой нейронной сети
@@ -130,8 +135,8 @@ namespace BridgeToInterface
             /// считается результатом с умеренным риском. Для преобразования результата в более понятный вид
             /// необходимо воспользоваться интерпритатором
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
-            var prediction = _interpritator.GetPrediction(finalPredict);
-           
+            //prediction += _interpritator.GetPrediction(finalPredict);
+            prediction += "asdwdqundjsnadqwd;asjduwqjndausnd;asdjqwnbdnajsdqwd;";
             _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction); // + запись Prediction !!!!
 
             return prediction;

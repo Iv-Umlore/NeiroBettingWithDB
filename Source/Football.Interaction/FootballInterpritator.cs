@@ -74,11 +74,11 @@ namespace Football.Interpritator
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.75) break;
+                    if (_outOutputNeironResults[i] >= 0.965) break;
                     i++;
                 }
                 // Нашёл I.
-                return i.ToString() + (i + 1).ToString() + (i + 2).ToString();
+                return i.ToString() + ';' + (i + 1).ToString() + ';' + (i + 2).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)

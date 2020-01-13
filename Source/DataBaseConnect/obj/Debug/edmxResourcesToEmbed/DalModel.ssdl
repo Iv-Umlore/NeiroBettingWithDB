@@ -53,7 +53,7 @@
     <Property Name="replacements-B" Type="int" Nullable="false" />
     <Property Name="important-A" Type="int" Nullable="false" />
     <Property Name="important-B" Type="int" Nullable="false" />
-    <Property Name="prediction" Type="nvarchar" MaxLength="30" />
+    <Property Name="prediction" Type="nvarchar" MaxLength="400" Nullable="false" />
     <Property Name="date" Type="date" Nullable="false" />
   </EntityType>
   <Association Name="FK_TeamA">
@@ -98,20 +98,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_WR_Tournament">
-    <End Role="Tournament" Type="Self.Tournament" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="WaitResults" Type="Self.WaitResults" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tournament">
-        <PropertyRef Name="id_Tournament" />
-      </Principal>
-      <Dependent Role="WaitResults">
-        <PropertyRef Name="tournament" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="DeleteSpace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="football" />
   <EntityContainer Name="Хранилище MatchesResultModelContainer">
     <EntitySet Name="Comands" EntityType="Self.Comands" Schema="football" store:Type="Tables" />
@@ -128,10 +114,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_WR_A" Association="Self.FK_WR_A">
       <End Role="Comands" EntitySet="Comands" />
-      <End Role="WaitResults" EntitySet="WaitResults" />
-    </AssociationSet>
-    <AssociationSet Name="FK_WR_Tournament" Association="Self.FK_WR_Tournament">
-      <End Role="Tournament" EntitySet="Tournament" />
       <End Role="WaitResults" EntitySet="WaitResults" />
     </AssociationSet>
   </EntityContainer>

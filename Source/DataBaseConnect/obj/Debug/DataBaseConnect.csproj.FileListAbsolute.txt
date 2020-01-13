@@ -16,3 +16,4 @@ D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csproj.CopyComplete
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.dll
 D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.pdb
+D:\PROGRAMS\NeiroBettingWithDB\Source\DataBaseConnect\obj\Debug\DataBaseConnect.csprojAssemblyReference.cache

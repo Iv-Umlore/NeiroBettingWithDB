@@ -103,7 +103,7 @@ CREATE TABLE football.WaitResults
 	[replacements-B] int NOT NULL,
 	[important-A] int NOT NULL,
 	[important-B] int NOT NULL,
-	[prediction] nvarchar(200) NOT NULL,
+	[prediction] nvarchar(400) NOT NULL,
 	[date] date NOT NULL
 	)  ON [PRIMARY]
 GO
