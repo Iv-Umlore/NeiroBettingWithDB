@@ -45,14 +45,15 @@ namespace Football.InputLayers
             int i = 0;
             foreach (var lastMatch in values)
             {
-                // Вычисление коэффициентов влияния Ранга команд, важности матча для команд, и замен
+                // Вычисление коэффициентов влияния Ранга команд, важности матча для команд, и замен, а так же размерности турнира
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(lastMatch.tier_A, lastMatch.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(lastMatch.Important_A - lastMatch.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(lastMatch.replacements_A, lastMatch.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(lastMatch.tier_tournament, lastMatch.tier_A, lastMatch.tier_B);
                 /// Подсчёт итогового числа и его корректировка (хорошо, как и ожидалось, команда А отыграла не оч)
                 /// Если оцениваемая команда А сильнее, то действует принцип - можно было лучше - результат занижается
                 /// Если команда А хуже, то счёт 2 3 намного более весомый. тк они боролись
-                var tmp = (lastMatch.Score_A + lastMatch.Score_B) / tierCoeff / importantCoeff / replasementCoeff;
+                var tmp = (lastMatch.Score_A + lastMatch.Score_B) / tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -79,6 +80,7 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 /// Подсчёт итогового числа и его корректировка
                 /// Считаем отношение ударов в створ к числу сейвов. Число больше 1.
                 /// Если Уровень команды лучше, то tierCoeff больше 1. Каждая ошибка команды намного важнее
@@ -86,7 +88,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.save_A / match.shot_on_target_B) / tierCoeff / importantCoeff * replasementCoeff;
+                tmp = (match.save_A / match.shot_on_target_B) / tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 saveArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -98,6 +100,7 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 /// Подсчёт итогового числа и его корректировка
                 /// Считаем отношение ударов в створ к числу сейвов. Число больше 1.
                 /// Если Уровень команды лучше, то tierCoeff больше 1. Каждая ошибка команды намного важнее
@@ -105,7 +108,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.shot_on_target_A / match.save_B) * tierCoeff / importantCoeff * replasementCoeff;
+                tmp = (match.shot_on_target_A / match.save_B) / tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 goodShootArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -138,8 +141,9 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.save_A / match.shot_on_target_B) * tierCoeff / importantCoeff * replasementCoeff;
+                tmp = (match.save_A / match.shot_on_target_B) / tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 saveArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -151,8 +155,9 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.shot_on_target_A / match.save_B) * tierCoeff / importantCoeff * replasementCoeff;
+                tmp = (match.shot_on_target_A / match.save_B) / tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 goodShootArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -176,7 +181,7 @@ namespace Football.InputLayers
 
             foreach (var match in values){
                 // Вычисление коэффициентов влияния Ранга команд, важности матча для команд 
-                // Считаем, что замены не влияют на агрессию игры команды
+                // Считаем, что замены и уровень турнира не влияют на агрессию игры команды
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 // Добавление откорректированноего результата
@@ -223,11 +228,12 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 /// Вычисляем соотношение ударов в створ команд. И корректируем их
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff * replasementCoeff;
+                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -245,11 +251,12 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
+                var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 /// Вычисляем соотношение ударов в створ команд. И корректируем их
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff * replasementCoeff;
+                tmp = (match.shot_on_target_A / match.shot_on_target_B) / importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -258,8 +265,20 @@ namespace Football.InputLayers
         
         private List<double> GetVangaInput(List<double> values)
         {
-            // 4 последних числа - важность и замены команд
-            // Изменить эту хуйню в будущем
+            /// На вход 14 чисел что-то обозначающих.
+            /// А так же 7 чисел которые задают дополнительные параметры
+            /// Уровень команд(2), Важность матча(2), Количество замен(2)
+            /// Уровень турнира
+
+            // Вычисление коэффициентов влияния Ранга команд, важности матча для команд, и замен, а так же размерности турнира
+            var tierCoeff = HelpFunctions.GetMatchCoeffByTier((int)values[14], (int)values[15]);
+            var importantCoeff = HelpFunctions.GetCoeffByImportant((int)(values[16] - values[17]));
+            var replasementCoeff = HelpFunctions.GetCoeffByReplacement((int)values[18], (int)values[19]);
+            var tournamentCoeff = HelpFunctions.GetCoeffByTournament((int)values[21], (int)values[14], (int)values[15]);
+
+            for (int i = 0; i < 14; i++)
+                values[i] = values[i] * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+
             return values;
         }
 

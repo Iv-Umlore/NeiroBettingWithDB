@@ -117,6 +117,12 @@ namespace BridgeToInterface
             // Дополнительные параметры для итоговой нейронной сети
             finalInputParameters.Add(tierA);
             finalInputParameters.Add(tierB);
+            // Важность для домашней команды и команды гостей
+            finalInputParameters.Add(int.Parse(parameters[3]));
+            finalInputParameters.Add(int.Parse(parameters[4]));
+            // Замены у домашней команды и команды гостей
+            finalInputParameters.Add(int.Parse(parameters[5]));
+            finalInputParameters.Add(int.Parse(parameters[6]));
             finalInputParameters.Add(tournament.Tournament_size);
 
             /// Вычисление итогового результата.
