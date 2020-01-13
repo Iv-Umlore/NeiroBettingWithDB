@@ -274,12 +274,14 @@ namespace Football.InputLayers
             var tierCoeff = HelpFunctions.GetMatchCoeffByTier((int)values[14], (int)values[15]);
             var importantCoeff = HelpFunctions.GetCoeffByImportant((int)(values[16] - values[17]));
             var replasementCoeff = HelpFunctions.GetCoeffByReplacement((int)values[18], (int)values[19]);
-            var tournamentCoeff = HelpFunctions.GetCoeffByTournament((int)values[21], (int)values[14], (int)values[15]);
+            var tournamentCoeff = HelpFunctions.GetCoeffByTournament((int)values[20], (int)values[14], (int)values[15]);
+
+            var result = new List<double>();
 
             for (int i = 0; i < 14; i++)
-                values[i] = values[i] * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                result.Add(values[i] * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff);
 
-            return values;
+            return result;
         }
 
         private List<LastMatch> ConvertToLastMatch(List<double> values)

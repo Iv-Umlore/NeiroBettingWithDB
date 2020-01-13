@@ -23,7 +23,7 @@ namespace ProjectHelper
             return result;
         }
 
-        public static double GetMatchCoeffByTier(int tierA,int tierB)
+        public static double GetMatchCoeffByTier(int tierA, int tierB)
         {
             int rankA = 21 - tierA;
             int rankB = 21 - tierB;
@@ -52,4 +52,26 @@ namespace ProjectHelper
         }
 
     }
+
+    public static class Randomaze
+    {
+        private static Random rand;
+
+        static Randomaze()
+        {
+            rand = new Random((int)DateTime.Now.Ticks);
+        }
+
+        public static int NextInt(int maxSize)
+        {
+            return rand.Next(maxSize);
+        }
+
+        public static double NextDouble()
+        {
+            return rand.NextDouble();
+        }
+
+    }
+
 }

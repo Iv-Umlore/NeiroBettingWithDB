@@ -101,8 +101,8 @@ namespace BridgeToInterface
             
             foreach (var lastMatches in lastMatchesB)
                 tmpValue.AddRange(lastMatches.ToListDouble());
-
-            // Проверить эту захардкоценность
+            
+            // Получение ранга команд из прошлых матчей (интересный костыль)
             tierA = tmpValue[8];
             tierB = tmpValue[83];
 
