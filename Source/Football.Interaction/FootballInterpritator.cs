@@ -25,8 +25,15 @@ namespace Football.Interpritator
             return HelpFunctions.SigmaFunction(correctScorePoints);
         }
 
+        /// <summary>
+        /// Возвращает 2 значения - наиболее соответствующие принятым обозначениям
+        /// Применимо для вспомогательных сетей
+        /// </summary>
+        /// <param name="outputNeironResult"></param>
+        /// <returns></returns>
         public List<double> GetPrediction(double outputNeironResult)
         {
+            // В дальнейшем возможно заменить сигма-функцию
             List<double> res = new List<double>();
             var result = 0;
             var diff = outputNeironResult - HelpFunctions.SigmaFunction(0);
@@ -53,6 +60,11 @@ namespace Football.Interpritator
             return res;
         }
 
+        /// <summary>
+        /// Возвращает итоговый прогноз нейросети в зависимости от входных 10 чисел
+        /// </summary>
+        /// <param name="_outOutputNeironResults"></param>
+        /// <returns></returns>
         public string GetPrediction(List<double> _outOutputNeironResults)
         {
             try
@@ -60,12 +72,12 @@ namespace Football.Interpritator
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.5) break;
+                    if (_outOutputNeironResults[i] >= 0.75) break;
                     i++;
                 }
                 // Нашёл I.
                 return i.ToString() + (i + 1).ToString() + (i + 2).ToString();
-
+                // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)
             {

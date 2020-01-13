@@ -11,6 +11,7 @@ namespace InterpritatorInterface
     {
         /// <summary>
         /// Вычисление. Вердикт вспомогательной нейронной сети
+        /// Возвращает значения(1 или несколько) которые наиболее близки к принятым показателям
         /// </summary>
         List<double> GetPrediction(double outputNeironResult);
 
