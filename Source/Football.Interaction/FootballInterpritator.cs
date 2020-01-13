@@ -36,8 +36,10 @@ namespace Football.Interpritator
             // В дальнейшем возможно заменить сигма-функцию
             List<double> res = new List<double>();
             var result = 0;
-            var diff = outputNeironResult - HelpFunctions.SigmaFunction(0);
-            while (Math.Pow(diff , 2) >= Math.Pow(outputNeironResult - (result), 2)) {
+
+            var diff = outputNeironResult - HelpFunctions.SigmaFunction(result);
+            result++;
+            while (Math.Pow(diff , 2) > Math.Pow(outputNeironResult - HelpFunctions.SigmaFunction(result), 2)) { 
                 diff = outputNeironResult - HelpFunctions.SigmaFunction(result);
                 result++;
             }
