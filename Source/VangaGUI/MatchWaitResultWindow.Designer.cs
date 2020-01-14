@@ -40,12 +40,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SavePredictTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.DeleteMatch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Close
             // 
             this.Close.BackColor = System.Drawing.Color.LightGray;
-            this.Close.Location = new System.Drawing.Point(435, 139);
+            this.Close.Location = new System.Drawing.Point(532, 144);
             this.Close.Name = "Close";
             this.Close.Size = new System.Drawing.Size(88, 27);
             this.Close.TabIndex = 24;
@@ -56,9 +57,9 @@
             // MyMatchWaitResult
             // 
             this.MyMatchWaitResult.FormattingEnabled = true;
-            this.MyMatchWaitResult.Location = new System.Drawing.Point(12, 29);
+            this.MyMatchWaitResult.Location = new System.Drawing.Point(11, 37);
             this.MyMatchWaitResult.Name = "MyMatchWaitResult";
-            this.MyMatchWaitResult.Size = new System.Drawing.Size(372, 21);
+            this.MyMatchWaitResult.Size = new System.Drawing.Size(469, 21);
             this.MyMatchWaitResult.TabIndex = 25;
             this.MyMatchWaitResult.SelectedIndexChanged += new System.EventHandler(this.MyMatchWaitResult_SelectedIndexChanged);
             this.MyMatchWaitResult.Click += new System.EventHandler(this.MyMatchWaitResult_Click);
@@ -66,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 10);
+            this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 26;
@@ -74,7 +75,7 @@
             // 
             // AddResult
             // 
-            this.AddResult.Location = new System.Drawing.Point(390, 27);
+            this.AddResult.Location = new System.Drawing.Point(486, 35);
             this.AddResult.Name = "AddResult";
             this.AddResult.Size = new System.Drawing.Size(133, 23);
             this.AddResult.TabIndex = 27;
@@ -85,15 +86,15 @@
             // statisticPredictTexBox
             // 
             this.statisticPredictTexBox.Enabled = false;
-            this.statisticPredictTexBox.Location = new System.Drawing.Point(178, 56);
+            this.statisticPredictTexBox.Location = new System.Drawing.Point(177, 64);
             this.statisticPredictTexBox.Name = "statisticPredictTexBox";
-            this.statisticPredictTexBox.Size = new System.Drawing.Size(345, 20);
+            this.statisticPredictTexBox.Size = new System.Drawing.Size(442, 20);
             this.statisticPredictTexBox.TabIndex = 28;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 57);
+            this.label2.Location = new System.Drawing.Point(15, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 13);
             this.label2.TabIndex = 29;
@@ -102,7 +103,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 87);
+            this.label3.Location = new System.Drawing.Point(18, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 30;
@@ -111,23 +112,23 @@
             // HardPredictTextBox
             // 
             this.HardPredictTextBox.Enabled = false;
-            this.HardPredictTextBox.Location = new System.Drawing.Point(178, 84);
+            this.HardPredictTextBox.Location = new System.Drawing.Point(177, 92);
             this.HardPredictTextBox.Name = "HardPredictTextBox";
-            this.HardPredictTextBox.Size = new System.Drawing.Size(200, 20);
+            this.HardPredictTextBox.Size = new System.Drawing.Size(348, 20);
             this.HardPredictTextBox.TabIndex = 31;
             // 
             // PredictTextBox
             // 
             this.PredictTextBox.Enabled = false;
-            this.PredictTextBox.Location = new System.Drawing.Point(178, 110);
+            this.PredictTextBox.Location = new System.Drawing.Point(177, 118);
             this.PredictTextBox.Name = "PredictTextBox";
-            this.PredictTextBox.Size = new System.Drawing.Size(200, 20);
+            this.PredictTextBox.Size = new System.Drawing.Size(348, 20);
             this.PredictTextBox.TabIndex = 33;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 117);
+            this.label4.Location = new System.Drawing.Point(18, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 32;
@@ -136,26 +137,37 @@
             // SavePredictTextBox
             // 
             this.SavePredictTextBox.Enabled = false;
-            this.SavePredictTextBox.Location = new System.Drawing.Point(178, 140);
+            this.SavePredictTextBox.Location = new System.Drawing.Point(177, 148);
             this.SavePredictTextBox.Name = "SavePredictTextBox";
-            this.SavePredictTextBox.Size = new System.Drawing.Size(200, 20);
+            this.SavePredictTextBox.Size = new System.Drawing.Size(348, 20);
             this.SavePredictTextBox.TabIndex = 35;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 146);
+            this.label5.Location = new System.Drawing.Point(18, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 34;
             this.label5.Text = "Сейвовый прогноз";
+            // 
+            // DeleteMatch
+            // 
+            this.DeleteMatch.Location = new System.Drawing.Point(486, 8);
+            this.DeleteMatch.Name = "DeleteMatch";
+            this.DeleteMatch.Size = new System.Drawing.Size(133, 23);
+            this.DeleteMatch.TabIndex = 36;
+            this.DeleteMatch.Text = "Удалить Матч";
+            this.DeleteMatch.UseVisualStyleBackColor = true;
+            this.DeleteMatch.Click += new System.EventHandler(this.DeleteMatch_Click);
             // 
             // MatchWaitResultWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(253)))), ((int)(((byte)(200)))));
-            this.ClientSize = new System.Drawing.Size(535, 179);
+            this.ClientSize = new System.Drawing.Size(632, 179);
+            this.Controls.Add(this.DeleteMatch);
             this.Controls.Add(this.SavePredictTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.PredictTextBox);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox SavePredictTextBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button DeleteMatch;
     }
 }

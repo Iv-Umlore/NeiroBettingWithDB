@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using ProjectHelper;
@@ -73,10 +73,12 @@ namespace Football.Network
                 var helpNetworkResult = GetHistoryPrediction(tmpInputParameters);
                 // Получаем входные параметры для Ванги
                 var studyMatch = dict.Key;
-                var vangaNetworkReult = GetFinalPrediction(
-                    FootballHelper.GetVangaInputParametersByCorrectMarchForFootballLearning(studyMatch)
-                    );
-                vangaNetworkReult.AddRange(new List<double>() { studyMatch.tier_A, studyMatch.tier_B, studyMatch.Important_A, studyMatch.Important_B, studyMatch.replacements_A, studyMatch.replacements_B, studyMatch.tier_tournament });
+
+                // Набираю параметры для нейронки
+                var vangaNetworkReult = FootballHelper.GetVangaInputParametersByCorrectMarchForFootballLearning(studyMatch);
+                var parametersList = new List<double>() { studyMatch.tier_A, studyMatch.tier_B, studyMatch.Important_A, studyMatch.Important_B, studyMatch.replacements_A, studyMatch.replacements_B, studyMatch.tier_tournament };
+                vangaNetworkReult.AddRange(parametersList);
+
                 var VangaAnswer = GetFinalPrediction(vangaNetworkReult);
 
                 var perfectHelpAnswer = FootballHelper.GetCurrectParametersForHelperLearning(studyMatch);
@@ -191,6 +193,48 @@ namespace Football.Network
 
         private void LearningStep(List<double> helperError, List<double> VangaError)
         {
+            // total
+            Thread TotalThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "TotalGoals").Learning));
+            TotalThread.Start(new List<double>() { helperError[0] });
+            
+            // Save_a
+            Thread SaveAThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Save_A").Learning));
+            SaveAThread.Start(new List<double>() { helperError[1] });
+            
+            // Save_b
+            Thread SaveBThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Save_B").Learning));
+            SaveBThread.Start(new List<double>() { helperError[2] });
+            
+            // Нарушения А
+            Thread ViolationsAThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Violations_A").Learning));
+            ViolationsAThread.Start(new List<double>() { helperError[3] });
+            
+            // Нарушения B
+            Thread ViolationsBThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Violations_B").Learning));
+            ViolationsBThread.Start(new List<double>() { helperError[4] });
+            
+            // Shot A
+            Thread ShotAThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Shot_A").Learning));
+            ShotAThread.Start(new List<double>() { helperError[5] });
+            
+            // Shot B
+            Thread ShotBThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Shot_B").Learning));
+            ShotBThread.Start(new List<double>() { helperError[6] });
+
+
+            Thread VangaThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Vanga").Learning));
+            VangaThread.Start(VangaError);
+
+            // Ждём завершения
+            TotalThread.Join();
+            SaveAThread.Join();
+            SaveBThread.Join();
+            ShotBThread.Join();
+            ShotAThread.Join();
+            ViolationsAThread.Join();
+            ViolationsBThread.Join();
+
+            VangaThread.Join();
 
         }
 

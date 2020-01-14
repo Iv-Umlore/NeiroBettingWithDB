@@ -24,14 +24,14 @@ namespace NetworkController
             }
         }
         
-        public double TestNetwork()
+        public double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
         {
-            return _network.TestNetwork();
+            return _network.TestNetwork(matches);
         }
 
-        public double Learning()
+        public string Learning(Dictionary<LastMatch, List<LastMatch>> matches)
         {
-            return _network.Learning();
+            return _network.Learning(matches);
         }
 
         public void SetLoadWeights()

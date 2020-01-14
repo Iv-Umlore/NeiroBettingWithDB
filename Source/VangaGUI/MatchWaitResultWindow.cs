@@ -61,5 +61,10 @@ namespace VangaGUI
             MyMatchWaitResult.Items.Clear();
             matches.Clear();
         }
+
+        private void DeleteMatch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

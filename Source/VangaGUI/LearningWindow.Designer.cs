@@ -48,7 +48,7 @@
             // 
             // SaveWeights
             // 
-            this.SaveWeights.Location = new System.Drawing.Point(606, 12);
+            this.SaveWeights.Location = new System.Drawing.Point(656, 16);
             this.SaveWeights.Name = "SaveWeights";
             this.SaveWeights.Size = new System.Drawing.Size(88, 47);
             this.SaveWeights.TabIndex = 22;
@@ -58,7 +58,7 @@
             // 
             // ReloadWeights
             // 
-            this.ReloadWeights.Location = new System.Drawing.Point(512, 12);
+            this.ReloadWeights.Location = new System.Drawing.Point(562, 16);
             this.ReloadWeights.Name = "ReloadWeights";
             this.ReloadWeights.Size = new System.Drawing.Size(88, 47);
             this.ReloadWeights.TabIndex = 21;
@@ -77,13 +77,13 @@
             this.LearningProgressPanel.Controls.Add(this.LearningStatus);
             this.LearningProgressPanel.Location = new System.Drawing.Point(18, 75);
             this.LearningProgressPanel.Name = "LearningProgressPanel";
-            this.LearningProgressPanel.Size = new System.Drawing.Size(776, 60);
+            this.LearningProgressPanel.Size = new System.Drawing.Size(820, 90);
             this.LearningProgressPanel.TabIndex = 20;
             // 
             // MatchesCount
             // 
             this.MatchesCount.AutoSize = true;
-            this.MatchesCount.Location = new System.Drawing.Point(723, 11);
+            this.MatchesCount.Location = new System.Drawing.Point(288, 37);
             this.MatchesCount.Name = "MatchesCount";
             this.MatchesCount.Size = new System.Drawing.Size(16, 13);
             this.MatchesCount.TabIndex = 10;
@@ -92,7 +92,7 @@
             // MatchesCountLabel
             // 
             this.MatchesCountLabel.AutoSize = true;
-            this.MatchesCountLabel.Location = new System.Drawing.Point(609, 11);
+            this.MatchesCountLabel.Location = new System.Drawing.Point(174, 37);
             this.MatchesCountLabel.Name = "MatchesCountLabel";
             this.MatchesCountLabel.Size = new System.Drawing.Size(108, 13);
             this.MatchesCountLabel.TabIndex = 9;
@@ -101,7 +101,7 @@
             // NumberOfCircleValue
             // 
             this.NumberOfCircleValue.AutoSize = true;
-            this.NumberOfCircleValue.Location = new System.Drawing.Point(491, 11);
+            this.NumberOfCircleValue.Location = new System.Drawing.Point(56, 37);
             this.NumberOfCircleValue.Name = "NumberOfCircleValue";
             this.NumberOfCircleValue.Size = new System.Drawing.Size(16, 13);
             this.NumberOfCircleValue.TabIndex = 7;
@@ -110,7 +110,7 @@
             // CircleCountLabel
             // 
             this.CircleCountLabel.AutoSize = true;
-            this.CircleCountLabel.Location = new System.Drawing.Point(446, 11);
+            this.CircleCountLabel.Location = new System.Drawing.Point(11, 37);
             this.CircleCountLabel.Name = "CircleCountLabel";
             this.CircleCountLabel.Size = new System.Drawing.Size(39, 13);
             this.CircleCountLabel.TabIndex = 6;
@@ -136,14 +136,14 @@
             // 
             // LearningStatus
             // 
-            this.LearningStatus.Location = new System.Drawing.Point(3, 34);
+            this.LearningStatus.Location = new System.Drawing.Point(3, 64);
             this.LearningStatus.Name = "LearningStatus";
-            this.LearningStatus.Size = new System.Drawing.Size(770, 23);
+            this.LearningStatus.Size = new System.Drawing.Size(808, 23);
             this.LearningStatus.TabIndex = 3;
             // 
             // TestNetwork
             // 
-            this.TestNetwork.Location = new System.Drawing.Point(415, 12);
+            this.TestNetwork.Location = new System.Drawing.Point(465, 16);
             this.TestNetwork.Name = "TestNetwork";
             this.TestNetwork.Size = new System.Drawing.Size(88, 47);
             this.TestNetwork.TabIndex = 19;
@@ -164,7 +164,7 @@
             // EndLerning
             // 
             this.EndLerning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.EndLerning.Location = new System.Drawing.Point(700, 12);
+            this.EndLerning.Location = new System.Drawing.Point(750, 16);
             this.EndLerning.Name = "EndLerning";
             this.EndLerning.Size = new System.Drawing.Size(88, 47);
             this.EndLerning.TabIndex = 23;
@@ -192,7 +192,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 177);
+            this.ClientSize = new System.Drawing.Size(847, 177);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LoopCount);
             this.Controls.Add(this.EndLerning);
