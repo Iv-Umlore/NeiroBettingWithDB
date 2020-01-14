@@ -78,5 +78,10 @@ namespace InteractionController
             return true;
         }
 
+        public Dictionary<LastMatch,List<LastMatch> > GetMatchForLearning()
+        {
+            return _disciplineController.GetMatchForLearning();
+        }
+
     }
 }

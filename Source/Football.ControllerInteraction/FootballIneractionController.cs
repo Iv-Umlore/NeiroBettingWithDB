@@ -65,6 +65,11 @@ namespace Football.InteractionController
             return res;
         }
 
+        /// <summary>
+        /// Выдать последние 5 матчей команды
+        /// </summary>
+        /// <param name="teamName"></param>
+        /// <returns></returns>
         public List<LastMatch> GetlastFiveTeamMatch(string teamName)
         {
             var entities = _dalExecute.NewEntities;
@@ -81,7 +86,7 @@ namespace Football.InteractionController
         }
 
         /// <summary>
-        /// Учёт дома/ в гостях будет осущетвляться за счёт bool IsA
+        /// Учёт дома/ в гостях будет осущетвляться за счёт bool IsHome
         /// </summary>
         /// <param name="match"></param>
         /// <param name="teamId"></param>
@@ -116,6 +121,7 @@ namespace Football.InteractionController
                 replacements_A = match.replacements_A,
                 replacements_B = match.replacements_B,
                 match_date = match.match_date,
+                is_ready_for_learning = match.is_ready_for_learning,
                 IsHome = isHome
             };
         }
@@ -293,6 +299,60 @@ namespace Football.InteractionController
 
             if (tournaments == null)
                 tournaments = GetTournamentList();
+            _dalExecute.CloseConnection(entities);
         }
+
+        public Dictionary<LastMatch, List<LastMatch>> GetMatchForLearning()
+        {
+            var result = new Dictionary<LastMatch, List<LastMatch>>();
+            var matchesForLearningList = new List<PastMatch>();
+            var tmp = new List<PastMatch>();
+
+            var entities = _dalExecute.NewEntities;
+
+            matchesForLearningList = entities.PastMatches.Where(it => it.is_ready_for_learning).ToList();
+
+            foreach (var match in matchesForLearningList)
+            {
+                var teamIdA = match.Team_A;
+                tmp.AddRange(
+                    entities.PastMatches.Where(it => (it.Team_A == teamIdA || it.Team_B == teamIdA) && it.match_date < match.match_date)
+                .OrderByDescending(it => it.match_date).Take(5).ToList()
+                    );
+
+                var teamIdB = match.Team_B;
+                tmp.AddRange(
+                    entities.PastMatches.Where(it => (it.Team_A == teamIdB || it.Team_B == teamIdB) && it.match_date < match.match_date)
+                .OrderByDescending(it => it.match_date).Take(5).ToList()
+                    );
+
+                if (tmp.Count == 10)
+                {
+                    var lastMatchtmp = ConvertToLastMatch(match, teamIdA);
+                    var matchesForHelpLearningList = new List<LastMatch>();
+
+                    foreach (var singleHelpMatch in tmp.Take(5).ToList())
+                        matchesForHelpLearningList.Add(ConvertToLastMatch(singleHelpMatch, teamIdA));
+
+                    foreach (var singleHelpMatch in tmp.Skip(5).ToList())
+                        matchesForHelpLearningList.Add(ConvertToLastMatch(singleHelpMatch, teamIdB));
+
+                    result.Add(lastMatchtmp, matchesForHelpLearningList);
+                }
+                tmp.Clear();
+            }
+
+            _dalExecute.CloseConnection(entities);
+            return result;
+        }
+
     }
 }
+
+
+/*var teamId = entities.Comands.Where(it => it.team_name == teamName).Select(it => it.id_team).FirstOrDefault();
+
+            var pastMatchList = entities.PastMatches.Where(it => it.Team_A == teamId || it.Team_B == teamId)
+                .OrderByDescending(it => it.match_date).Take(5).ToList();
+            foreach (var match in pastMatchList)
+                res.Add(ConvertToLastMatch(match, teamId));*/

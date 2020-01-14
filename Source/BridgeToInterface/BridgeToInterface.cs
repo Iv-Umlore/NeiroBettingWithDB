@@ -21,11 +21,14 @@ namespace BridgeToInterface
         public int MatchesCount;
         public double learningResult;
 
+        Dictionary<LastMatch, List<LastMatch>> matchesForLearning;
+
         public BridgeToInterfaceController()
         {
             _interactionController = new InteractionController.InteractionController(Discipline.Football);
             _network = new NetworkController.NetworkController(Discipline.Football);
             _interpritator = new InterpritatorController.InterpritatorController(Discipline.Football);
+            matchesForLearning = new Dictionary<LastMatch, List<LastMatch>>();
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
             learningResult = 1000.0;
@@ -149,8 +152,7 @@ namespace BridgeToInterface
 
         public double LearningNetwork()
         {
-            for (int i = 0; i < 500; i++)
-                learningResult = _network.Learning();
+            learningResult = _network.Learning();
             return learningResult;
         }
 
@@ -164,6 +166,12 @@ namespace BridgeToInterface
         {
             _network.ReloadWeights();
             return true;
+        }
+
+        public int DownloadInfoForTest()
+        {
+            matchesForLearning = _interactionController.GetMatchForLearning();
+            return matchesForLearning.Count;
         }
     }
 }

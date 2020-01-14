@@ -23,5 +23,7 @@ namespace InteractionInterface
         bool AddNewWaitResultMatch(string[] parameters, TournamentShort tournament, DateTime date, string prediction);
 
         bool ChangeDiscipline(Discipline type);
+
+        Dictionary<LastMatch, List<LastMatch>> GetMatchForLearning();
     }
 }
