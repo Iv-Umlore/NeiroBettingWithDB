@@ -112,6 +112,7 @@ namespace BridgeToInterface
             var statisticPredicts = _network.GetHistoryPrediction(tmpValue);
 
             var finalInputParameters = new List<double>();
+            // Учесть, что количество сейвов - дробное число и его не надо преобразовать
             foreach (var predict in statisticPredicts)
                 finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
 

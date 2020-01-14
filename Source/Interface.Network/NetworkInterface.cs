@@ -15,9 +15,9 @@ namespace NetworkInterface
         // Итоговый
         List<double> GetFinalPrediction(List<double> inputParameters);
 
-        double TestNetwork();
+        double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches);
 
-        double Learning();
+        double Learning(Dictionary<LastMatch, List<LastMatch>> matches);
 
         void SetLoadWeights();
 

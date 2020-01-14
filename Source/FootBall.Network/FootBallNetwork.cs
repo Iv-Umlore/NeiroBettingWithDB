@@ -44,16 +44,37 @@ namespace Football.Network
             }
         }
         
-        public double TestNetwork()
+        public double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
         {
             return 0.0;
         }
 
-        public double Learning()
+        public double Learning(Dictionary<LastMatch, List<LastMatch>> matches)
         {
+            // перебираем все пришедшие матчи для обучения
+            foreach(var dict in matches)
+            {
+                var tmpInputParameters = new List<double>();
+                // Преобразуем входные параметры к подходящему виду так же, как это делает нейросеть
+                foreach (var Lmatch in dict.Value)
+                    tmpInputParameters.AddRange(Lmatch.ToListDouble());
+                // Получаем первичное предсказание вспомогательных сетей
+                var helpNetworkResult = GetHistoryPrediction(tmpInputParameters);
+                // Получаем входные параметры для Ванги
+                var studyMatch = dict.Key;
+                var vangaNetworkReult = GetFinalPrediction(
+                    FootballHelper.GetVangaInputParametersByCorrectMarchForFootballLearning(studyMatch)
+                    );
+                vangaNetworkReult.AddRange(new List<double>() { studyMatch.tier_A, studyMatch.tier_B, studyMatch.Important_A, studyMatch.Important_B, studyMatch.replacements_A, studyMatch.replacements_B, studyMatch.tier_tournament });
+                var VangaAnswer = GetFinalPrediction(vangaNetworkReult);
+
+                var perfectHelpAnswer = FootballHelper.GetCurrectParametersForHelperLearning(studyMatch);
+                var perfectVangaAnswer = FootballHelper.GetPerfectArrayValue(studyMatch.Score_A - studyMatch.Score_B);
+                // Подсчёт изначальной ошибки
+            }
             return 0.0;
         }
-
+        
         public void SetLoadWeights()
         {
             try
