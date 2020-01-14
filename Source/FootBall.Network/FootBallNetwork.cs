@@ -49,8 +49,19 @@ namespace Football.Network
             return 0.0;
         }
 
-        public double Learning(Dictionary<LastMatch, List<LastMatch>> matches)
+        public string Learning(Dictionary<LastMatch, List<LastMatch>> matches)
         {
+
+            // Собираю статистику
+            double[] minMaxHelperArray = new double[14];
+            for (int i = 0; i < 14; i += 2)
+            {
+                minMaxHelperArray[i] = 1000.0;
+                minMaxHelperArray[i + 1] = -1000.0;
+            }
+            double fullSumm = 0.0;
+            double oneSumm = 0.0;
+            
             // перебираем все пришедшие матчи для обучения
             foreach(var dict in matches)
             {
@@ -70,9 +81,39 @@ namespace Football.Network
 
                 var perfectHelpAnswer = FootballHelper.GetCurrectParametersForHelperLearning(studyMatch);
                 var perfectVangaAnswer = FootballHelper.GetPerfectArrayValue(studyMatch.Score_A - studyMatch.Score_B);
+
                 // Подсчёт изначальной ошибки
+                var helpErrors = new List<double>();
+                for (int i = 0; i < perfectHelpAnswer.Count; i++)
+                {
+                    var tmp = helpNetworkResult[i] - perfectHelpAnswer[i];
+                    if (minMaxHelperArray[2*i] > tmp)
+                        minMaxHelperArray[2*i] = tmp;
+                    if (minMaxHelperArray[2*i + 1] < tmp)
+                        minMaxHelperArray[2*i + 1] = tmp;
+                    helpErrors.Add(tmp);
+
+                }
+                var VangaErrors = new List<double>();
+                for (int i = 0; i < perfectVangaAnswer.Count; i++)
+                {
+                    oneSumm += VangaAnswer[i] - perfectVangaAnswer[i];
+                    VangaErrors.Add(VangaAnswer[i] - perfectVangaAnswer[i]);
+                }
+
+                // Запуск Шага Обучения
+                LearningStep(helpErrors, VangaErrors);
+                // Статистика
+                oneSumm /= 10;
+                fullSumm += oneSumm;
+
             }
-            return 0.0;
+            fullSumm /= matches.Count;
+            var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
+
+            for (int i = 0; i < 14; i += 2)
+                resultString += minMaxHelperArray[i].ToString("f2") + "/" + minMaxHelperArray[i + 1].ToString("f2") + " ";
+            return resultString;
         }
         
         public void SetLoadWeights()
@@ -147,5 +188,11 @@ namespace Football.Network
             var final = netNetwork.First(it => it.NetworkName == "Vanga");
             return final.GetPrediction(inputParameters);
         }
+
+        private void LearningStep(List<double> helperError, List<double> VangaError)
+        {
+
+        }
+
     }
 }

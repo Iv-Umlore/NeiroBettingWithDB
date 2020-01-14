@@ -31,7 +31,8 @@ namespace VangaGUI
             {
                 NumberOfCircleValue.Text = i + " из " + loopCount;
                 NumberOfCircleValue.Refresh();
-                BIC.LearningNetwork();
+                AverageResultValue.Text = BIC.LearningNetwork();
+                AverageResultValue.Refresh();
                 LearningStatus.Value = i;
             }
         }

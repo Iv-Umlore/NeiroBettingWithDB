@@ -83,7 +83,7 @@
             // MatchesCount
             // 
             this.MatchesCount.AutoSize = true;
-            this.MatchesCount.Location = new System.Drawing.Point(448, 11);
+            this.MatchesCount.Location = new System.Drawing.Point(723, 11);
             this.MatchesCount.Name = "MatchesCount";
             this.MatchesCount.Size = new System.Drawing.Size(16, 13);
             this.MatchesCount.TabIndex = 10;
@@ -92,7 +92,7 @@
             // MatchesCountLabel
             // 
             this.MatchesCountLabel.AutoSize = true;
-            this.MatchesCountLabel.Location = new System.Drawing.Point(334, 11);
+            this.MatchesCountLabel.Location = new System.Drawing.Point(609, 11);
             this.MatchesCountLabel.Name = "MatchesCountLabel";
             this.MatchesCountLabel.Size = new System.Drawing.Size(108, 13);
             this.MatchesCountLabel.TabIndex = 9;
@@ -101,7 +101,7 @@
             // NumberOfCircleValue
             // 
             this.NumberOfCircleValue.AutoSize = true;
-            this.NumberOfCircleValue.Location = new System.Drawing.Point(216, 11);
+            this.NumberOfCircleValue.Location = new System.Drawing.Point(491, 11);
             this.NumberOfCircleValue.Name = "NumberOfCircleValue";
             this.NumberOfCircleValue.Size = new System.Drawing.Size(16, 13);
             this.NumberOfCircleValue.TabIndex = 7;
@@ -110,7 +110,7 @@
             // CircleCountLabel
             // 
             this.CircleCountLabel.AutoSize = true;
-            this.CircleCountLabel.Location = new System.Drawing.Point(171, 11);
+            this.CircleCountLabel.Location = new System.Drawing.Point(446, 11);
             this.CircleCountLabel.Name = "CircleCountLabel";
             this.CircleCountLabel.Size = new System.Drawing.Size(39, 13);
             this.CircleCountLabel.TabIndex = 6;

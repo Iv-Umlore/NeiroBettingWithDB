@@ -19,7 +19,7 @@ namespace BridgeToInterface
         private List<LastMatch> lastMatchesA;
         private List<LastMatch> lastMatchesB;
         public int MatchesCount;
-        public double learningResult;
+        public string learningResult;
 
         Dictionary<LastMatch, List<LastMatch>> matchesForLearning;
 
@@ -31,7 +31,7 @@ namespace BridgeToInterface
             matchesForLearning = new Dictionary<LastMatch, List<LastMatch>>();
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
-            learningResult = 1000.0;
+            learningResult = string.Empty;
 
             lastMatchesA = new List<LastMatch>();
             lastMatchesB = new List<LastMatch>();
@@ -148,12 +148,12 @@ namespace BridgeToInterface
 
         public double TestNetwork()
         {
-            return _network.TestNetwork();
+            return _network.TestNetwork(matchesForLearning);
         }
 
-        public double LearningNetwork()
+        public string LearningNetwork()
         {
-            learningResult = _network.Learning();
+            learningResult = _network.Learning(matchesForLearning);
             return learningResult;
         }
 

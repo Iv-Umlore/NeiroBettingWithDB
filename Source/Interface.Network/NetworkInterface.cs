@@ -17,7 +17,7 @@ namespace NetworkInterface
 
         double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches);
 
-        double Learning(Dictionary<LastMatch, List<LastMatch>> matches);
+        string Learning(Dictionary<LastMatch, List<LastMatch>> matches);
 
         void SetLoadWeights();
 
