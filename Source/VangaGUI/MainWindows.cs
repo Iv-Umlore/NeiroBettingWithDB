@@ -142,8 +142,11 @@ namespace VangaGUI
         private void Button1_Click(object sender, EventArgs e)
         {
             // Подумать над сохранением весов перед обучение и выход с (без) сохранением (Подумал)
+            
             var learningThread = new Thread(ShowLearningWindow);
             learningThread.Start();
+
+            //ShowLearningWindow();
         }
 
         private void ShowLearningWindow()

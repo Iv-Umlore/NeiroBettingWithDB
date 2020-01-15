@@ -154,17 +154,23 @@ namespace VangaGUI
 
                 Score_A.Text = statisticList[4];
                 Score_B.Text = statisticList[5].Substring(1);
-
-                Shot_on_target_A.Text = statisticList[29];
-                Shot_on_target_B.Text = statisticList[31];
-
-                Save_A.Text = statisticList[47];
-                Save_B.Text = statisticList[49];
-
+                
                 int Vio_A = 0, Vio_B = 0;
 
                 for (int i = 0; i < statisticList.Count; i++)
                 {
+                    if (statisticList[i] == "Удары в створ")
+                    {
+                        Shot_on_target_A.Text = statisticList[i-1];
+                        Shot_on_target_B.Text = statisticList[i+1];
+                    }
+
+                    if (statisticList[i] == "Сэйвы")
+                    {
+                        Save_A.Text = statisticList[i-1];
+                        Save_B.Text = statisticList[i+1];
+                    }
+
                     if (statisticList[i] == "Желтые карточки")
                     {
                         Vio_A += int.Parse(statisticList[i - 1]);
@@ -177,7 +183,7 @@ namespace VangaGUI
                         Vio_B += int.Parse(statisticList[i + 1]) * 2;
                     }
                 }
-
+                
                 Violations_A.Text = Vio_A.ToString();
                 Violations_B.Text = Vio_B.ToString();
 
