@@ -108,6 +108,12 @@ namespace Football.Network
             return ProjectHelper.NetworkType.Football_Vanga;
         }
 
+        public void Learning(object errors)
+        {
+                var tmp = _outputLayer.LearningLayer((List<double>)errors);
+                for (int i = _hiddenLayers.Count - 1; i >= 0; i--)
+                    tmp = _hiddenLayers[i].LearningLayer(tmp);
+        }
 
         public string NetworkName => _networkName;
     }

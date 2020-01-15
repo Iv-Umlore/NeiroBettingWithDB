@@ -22,8 +22,20 @@ namespace VangaGUI
 
         private void NetworkLearning_Click(object sender, EventArgs e)
         {
-
-            BIC.LearningNetwork();
+            MatchesCount.Text = BIC.DownloadInfoForTest().ToString();
+            MatchesCount.Refresh();
+            var loopCount = int.Parse((LoopCount.Text == string.Empty)? "1": LoopCount.Text);
+            LearningStatus.Maximum = loopCount;              
+            NumberOfCircleValue.Text = 0 + " из " + loopCount;
+            for (int i = 0; i <= loopCount; i++)
+            {
+                NumberOfCircleValue.Text = i + " из " + loopCount;
+                NumberOfCircleValue.Refresh();
+                AverageResultValue.Text = BIC.LearningNetwork();
+                AverageResultValue.Refresh();
+                LearningStatus.Value = i;
+            }
+            BIC.SaveCurrentWeights();
         }
 
         private void TestNetwork_Click(object sender, EventArgs e)
@@ -46,6 +58,6 @@ namespace VangaGUI
         private void EndLerning_Click(object sender, EventArgs e)
         {
             Close();
-        }
+        }        
     }
 }

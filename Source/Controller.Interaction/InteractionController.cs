@@ -78,5 +78,14 @@ namespace InteractionController
             return true;
         }
 
+        public Dictionary<LastMatch,List<LastMatch> > GetMatchForLearning()
+        {
+            return _disciplineController.GetMatchForLearning();
+        }
+
+        public void DeleteWaitResultMatch(int teamA, int teamB, DateTime date)
+        {
+            _disciplineController.DeleteWaitResultMatch(teamA, teamB, date);
+        }
     }
 }

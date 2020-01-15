@@ -17,7 +17,7 @@ namespace Football.Interpritator
 
         public List<double> GetPerfectArrayValue(int correctScorePoints)
         {
-            throw new NotImplementedException();
+            return FootballHelper.GetPerfectArrayValue(correctScorePoints);
         }
 
         public double GetPerfectValue(int correctScorePoints)
@@ -33,7 +33,6 @@ namespace Football.Interpritator
         /// <returns></returns>
         public List<double> GetPrediction(double outputNeironResult)
         {
-            // В дальнейшем возможно заменить сигма-функцию
             List<double> res = new List<double>();
             var result = 0;
 
@@ -69,16 +68,27 @@ namespace Football.Interpritator
         /// <returns></returns>
         public string GetPrediction(List<double> _outOutputNeironResults)
         {
+            // Проверяем условие, что нейроны должны выстроиться по сигме
+            var tmp = 0.0;
+            foreach (var value in _outOutputNeironResults)
+                if (value + 0.06 < tmp)
+                {
+                    Console.WriteLine("Грусть");
+                    break;
+                }
+                else tmp = value;
+
             try
             {
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.965) break;
+                    if (_outOutputNeironResults[i] >= 0.999) break;
                     i++;
                 }
-                // Нашёл I.
-                return i.ToString() + ';' + (i + 1).ToString() + ';' + (i + 2).ToString();
+                // Нашёл I. Конкретные номера нейронов-активаторов
+
+                return "П1 " + (-0.5 + 4 - i).ToString() + ';' + "П1 " + (-0.5 + 5 - i).ToString() + ';' + "П1 " + (-0.5 + 6 - i).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)
@@ -86,6 +96,13 @@ namespace Football.Interpritator
                 Console.WriteLine("Метод GetPrediction() для итоговой нейросети, ошибка: " + ex.Message);
                 return "Ошибка вычисления итогоого результата";
             }
+
+            /// Вариант решения 2:
+            /// Сначала для a [-5.0,5.0] с шагом 0,2
+            /// Найти такое а, чтобы квадратичное отклонение функции
+            /// на интервале [0,10] было минимально
+            /// После чего вычислить первый Х для которого значение функции больше 0,8
+            /// Этот Х - искомое предсказание
         }
         
     }

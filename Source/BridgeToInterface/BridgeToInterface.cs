@@ -19,16 +19,19 @@ namespace BridgeToInterface
         private List<LastMatch> lastMatchesA;
         private List<LastMatch> lastMatchesB;
         public int MatchesCount;
-        public double learningResult;
+        public string learningResult;
+
+        Dictionary<LastMatch, List<LastMatch>> matchesForLearning;
 
         public BridgeToInterfaceController()
         {
             _interactionController = new InteractionController.InteractionController(Discipline.Football);
             _network = new NetworkController.NetworkController(Discipline.Football);
             _interpritator = new InterpritatorController.InterpritatorController(Discipline.Football);
+            matchesForLearning = new Dictionary<LastMatch, List<LastMatch>>();
             teamList = _interactionController.GetTeamList();
             MatchesCount = 1000;
-            learningResult = 1000.0;
+            learningResult = string.Empty;
 
             lastMatchesA = new List<LastMatch>();
             lastMatchesB = new List<LastMatch>();
@@ -109,14 +112,21 @@ namespace BridgeToInterface
             var statisticPredicts = _network.GetHistoryPrediction(tmpValue);
 
             var finalInputParameters = new List<double>();
-            foreach (var predict in statisticPredicts)
-                finalInputParameters.AddRange(_interpritator.GetPrediction(predict));
+            // Учесть, что количество сейвов - дробное число и его не надо преобразовать
+            for (int i = 0; i < statisticPredicts.Count; i++)
+                if (i != 1 && i != 2)
+                    finalInputParameters.AddRange(_interpritator.GetPrediction(statisticPredicts[i]));
+                else {
+                    finalInputParameters.Add(statisticPredicts[i]);
+                    finalInputParameters.Add(statisticPredicts[i]);
+                }
+                
 
             var prediction = "ТБ:  " + ((finalInputParameters[0] + finalInputParameters[1]) / 2).ToString("f1") +
                 " Нарушений А: " + ((finalInputParameters[6] + finalInputParameters[7]) / 2).ToString("f2") +
                 " Нарушений B: " + ((finalInputParameters[8] + finalInputParameters[9]) / 2).ToString("f2") +
-                " Забито А: " + (((finalInputParameters[10] + finalInputParameters[11]) / 2) / ((finalInputParameters[4] + finalInputParameters[5]) / 2)).ToString("f2") +
-                " Забито В: " + (((finalInputParameters[12] + finalInputParameters[13]) / 2) / ((finalInputParameters[2] + finalInputParameters[3]) / 2)).ToString("f2") + ";";
+                " Забито А: " + (((finalInputParameters[10] + finalInputParameters[11]) / 2) * ((finalInputParameters[4] + finalInputParameters[5]) / 2)).ToString("f2") +
+                " Забито В: " + (((finalInputParameters[12] + finalInputParameters[13]) / 2) * ((finalInputParameters[2] + finalInputParameters[3]) / 2)).ToString("f2") + ";";
             // Вывести приколы интерпритаторов.
 
             // Дополнительные параметры для итоговой нейронной сети
@@ -135,22 +145,20 @@ namespace BridgeToInterface
             /// считается результатом с умеренным риском. Для преобразования результата в более понятный вид
             /// необходимо воспользоваться интерпритатором
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
-            //prediction += _interpritator.GetPrediction(finalPredict);
-            prediction += "asdwdqundjsnadqwd;asjduwqjndausnd;asdjqwnbdnajsdqwd;";
-            _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction); // + запись Prediction !!!!
+            prediction += _interpritator.GetPrediction(finalPredict);
+            _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction);
 
             return prediction;
         }
 
         public double TestNetwork()
         {
-            return _network.TestNetwork();
+            return _network.TestNetwork(matchesForLearning);
         }
 
-        public double LearningNetwork()
+        public string LearningNetwork()
         {
-            for (int i = 0; i < 500; i++)
-                learningResult = _network.Learning();
+            learningResult = _network.Learning(matchesForLearning);
             return learningResult;
         }
 
@@ -164,6 +172,17 @@ namespace BridgeToInterface
         {
             _network.ReloadWeights();
             return true;
+        }
+
+        public int DownloadInfoForTest()
+        {
+            matchesForLearning = _interactionController.GetMatchForLearning();
+            return matchesForLearning.Count;
+        }
+
+        public void DeleteWaitResultMatch(int teamA, int teamB, DateTime date)
+        {
+            _interactionController.DeleteWaitResultMatch(teamA, teamB, date);
         }
     }
 }
