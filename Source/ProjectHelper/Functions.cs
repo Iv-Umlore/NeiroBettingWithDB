@@ -11,15 +11,15 @@ namespace ProjectHelper
 
         public static double SigmaFunction(double value)
         {
-            double result = 1 / (1 + 2 * Math.Pow(Math.E, -value + 4));
+            double result = 1 / (1 + Math.Pow(Math.E, -0.5 * value + 4));
             return result;
         }
 
         public static double Derivate(double value)
         {
             double E = Math.E;
-            double pow = Math.Pow(E, -value + 4);
-            double result = 2 * pow / Math.Pow(1 + 2 * pow, 2);
+            double pow = Math.Pow(E, -0.5 * value + 4);
+            double result = pow / Math.Pow(1 + pow, 2);
             return result;
         }
 
@@ -58,13 +58,13 @@ namespace ProjectHelper
 
         private static double SpecialSigmaFunction(int x, double a)
         {
-            return 1 / (1 + Math.Pow(Math.E, (a - x)));
+            return 1 / (1 + Math.Pow(Math.E, (-x + a)));
         }
 
         public static List<double> GetPerfectArrayValue(int correctScorePoints)
         {
             var sigmaParameter = -5.0;
-            while (SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8)
+            while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8))
                 sigmaParameter += 0.2;
 
             var result = new List<double>();

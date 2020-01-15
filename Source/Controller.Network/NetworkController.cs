@@ -24,7 +24,7 @@ namespace NetworkController
             }
         }
         
-        public double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
+        public string TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
         {
             return _network.TestNetwork(matches);
         }

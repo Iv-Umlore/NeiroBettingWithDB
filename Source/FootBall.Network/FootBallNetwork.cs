@@ -44,9 +44,98 @@ namespace Football.Network
             }
         }
         
-        public double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
+        public string TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches)
         {
-            return 0.0;
+            // Собираю статистику
+            double[] minMaxHelperArray = new double[14];
+            for (int i = 0; i < 14; i += 2)
+            {
+                minMaxHelperArray[i] = 1000.0;
+                minMaxHelperArray[i + 1] = -1000.0;
+            }
+            double fullSumm = 0.0;
+            double oneSumm = 0.0;
+
+            // перебираем все пришедшие матчи для обучения
+            foreach (var dict in matches)
+            {
+                var tmpInputParameters = new List<double>();
+                // Преобразуем входные параметры к подходящему виду так же, как это делает нейросеть
+                foreach (var Lmatch in dict.Value)
+                    tmpInputParameters.AddRange(Lmatch.ToListDouble());
+                // Получаем первичное предсказание вспомогательных сетей
+                var helpNetworkResult = GetHistoryPrediction(tmpInputParameters);
+                // Получаем входные параметры для Ванги
+                var studyMatch = dict.Key;
+
+                // Набираю параметры для нейронки
+                var vangaNetworkReult = FootballHelper.GetVangaInputParametersByCorrectMarchForFootballLearning(studyMatch);
+                var parametersList = new List<double>() { studyMatch.tier_A, studyMatch.tier_B, studyMatch.Important_A, studyMatch.Important_B, studyMatch.replacements_A, studyMatch.replacements_B, studyMatch.tier_tournament };
+                vangaNetworkReult.AddRange(parametersList);
+
+                var VangaAnswer = GetFinalPrediction(vangaNetworkReult);
+
+                var perfectHelpAnswer = FootballHelper.GetCurrectParametersForHelperLearning(studyMatch);
+                var perfectVangaAnswer = FootballHelper.GetPerfectArrayValue(studyMatch.Score_A - studyMatch.Score_B + 6);
+
+                // Подсчёт изначальной ошибки
+                var helpErrors = new List<double>();
+                for (int i = 0; i < perfectHelpAnswer.Count; i++)
+                {
+                    var tmp = helpNetworkResult[i] - perfectHelpAnswer[i];
+                    if (minMaxHelperArray[2 * i] > tmp)
+                        minMaxHelperArray[2 * i] = tmp;
+                    if (minMaxHelperArray[2 * i + 1] < tmp)
+                        minMaxHelperArray[2 * i + 1] = tmp;
+                    helpErrors.Add(tmp);
+
+                }
+                var VangaErrors = new List<double>();
+                for (int i = 0; i < perfectVangaAnswer.Count; i++)
+                {
+                    oneSumm += VangaAnswer[i] - perfectVangaAnswer[i];
+                    VangaErrors.Add(VangaAnswer[i] - perfectVangaAnswer[i]);
+                }
+                
+                // Без Шага обучения
+                // Статистика
+                fullSumm += oneSumm;
+                oneSumm = 0.0;
+            }
+            fullSumm /= matches.Count;
+            var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
+
+            for (int i = 0; i < 14; i += 2)
+            {
+                switch (i)
+                {
+                    case 0:
+                        resultString += "Tot: ";
+                        break;
+                    case 2:
+                        resultString += "SvA: ";
+                        break;
+                    case 4:
+                        resultString += "SvB: ";
+                        break;
+                    case 6:
+                        resultString += "VA: ";
+                        break;
+                    case 8:
+                        resultString += "VB: ";
+                        break;
+                    case 10:
+                        resultString += "ShA: ";
+                        break;
+                    case 12:
+                        resultString += "ShB: ";
+                        break;
+                    default:
+                        break;
+                }
+                resultString += minMaxHelperArray[i].ToString("f2") + "/" + minMaxHelperArray[i + 1].ToString("f2") + " ";
+            }
+            return resultString;
         }
 
         public string Learning(Dictionary<LastMatch, List<LastMatch>> matches)
@@ -82,7 +171,7 @@ namespace Football.Network
                 var VangaAnswer = GetFinalPrediction(vangaNetworkReult);
 
                 var perfectHelpAnswer = FootballHelper.GetCurrectParametersForHelperLearning(studyMatch);
-                var perfectVangaAnswer = FootballHelper.GetPerfectArrayValue(studyMatch.Score_A - studyMatch.Score_B);
+                var perfectVangaAnswer = FootballHelper.GetPerfectArrayValue(studyMatch.Score_A - studyMatch.Score_B + 6);
 
                 // Подсчёт изначальной ошибки
                 var helpErrors = new List<double>();
@@ -99,7 +188,7 @@ namespace Football.Network
                 var VangaErrors = new List<double>();
                 for (int i = 0; i < perfectVangaAnswer.Count; i++)
                 {
-                    oneSumm += VangaAnswer[i] - perfectVangaAnswer[i];
+                    oneSumm += Math.Sqrt((VangaAnswer[i] - perfectVangaAnswer[i]) * (VangaAnswer[i] - perfectVangaAnswer[i]));
                     VangaErrors.Add(VangaAnswer[i] - perfectVangaAnswer[i]);
                 }
 
@@ -108,6 +197,7 @@ namespace Football.Network
                 // Статистика
                 fullSumm += oneSumm;
             }
+            // Считаем среднее отклонение по всем тестам
             fullSumm /= matches.Count;
             var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
 

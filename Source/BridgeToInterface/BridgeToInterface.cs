@@ -120,7 +120,10 @@ namespace BridgeToInterface
                     finalInputParameters.Add(statisticPredicts[i]);
                     finalInputParameters.Add(statisticPredicts[i]);
                 }
-                
+
+            for (int i = 0; i < statisticPredicts.Count; i++)
+                if (i != 1 && i != 2)
+                    finalInputParameters[i] = _interpritator.GetPerfectValue((int)statisticPredicts[i]);
 
             var prediction = "ТБ:  " + ((finalInputParameters[0] + finalInputParameters[1]) / 2).ToString("f1") +
                 " Нарушений А: " + ((finalInputParameters[6] + finalInputParameters[7]) / 2).ToString("f2") +
@@ -151,7 +154,7 @@ namespace BridgeToInterface
             return prediction;
         }
 
-        public double TestNetwork()
+        public string TestNetwork()
         {
             return _network.TestNetwork(matchesForLearning);
         }

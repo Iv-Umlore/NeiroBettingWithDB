@@ -69,26 +69,17 @@ namespace Football.Interpritator
         public string GetPrediction(List<double> _outOutputNeironResults)
         {
             // Проверяем условие, что нейроны должны выстроиться по сигме
-            var tmp = 0.0;
-            foreach (var value in _outOutputNeironResults)
-                if (value + 0.06 < tmp)
-                {
-                    Console.WriteLine("Грусть");
-                    break;
-                }
-                else tmp = value;
-
             try
             {
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.999) break;
+                    if (_outOutputNeironResults[i] >= 0.75) break;
                     i++;
                 }
                 // Нашёл I. Конкретные номера нейронов-активаторов
 
-                return "П1 " + (-0.5 + 4 - i).ToString() + ';' + "П1 " + (-0.5 + 5 - i).ToString() + ';' + "П1 " + (-0.5 + 6 - i).ToString();
+                return "П1 " + (4 - i).ToString() + ';' + "П1 " + (5 - i).ToString() + ';' + "П1 " + (6 - i).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)
