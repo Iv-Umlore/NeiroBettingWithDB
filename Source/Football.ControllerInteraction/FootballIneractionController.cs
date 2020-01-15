@@ -376,7 +376,7 @@ namespace Football.InteractionController
                 save_B = short.Parse(parameters[12]),
                 Violations_A = short.Parse(parameters[13]),
                 Violations_B = short.Parse(parameters[14]),
-                match_date = date,
+                match_date = date.Date,
                 is_ready_for_learning = isReadyForLerning
             };
         }
