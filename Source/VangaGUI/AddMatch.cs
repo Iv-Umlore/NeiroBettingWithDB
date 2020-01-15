@@ -121,10 +121,10 @@ namespace VangaGUI
             parameters[0] = TournamentBox.Text;
             parameters[1] = TeamA_Box.Text;
             parameters[2] = TeamB_Box.Text;
-            parameters[3] = Replace_A.Text;
-            parameters[4] = Replace_B.Text;
-            parameters[5] = Impotant_A_comboBox.Text;
-            parameters[6] = Impotant_B_comboBox.Text;
+            parameters[3] = (string.IsNullOrEmpty(Replace_A.Text))? "0" : Replace_A.Text;
+            parameters[4] = (string.IsNullOrEmpty(Replace_B.Text)) ? "0" : Replace_B.Text;
+            parameters[5] = (string.IsNullOrEmpty(Impotant_A_comboBox.Text)) ? "2" : Impotant_A_comboBox.Text;
+            parameters[6] = (string.IsNullOrEmpty(Impotant_B_comboBox.Text)) ? "2" : Impotant_B_comboBox.Text;
             parameters[7] = Score_A.Text;
             parameters[8] = Score_B.Text;
             parameters[9] = Shot_on_target_A.Text;
@@ -138,5 +138,53 @@ namespace VangaGUI
             return parameters;
         }
 
+        private void GetStatistic_Click(object sender, EventArgs e)
+        {
+            try {
+                String[] spearator = { "\r\n" };
+                String[] spearator2 = { " - " };
+                var TeamList = _mainController.GetTeamList();
+
+                var statisticList = StatisticString.Text.ToString().Split(spearator, StringSplitOptions.RemoveEmptyEntries).ToList();
+                // Звиздец
+                TournamentBox.Text = statisticList[0].Split(spearator2, StringSplitOptions.RemoveEmptyEntries)[0];
+                DatePicker.Value = DateTime.Parse(statisticList[1]);
+                TeamA_Box.Text = (!string.IsNullOrEmpty(TeamList.First(it => it == statisticList[2]))) ? statisticList[2] : string.Empty;
+                TeamB_Box.Text = (!string.IsNullOrEmpty(TeamList.First(it => it == statisticList[7]))) ? statisticList[7] : string.Empty;
+
+                Score_A.Text = statisticList[4];
+                Score_B.Text = statisticList[5].Substring(1);
+
+                Shot_on_target_A.Text = statisticList[29];
+                Shot_on_target_B.Text = statisticList[31];
+
+                Save_A.Text = statisticList[47];
+                Save_B.Text = statisticList[49];
+
+                int Vio_A = 0, Vio_B = 0;
+
+                for (int i = 0; i < statisticList.Count; i++)
+                {
+                    if (statisticList[i] == "Желтые карточки")
+                    {
+                        Vio_A += int.Parse(statisticList[i - 1]);
+                        Vio_B += int.Parse(statisticList[i + 1]);
+                    }
+
+                    if (statisticList[i] == "Красные карточки")
+                    {
+                        Vio_A += int.Parse(statisticList[i - 1]) * 2;
+                        Vio_B += int.Parse(statisticList[i + 1]) * 2;
+                    }
+                }
+
+                Violations_A.Text = Vio_A.ToString();
+                Violations_B.Text = Vio_B.ToString();
+
+            }
+            catch (Exception) {
+                Console.WriteLine("Ошибка при трансформации");
+            }
+        }
     }
 }

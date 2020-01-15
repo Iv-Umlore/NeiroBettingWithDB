@@ -40,9 +40,12 @@ namespace VangaGUI
 
         private void TestNetwork_Click(object sender, EventArgs e)
         {
-            var result = BIC.TestNetwork();
-            MatchesCount.Text = BIC.MatchesCount.ToString();
-            AverageResultValue.Text = result.ToString();
+            
+            MatchesCount.Text = BIC.DownloadInfoForTest().ToString();
+            MatchesCount.Refresh();
+            var loopCount = int.Parse((LoopCount.Text == string.Empty) ? "1" : LoopCount.Text);
+            NumberOfCircleValue.Refresh();
+            AverageResultValue.Text = BIC.TestNetwork();
         }
 
         private void ReloadWeights_Click(object sender, EventArgs e)

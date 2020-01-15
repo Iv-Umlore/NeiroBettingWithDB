@@ -15,7 +15,7 @@ namespace NetworkInterface
         // Итоговый
         List<double> GetFinalPrediction(List<double> inputParameters);
 
-        double TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches);
+        string TestNetwork(Dictionary<LastMatch, List<LastMatch>> matches);
 
         string Learning(Dictionary<LastMatch, List<LastMatch>> matches);
 

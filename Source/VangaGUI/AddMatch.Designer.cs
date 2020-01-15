@@ -62,6 +62,8 @@
             this.AddTeam = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
+            this.GetStatistic = new System.Windows.Forms.Button();
+            this.StatisticString = new System.Windows.Forms.TextBox();
             this.PredictionPanel.SuspendLayout();
             this.ResultMatchPanel.SuspendLayout();
             this.SuspendLayout();
@@ -189,7 +191,7 @@
             this.ResultMatchPanel.Controls.Add(this.Score_A);
             this.ResultMatchPanel.Location = new System.Drawing.Point(13, 154);
             this.ResultMatchPanel.Name = "ResultMatchPanel";
-            this.ResultMatchPanel.Size = new System.Drawing.Size(463, 120);
+            this.ResultMatchPanel.Size = new System.Drawing.Size(463, 108);
             this.ResultMatchPanel.TabIndex = 8;
             // 
             // label11
@@ -367,12 +369,36 @@
             this.DatePicker.Size = new System.Drawing.Size(185, 20);
             this.DatePicker.TabIndex = 26;
             // 
+            // GetStatistic
+            // 
+            this.GetStatistic.Location = new System.Drawing.Point(359, 265);
+            this.GetStatistic.Name = "GetStatistic";
+            this.GetStatistic.Size = new System.Drawing.Size(117, 23);
+            this.GetStatistic.TabIndex = 28;
+            this.GetStatistic.Text = "Разобрать";
+            this.GetStatistic.UseVisualStyleBackColor = true;
+            this.GetStatistic.Click += new System.EventHandler(this.GetStatistic_Click);
+            // 
+            // StatisticString
+            // 
+            this.StatisticString.AcceptsReturn = true;
+            this.StatisticString.AcceptsTab = true;
+            this.StatisticString.Location = new System.Drawing.Point(15, 269);
+            this.StatisticString.Multiline = true;
+            this.StatisticString.Name = "StatisticString";
+            this.StatisticString.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.StatisticString.Size = new System.Drawing.Size(335, 20);
+            this.StatisticString.TabIndex = 27;
+            this.StatisticString.Text = "Введите статистическую строку";
+            // 
             // AddMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(249)))), ((int)(((byte)(170)))));
             this.ClientSize = new System.Drawing.Size(488, 326);
+            this.Controls.Add(this.GetStatistic);
+            this.Controls.Add(this.StatisticString);
             this.Controls.Add(this.DatePicker);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.AddTeam);
@@ -434,5 +460,7 @@
         private System.Windows.Forms.TextBox Score_A;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker DatePicker;
+        private System.Windows.Forms.Button GetStatistic;
+        private System.Windows.Forms.TextBox StatisticString;
     }
 }
