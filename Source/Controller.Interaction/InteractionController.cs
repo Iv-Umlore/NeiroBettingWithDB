@@ -83,5 +83,9 @@ namespace InteractionController
             return _disciplineController.GetMatchForLearning();
         }
 
+        public void DeleteWaitResultMatch(int teamA, int teamB, DateTime date)
+        {
+            _disciplineController.DeleteWaitResultMatch(teamA, teamB, date);
+        }
     }
 }

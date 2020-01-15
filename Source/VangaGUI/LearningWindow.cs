@@ -35,6 +35,7 @@ namespace VangaGUI
                 AverageResultValue.Refresh();
                 LearningStatus.Value = i;
             }
+            BIC.SaveCurrentWeights();
         }
 
         private void TestNetwork_Click(object sender, EventArgs e)

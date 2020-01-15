@@ -88,7 +88,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.shot_on_target_B == 0) ? 1 : (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 saveArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -108,7 +108,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.save_B == 0) ? 0.5 : (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 goodShootArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -143,7 +143,7 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.shot_on_target_B == 0) ? 1 : (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 saveArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -157,7 +157,7 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.save_B == 0) ? 0.5 : (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
                 goodShootArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -233,7 +233,8 @@ namespace Football.InputLayers
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.shot_on_target_B == 0 && match.shot_on_target_A != 0) ? 2 :
+                    (match.shot_on_target_B == 0) ? 1 : (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -256,7 +257,8 @@ namespace Football.InputLayers
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
+                tmp = (match.shot_on_target_B == 0 && match.shot_on_target_A != 0) ? 2 :
+                    (match.shot_on_target_B == 0) ? 1 : (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
                 result.Add(tmp);
             }
 

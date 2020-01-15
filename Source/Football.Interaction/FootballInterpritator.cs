@@ -71,8 +71,11 @@ namespace Football.Interpritator
             // Проверяем условие, что нейроны должны выстроиться по сигме
             var tmp = 0.0;
             foreach (var value in _outOutputNeironResults)
-                if (value + 0.08 < tmp)
+                if (value + 0.06 < tmp)
+                {
+                    Console.WriteLine("Грусть");
                     break;
+                }
                 else tmp = value;
 
             try
@@ -80,11 +83,12 @@ namespace Football.Interpritator
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.8) break;
+                    if (_outOutputNeironResults[i] >= 0.999) break;
                     i++;
                 }
                 // Нашёл I. Конкретные номера нейронов-активаторов
-                return (i-1).ToString() + ';' + i.ToString() + ';' + (i + 1).ToString();
+
+                return "П1 " + (-0.5 + 4 - i).ToString() + ';' + "П1 " + (-0.5 + 5 - i).ToString() + ';' + "П1 " + (-0.5 + 6 - i).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)

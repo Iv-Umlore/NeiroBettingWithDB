@@ -64,7 +64,16 @@ namespace VangaGUI
 
         private void DeleteMatch_Click(object sender, EventArgs e)
         {
+            var key = MyMatchWaitResult.SelectedItem.ToString();
+            var MWRes = matches.First(it => it.Key == key).Value;
 
+            BIC.DeleteWaitResultMatch(MWRes.TeamA.Team_id, MWRes.TeamB.Team_id, MWRes.date);
+
+            MyMatchWaitResult.Text = "";
+            statisticPredictTexBox.Text = "";
+            HardPredictTextBox.Text = "";
+            PredictTextBox.Text = "";
+            SavePredictTextBox.Text = "";
         }
     }
 }

@@ -145,8 +145,7 @@ namespace BridgeToInterface
             /// считается результатом с умеренным риском. Для преобразования результата в более понятный вид
             /// необходимо воспользоваться интерпритатором
             var finalPredict = _network.GetFinalPrediction(finalInputParameters);
-            //prediction += _interpritator.GetPrediction(finalPredict);
-            prediction += "asdwdqundjsnadqwd;asjduwqjndausnd;asdjqwnbdnajsdqwd;";
+            prediction += _interpritator.GetPrediction(finalPredict);
             _interactionController.AddNewWaitResultMatch(parameters, tournament, date, prediction);
 
             return prediction;
@@ -179,6 +178,11 @@ namespace BridgeToInterface
         {
             matchesForLearning = _interactionController.GetMatchForLearning();
             return matchesForLearning.Count;
+        }
+
+        public void DeleteWaitResultMatch(int teamA, int teamB, DateTime date)
+        {
+            _interactionController.DeleteWaitResultMatch(teamA, teamB, date);
         }
     }
 }

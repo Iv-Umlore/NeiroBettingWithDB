@@ -106,15 +106,41 @@ namespace Football.Network
                 // Запуск Шага Обучения
                 LearningStep(helpErrors, VangaErrors);
                 // Статистика
-                oneSumm /= 10;
                 fullSumm += oneSumm;
-
             }
             fullSumm /= matches.Count;
             var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
 
             for (int i = 0; i < 14; i += 2)
+            {
+                switch (i)
+                {
+                    case 0:
+                        resultString += "Tot: ";
+                        break;
+                    case 2:
+                        resultString += "SvA: ";
+                        break;
+                    case 4:
+                        resultString += "SvB: ";
+                        break;
+                    case 6:
+                        resultString += "VA: ";
+                        break;
+                    case 8:
+                        resultString += "VB: ";
+                        break;
+                    case 10:
+                        resultString += "ShA: ";
+                        break;                        
+                    case 12:
+                        resultString += "ShB: ";
+                        break;
+                    default:
+                        break;
+                }
                 resultString += minMaxHelperArray[i].ToString("f2") + "/" + minMaxHelperArray[i + 1].ToString("f2") + " ";
+            }
             return resultString;
         }
         

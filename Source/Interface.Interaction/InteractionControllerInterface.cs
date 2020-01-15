@@ -25,5 +25,7 @@ namespace InteractionInterface
         bool ChangeDiscipline(Discipline type);
 
         Dictionary<LastMatch, List<LastMatch>> GetMatchForLearning();
+
+        void DeleteWaitResultMatch(int teamA, int teamB, DateTime date);
     }
 }

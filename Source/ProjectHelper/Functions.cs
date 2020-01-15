@@ -114,9 +114,9 @@ namespace ProjectHelper
                         // Total
                         HelpFunctions.SigmaFunction(LM.Score_A +  LM.Score_B),
                         // Save A
-                        HelpFunctions.SigmaFunction(LM.save_A / LM.shot_on_target_B),
+                        (LM.shot_on_target_B == 0)? 1 : LM.save_A / LM.shot_on_target_B,
                         // Save B
-                        HelpFunctions.SigmaFunction(LM.save_B / LM.shot_on_target_A),
+                        (LM.shot_on_target_A == 0)? 1 : LM.save_B / LM.shot_on_target_A,
                         // Нарушения А
                         HelpFunctions.SigmaFunction(LM.Violations_A),
                         // Нарушения В
