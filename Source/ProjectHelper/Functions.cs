@@ -63,7 +63,8 @@ namespace ProjectHelper
 
         public static List<double> GetPerfectArrayValue(int correctScorePoints)
         {
-            var sigmaParameter = -5.0;
+            // Вопросы
+            var sigmaParameter = -10.0;
             while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8))
                 sigmaParameter += 0.2;
 

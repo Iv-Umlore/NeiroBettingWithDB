@@ -342,13 +342,13 @@ namespace Football.Network
             VangaThread.Start(VangaError);
 
             // Ждём завершения
-            TotalThread.Join();
-            SaveAThread.Join();
-            SaveBThread.Join();
-            ShotBThread.Join();
-            ShotAThread.Join();
-            ViolationsAThread.Join();
-            ViolationsBThread.Join();
+            TotalThread.Join(50);
+            SaveAThread.Join(50);
+            SaveBThread.Join(50);
+            ShotBThread.Join(50);
+            ShotAThread.Join(50);
+            ViolationsAThread.Join(50);
+            ViolationsBThread.Join(50);
 
             VangaThread.Join();
 
