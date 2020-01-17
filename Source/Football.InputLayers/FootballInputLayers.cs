@@ -53,7 +53,7 @@ namespace Football.InputLayers
                 /// Подсчёт итогового числа и его корректировка (хорошо, как и ожидалось, команда А отыграла не оч)
                 /// Если оцениваемая команда А сильнее, то действует принцип - можно было лучше - результат занижается
                 /// Если команда А хуже, то счёт 2 3 намного более весомый. тк они боролись
-                var tmp = (lastMatch.Score_A + lastMatch.Score_B); // tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                var tmp = (lastMatch.Score_A + lastMatch.Score_B) * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -88,7 +88,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.shot_on_target_B == 0) ? 1 : (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.save_A + 1) / (match.shot_on_target_B + 1)) * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 saveArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -108,7 +108,7 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.save_B == 0) ? 0.5 : (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.shot_on_target_A + 1) / (match.save_B + 1)) * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 goodShootArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -143,7 +143,7 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.shot_on_target_B == 0) ? 1 : (match.save_A / match.shot_on_target_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.save_A + 1) / (match.shot_on_target_B + 1)) * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 saveArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -157,7 +157,7 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.save_B == 0) ? 0.5 : (match.shot_on_target_A / match.save_B);// tierCoeff / importantCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.shot_on_target_A + 1) / (match.save_B + 1)) * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 goodShootArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -185,7 +185,7 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 // Добавление откорректированноего результата
-                result.Add(match.Violations_A);//* importantCoeff / tierCoeff);
+                result.Add(match.Violations_A * importantCoeff * tierCoeff);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
             result.OrderByDescending(it => it);
@@ -204,7 +204,7 @@ namespace Football.InputLayers
                 var tierCoeff = HelpFunctions.GetMatchCoeffByTier(match.tier_A, match.tier_B);
                 var importantCoeff = HelpFunctions.GetCoeffByImportant(match.Important_A - match.Important_B);
                 // Добавление откорректированноего результата
-                result.Add(match.Violations_A);// * importantCoeff / tierCoeff);
+                result.Add(match.Violations_A * importantCoeff * tierCoeff);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
             result.OrderByDescending(it => it);
@@ -233,8 +233,7 @@ namespace Football.InputLayers
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_B == 0 && match.shot_on_target_A != 0) ? 2 :
-                    (match.shot_on_target_B == 0) ? 1 : (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.shot_on_target_A + 1) / (match.shot_on_target_B + 1)) * importantCoeff * tierCoeff * replasementCoeff * tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -257,8 +256,7 @@ namespace Football.InputLayers
                 /// Если оцениваемая команда сильнее, то отношение должно быть больше 1.
                 /// Если это не так - это плохой результат. Он должен ещё сильнее ухудшаться
                 /// Если слабее наобортот. Точно так же с мотивацией играть.
-                tmp = (match.shot_on_target_B == 0 && match.shot_on_target_A != 0) ? 2 :
-                    (match.shot_on_target_B == 0) ? 1 : (match.shot_on_target_A / match.shot_on_target_B);// importantCoeff / tierCoeff / replasementCoeff / tournamentCoeff;
+                tmp = ((match.shot_on_target_A + 1) / (match.shot_on_target_B + 1)) * importantCoeff * tierCoeff * replasementCoeff * tournamentCoeff;
                 result.Add(tmp);
             }
 
@@ -281,7 +279,7 @@ namespace Football.InputLayers
             var result = new List<double>();
 
             for (int i = 0; i < 14; i++)
-                result.Add(values[i]);// * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff);
+                result.Add(values[i] * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff);
 
             return result;
         }
@@ -303,7 +301,7 @@ namespace Football.InputLayers
                         save_A = (short) values[i + 6],                save_B = (short) values[i + 7],
                         tier_A = (int) values[i + 8],                  tier_B = (int) values[i + 9],
                         Important_A = (short) values[i + 10],          Important_B = (short) values[i + 11],
-                        replacements_A = (short) values[i + 12], replacements_B = (short) values[i + 13],
+                        replacements_A = (short) values[i + 12],       replacements_B = (short) values[i + 13],
                         tier_tournament = (short) values[i + 14]
                     };
                     i += 15; // Очень грязно, но как есть)

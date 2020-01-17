@@ -79,7 +79,7 @@ namespace Football.Interpritator
                 }
                 // Нашёл I. Конкретные номера нейронов-активаторов
 
-                return "П1 " + (4 - i).ToString() + ';' + "П1 " + ( 5 - i).ToString() + ';' + "П1 " + ( 6 - i).ToString();
+                return "П1 " + (i - 7).ToString() + ';' + "П1 " + (i - 6).ToString() + ';' + "П1 " + (i - 5).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
             catch (Exception ex)
