@@ -57,6 +57,9 @@ namespace Football.InputLayers
                 result.Add(tmp);
             }
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
+
             return result;
         }
 
@@ -118,6 +121,8 @@ namespace Football.InputLayers
             result.AddRange(saveArrayA);
             result.AddRange(goodShootArrayB);
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 
@@ -167,6 +172,8 @@ namespace Football.InputLayers
             result.AddRange(saveArrayB);
             result.AddRange(goodShootArrayA);
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 
@@ -190,6 +197,8 @@ namespace Football.InputLayers
             // В итоговый массив поступает отсортированный по убыванию массив.
             result.OrderByDescending(it => it);
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 
@@ -209,6 +218,8 @@ namespace Football.InputLayers
             // В итоговый массив поступает отсортированный по убыванию массив.
             result.OrderByDescending(it => it);
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 
@@ -238,6 +249,8 @@ namespace Football.InputLayers
                 result.Add(tmp);
             }
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 
@@ -262,6 +275,8 @@ namespace Football.InputLayers
                 result.Add(tmp);
             }
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
         
@@ -283,6 +298,8 @@ namespace Football.InputLayers
             for (int i = 0; i < 14; i++)
                 result.Add(values[i]);// * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff);
 
+            // Входной коррекционный нейрон
+            result.Add(1.0);
             return result;
         }
 

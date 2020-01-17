@@ -32,10 +32,10 @@ namespace Football.Network
             _hiddenLayers = new List<HiddenLayer>(HiddenLayerNumber);
 
             for (int i = 0; i < inputParametersInLayers.Count - 1; i++)
-                _hiddenLayers.Add(new HiddenLayer(inputParametersInLayers[i], inputParametersInLayers[i + 1],
+                _hiddenLayers.Add(new HiddenLayer(inputParametersInLayers[i] + 1, inputParametersInLayers[i + 1],
                     new List<List<double>>()));
 
-            _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count - 1], _outputParametersCount);
+            _outputLayer = new OutputLayer(inputParametersInLayers[inputParametersInLayers.Count - 1] + 1, _outputParametersCount);
         }
 
         public void SetLoadWeight(XElement weights)
@@ -92,7 +92,11 @@ namespace Football.Network
             // Собираем ответы по одному в кучу
             var tmpList = _inputLayer.GetValueForNetwork(InputParameters);
             foreach (var hLayer in _hiddenLayers)
+            {
                 tmpList = hLayer.CalculateValues(tmpList);
+                // Добавляем коррекционный нейрон к ответу каждому слою
+                tmpList.Add(1.0);
+            }
 
 
             return _outputLayer.CalculateValues(tmpList);
@@ -110,9 +114,15 @@ namespace Football.Network
 
         public void Learning(object errors)
         {
-                var tmp = _outputLayer.LearningLayer((List<double>)errors);
-                for (int i = _hiddenLayers.Count - 1; i >= 0; i--)
-                    tmp = _hiddenLayers[i].LearningLayer(tmp);
+            var tmp = _outputLayer.LearningLayer((List<double>)errors);
+            // Удаляем изменения последнего коррекционного нейрона
+            tmp.RemoveAt(tmp.Count - 1);
+            for (int i = _hiddenLayers.Count - 1; i >= 0; i--)
+            {
+                tmp = _hiddenLayers[i].LearningLayer(tmp);
+                // Удаляем изменения последнего коррекционного нейрона
+                tmp.RemoveAt(tmp.Count - 1);
+            }
         }
 
         public string NetworkName => _networkName;
