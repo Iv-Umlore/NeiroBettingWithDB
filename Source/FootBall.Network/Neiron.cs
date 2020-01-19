@@ -8,8 +8,8 @@ namespace Football.Network
     {
         private List<double> _weights;
         private const int ChangeSize = 10;
-        private const int RandomSize = 5;
-        private const double learningSpeed = 1;
+        private const int RandomSize = 10;
+        private const double learningSpeed = 0.5;
 
         public Neiron(List<double> weights)
         {
@@ -46,9 +46,12 @@ namespace Football.Network
         /// </summary>
         public void ChangeWeights()
         {
-            
+
             for (int i = 0; i < _weights.Count; i++)
-                _weights[i] += Randomaze.NextDouble() / ChangeSize;
+            {
+                var coeff = (Randomaze.NextInt(2) == 1) ? 1 : -1;
+                _weights[i] += Randomaze.NextDouble() * coeff / ChangeSize;
+            }
         }
 
         public List<double> GetWeights()

@@ -58,6 +58,14 @@ namespace Football.Network
 
         }
 
+        public void ChangeWeight()
+        {
+            foreach (var HL in _hiddenLayers)
+                HL.ChangeWeight();
+
+            _outputLayer.ChangeWeight();
+        }
+
         public XElement GetXmlWeights()
         {
             XElement result = new XElement(_networkName, 0);

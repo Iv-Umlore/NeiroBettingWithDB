@@ -39,9 +39,9 @@ namespace NetworkController
             _network.SetLoadWeights();
         }
 
-        public void SaveCurrentWeights()
+        public void SaveCurrentWeights(string historyFileName)
         {
-            _network.SaveCurrentWeights();
+            _network.SaveCurrentWeights(historyFileName);
 
         }
 

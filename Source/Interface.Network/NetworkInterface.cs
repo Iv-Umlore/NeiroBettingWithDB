@@ -21,7 +21,7 @@ namespace NetworkInterface
 
         void SetLoadWeights();
 
-        void SaveCurrentWeights();
+        void SaveCurrentWeights(string historyFileName = "");
 
         void ReloadWeights();
 

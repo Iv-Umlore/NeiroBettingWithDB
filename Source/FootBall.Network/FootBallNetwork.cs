@@ -17,10 +17,18 @@ namespace Football.Network
         private string pathToWeightHistory;
         private List<Network> netNetwork;
 
+        private double[] lastError;
+        private double[] BestError;
+        private int[] lastErrorCount;
+
         public FootballNetwork()
         {
             pathToWeights = "../Weights/Current/FootBall/";     // Вынести в конфиг, или в константы хелпера
             pathToWeightHistory = "../Weights/History/FootBall/";     // Вынести в конфиг, или в константы хелпера
+
+            lastError = new double[8];
+            lastErrorCount = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0};
+            BestError = new double[8] { 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0};
 
             try
             {                
@@ -88,8 +96,8 @@ namespace Football.Network
                     if (minMaxHelperArray[2 * i + 1] < tmp)
                         minMaxHelperArray[2 * i + 1] = tmp;
                     helpErrors.Add(tmp);
-
                 }
+
                 var VangaErrors = new List<double>();
                 for (int i = 0; i < perfectVangaAnswer.Count; i++)
                 {
@@ -184,21 +192,26 @@ namespace Football.Network
                         minMaxHelperArray[2*i + 1] = tmp;
                     helpErrors.Add(tmp);
 
+                    lastError[i] += Math.Abs(tmp);
+
                 }
+
                 var VangaErrors = new List<double>();
                 for (int i = 0; i < perfectVangaAnswer.Count; i++)
                 {
-                    oneSumm += Math.Sqrt((VangaAnswer[i] - perfectVangaAnswer[i]) * (VangaAnswer[i] - perfectVangaAnswer[i]));
+                    oneSumm += Math.Abs(VangaAnswer[i] - perfectVangaAnswer[i]);
                     VangaErrors.Add(VangaAnswer[i] - perfectVangaAnswer[i]);
                 }
 
                 // Запуск Шага Обучения
                 LearningStep(helpErrors, VangaErrors);
                 // Статистика
+                lastError[7] = oneSumm;
                 fullSumm += oneSumm;
             }
             // Считаем среднее отклонение по всем тестам
-            fullSumm /= matches.Count;
+            fullSumm /= matches.Count;            
+
             var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
 
             for (int i = 0; i < 14; i += 2)
@@ -231,6 +244,25 @@ namespace Football.Network
                 }
                 resultString += minMaxHelperArray[i].ToString("f2") + "/" + minMaxHelperArray[i + 1].ToString("f2") + " ";
             }
+
+            // Если нейронка не может обучиться или уходит не туда,
+            // в таком случае принудительно немного изменяем веса нейронов
+            for (int i = 0; i < 8; i++)
+            {
+                if (BestError[i] > lastError[i])
+                {
+                    BestError[i] = lastError[i];
+                    lastErrorCount[i] = 0;
+                }
+                else lastErrorCount[i]++;
+                
+                if (lastErrorCount[i] > 2000)
+                {
+                    netNetwork[i].ChangeWeight();
+                    lastErrorCount[i] = 0;
+                }
+            }
+            
             return resultString;
         }
         
@@ -253,7 +285,7 @@ namespace Football.Network
         }
 
         // think about good save
-        public void SaveCurrentWeights()
+        public void SaveCurrentWeights(string historyFileName = "")
         {
             XDocument xDoc = new XDocument(new XElement("Value"));
             var value = xDoc.Element("Value");
@@ -265,11 +297,14 @@ namespace Football.Network
             if (!Directory.Exists(pathToWeightHistory)) Directory.CreateDirectory(pathToWeightHistory);
 
             XmlTextWriter xmlCurrWriter = new XmlTextWriter(pathToWeights + "Current.xml", null);
-            XmlTextWriter xmlWriter = new XmlTextWriter(pathToWeightHistory +
-                                                        DateTime.Now.Year + DateTime.Now.Month +
-                                                        DateTime.Now.Day + DateTime.Now.Hour +
-                                                        DateTime.Now.Minute + DateTime.Now.Second +
-                                                        ".xml", null);
+
+            // Определяем путь до историч. файла
+            var fileName = string.IsNullOrEmpty(historyFileName) ?
+                (pathToWeightHistory + DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day +
+                DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".xml") :
+                (pathToWeightHistory + " "+ historyFileName + ".xml");
+
+            XmlTextWriter xmlWriter = new XmlTextWriter(fileName, null);
 
             xDoc.Save(xmlWriter);
             xDoc.Save(xmlCurrWriter);
@@ -337,6 +372,7 @@ namespace Football.Network
             Thread ShotBThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Shot_B").Learning));
             ShotBThread.Start(new List<double>() { helperError[6] });
 
+            VangaError = GetVangaErrors(VangaError);
 
             Thread VangaThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "Vanga").Learning));
             VangaThread.Start(VangaError);
@@ -352,6 +388,31 @@ namespace Football.Network
 
             VangaThread.Join();
 
+        }
+
+        /// <summary>
+        /// Необходима для исправления ситуации подгона нейронки к одному
+        /// наиболее "Приемлемому" для всех матчей результату.
+        /// Будем брать не все ошибки, на 5 наиболее весомых
+        /// </summary>
+        /// <param name="errors"></param>
+        /// <returns></returns>
+        private List<double> GetVangaErrors(List<double> errors)
+        {
+            var positionWithError = new Dictionary<int, double>();
+
+            for (int i = 0; i < errors.Count; i++)
+                positionWithError.Add(i, errors[i]);
+
+            var badPosition = positionWithError.OrderByDescending(it => Math.Abs(it.Value)).ToList();
+
+            int counter = 0;
+            foreach (var bp in badPosition)
+                if (counter > 4)
+                    errors[bp.Key] = 0.0;                
+                else counter++;
+
+            return errors;
         }
 
     }

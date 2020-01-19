@@ -93,6 +93,12 @@ namespace Football.Network
             return res;
         }
 
+        public void ChangeWeight()
+        {
+            foreach (var neiron in NeironList)
+                neiron.ChangeWeights();
+        }
+
         public void ReloadWeights()
         {
             foreach (var neiron in NeironList)
