@@ -14,6 +14,7 @@ namespace VangaGUI
     public partial class PredictionWindow : Form
     {
         BridgeToInterfaceController BIC;
+        public string prediction;
 
         public PredictionWindow(BridgeToInterfaceController controller, string team_A,string team_B, string tournament)
         {
@@ -42,7 +43,7 @@ namespace VangaGUI
             for (int i = 0; i < 7; i++)
                 if (parameters[i] == null || parameters[i] == "") flag = false;
             if (flag)
-                BIC.GetPrediction(parameters, dateTimePicker1.Value);
+                prediction = BIC.GetPrediction(parameters, dateTimePicker1.Value);
 
             Close();
         }

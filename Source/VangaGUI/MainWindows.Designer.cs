@@ -70,15 +70,12 @@
             this.DisciplinePanel = new System.Windows.Forms.Panel();
             this.PredictionPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.HardRisk = new System.Windows.Forms.Label();
             this.HardPrediction = new System.Windows.Forms.Label();
             this.ResultHardLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.MediumRisk = new System.Windows.Forms.Label();
             this.MediumPrediction = new System.Windows.Forms.Label();
             this.ResultMediumLabel = new System.Windows.Forms.Label();
             this.FirstPredictionPanel = new System.Windows.Forms.Panel();
-            this.EasyRisk = new System.Windows.Forms.Label();
             this.EasyPrediction = new System.Windows.Forms.Label();
             this.ResultEasyLabel = new System.Windows.Forms.Label();
             this.AddTeam = new System.Windows.Forms.Button();
@@ -506,7 +503,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.HardRisk);
             this.panel2.Controls.Add(this.HardPrediction);
             this.panel2.Controls.Add(this.ResultHardLabel);
             this.panel2.Location = new System.Drawing.Point(414, 3);
@@ -514,19 +510,10 @@
             this.panel2.Size = new System.Drawing.Size(171, 57);
             this.panel2.TabIndex = 2;
             // 
-            // HardRisk
-            // 
-            this.HardRisk.AutoSize = true;
-            this.HardRisk.Location = new System.Drawing.Point(65, 34);
-            this.HardRisk.Name = "HardRisk";
-            this.HardRisk.Size = new System.Drawing.Size(28, 13);
-            this.HardRisk.TabIndex = 2;
-            this.HardRisk.Text = "0.83";
-            // 
             // HardPrediction
             // 
             this.HardPrediction.AutoSize = true;
-            this.HardPrediction.Location = new System.Drawing.Point(7, 34);
+            this.HardPrediction.Location = new System.Drawing.Point(4, 34);
             this.HardPrediction.Name = "HardPrediction";
             this.HardPrediction.Size = new System.Drawing.Size(48, 13);
             this.HardPrediction.TabIndex = 1;
@@ -537,13 +524,12 @@
             this.ResultHardLabel.AutoSize = true;
             this.ResultHardLabel.Location = new System.Drawing.Point(4, 10);
             this.ResultHardLabel.Name = "ResultHardLabel";
-            this.ResultHardLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultHardLabel.Size = new System.Drawing.Size(89, 13);
             this.ResultHardLabel.TabIndex = 0;
-            this.ResultHardLabel.Text = "Результат + риск:";
+            this.ResultHardLabel.Text = "Риск результат:";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.MediumRisk);
             this.panel1.Controls.Add(this.MediumPrediction);
             this.panel1.Controls.Add(this.ResultMediumLabel);
             this.panel1.Location = new System.Drawing.Point(203, 3);
@@ -551,19 +537,10 @@
             this.panel1.Size = new System.Drawing.Size(173, 57);
             this.panel1.TabIndex = 1;
             // 
-            // MediumRisk
-            // 
-            this.MediumRisk.AutoSize = true;
-            this.MediumRisk.Location = new System.Drawing.Point(65, 34);
-            this.MediumRisk.Name = "MediumRisk";
-            this.MediumRisk.Size = new System.Drawing.Size(28, 13);
-            this.MediumRisk.TabIndex = 2;
-            this.MediumRisk.Text = "0.83";
-            // 
             // MediumPrediction
             // 
             this.MediumPrediction.AutoSize = true;
-            this.MediumPrediction.Location = new System.Drawing.Point(2, 34);
+            this.MediumPrediction.Location = new System.Drawing.Point(3, 34);
             this.MediumPrediction.Name = "MediumPrediction";
             this.MediumPrediction.Size = new System.Drawing.Size(48, 13);
             this.MediumPrediction.TabIndex = 1;
@@ -574,13 +551,12 @@
             this.ResultMediumLabel.AutoSize = true;
             this.ResultMediumLabel.Location = new System.Drawing.Point(2, 10);
             this.ResultMediumLabel.Name = "ResultMediumLabel";
-            this.ResultMediumLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultMediumLabel.Size = new System.Drawing.Size(124, 13);
             this.ResultMediumLabel.TabIndex = 0;
-            this.ResultMediumLabel.Text = "Результат + риск:";
+            this.ResultMediumLabel.Text = "Стабильное результат:";
             // 
             // FirstPredictionPanel
             // 
-            this.FirstPredictionPanel.Controls.Add(this.EasyRisk);
             this.FirstPredictionPanel.Controls.Add(this.EasyPrediction);
             this.FirstPredictionPanel.Controls.Add(this.ResultEasyLabel);
             this.FirstPredictionPanel.Location = new System.Drawing.Point(3, 3);
@@ -588,19 +564,10 @@
             this.FirstPredictionPanel.Size = new System.Drawing.Size(162, 57);
             this.FirstPredictionPanel.TabIndex = 0;
             // 
-            // EasyRisk
-            // 
-            this.EasyRisk.AutoSize = true;
-            this.EasyRisk.Location = new System.Drawing.Point(67, 34);
-            this.EasyRisk.Name = "EasyRisk";
-            this.EasyRisk.Size = new System.Drawing.Size(28, 13);
-            this.EasyRisk.TabIndex = 2;
-            this.EasyRisk.Text = "0.83";
-            // 
             // EasyPrediction
             // 
             this.EasyPrediction.AutoSize = true;
-            this.EasyPrediction.Location = new System.Drawing.Point(3, 34);
+            this.EasyPrediction.Location = new System.Drawing.Point(6, 34);
             this.EasyPrediction.Name = "EasyPrediction";
             this.EasyPrediction.Size = new System.Drawing.Size(48, 13);
             this.EasyPrediction.TabIndex = 1;
@@ -609,11 +576,11 @@
             // ResultEasyLabel
             // 
             this.ResultEasyLabel.AutoSize = true;
-            this.ResultEasyLabel.Location = new System.Drawing.Point(0, 10);
+            this.ResultEasyLabel.Location = new System.Drawing.Point(6, 10);
             this.ResultEasyLabel.Name = "ResultEasyLabel";
-            this.ResultEasyLabel.Size = new System.Drawing.Size(98, 13);
+            this.ResultEasyLabel.Size = new System.Drawing.Size(89, 13);
             this.ResultEasyLabel.TabIndex = 0;
-            this.ResultEasyLabel.Text = "Результат + риск:";
+            this.ResultEasyLabel.Text = "Сейв результат:";
             // 
             // AddTeam
             // 
@@ -728,15 +695,12 @@
         private System.Windows.Forms.Panel DisciplinePanel;
         private System.Windows.Forms.Panel PredictionPanel;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label HardRisk;
         private System.Windows.Forms.Label HardPrediction;
         private System.Windows.Forms.Label ResultHardLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label MediumRisk;
         private System.Windows.Forms.Label MediumPrediction;
         private System.Windows.Forms.Label ResultMediumLabel;
         private System.Windows.Forms.Panel FirstPredictionPanel;
-        private System.Windows.Forms.Label EasyRisk;
         private System.Windows.Forms.Label EasyPrediction;
         private System.Windows.Forms.Label ResultEasyLabel;
         private System.Windows.Forms.Button AddTeam;

@@ -42,6 +42,15 @@ namespace VangaGUI
             {
                 var wind = new PredictionWindow(_mainController, TeamA_Box.Text, TeamB_Box.Text, TournamentBox.Text);
                 wind.ShowDialog();
+                var value = wind.prediction.Split(';');
+                EasyPrediction.Text = value[3];
+                EasyPrediction.Refresh();
+
+                MediumPrediction.Text = value[2];
+                MediumPrediction.Refresh();
+
+                HardPrediction.Text = value[1];
+                HardPrediction.Refresh();
             }
         }
 
