@@ -56,16 +56,21 @@ namespace ProjectHelper
     public static class FootballHelper
     {
 
+        private static double SpecialSigmaFunction(int x, double a)
+        {
+            return 1 / (1 + Math.Pow(Math.E, (-x + a)));
+        }
+
         public static List<double> GetPerfectArrayValue(int correctScorePoints)
         {
             // Вопросы
-            var y = 0.7;    // Значение "целевого нейрона сети"
-            var k = 0.1;    // Значение коэффициента уравнения y = kx+b
-            var b = y / (k * correctScorePoints);      // Искомый b, при условии, что х = correctScorePoints
+            var sigmaParameter = -10.0;
+            while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73))
+                sigmaParameter += 0.2;
 
             var result = new List<double>();
-            for (int x = 0; x < 10; x++)
-                result.Add(k*x+b);
+            for (int i = 0; i < 10; i++)
+                result.Add(SpecialSigmaFunction(i, sigmaParameter));
 
             return result;
         }
@@ -110,9 +115,9 @@ namespace ProjectHelper
                         // Total
                         HelpFunctions.SigmaFunction(LM.Score_A +  LM.Score_B),
                         // Save A
-                        (LM.shot_on_target_B == 0)? 1 : LM.save_A / LM.shot_on_target_B,
+                        (LM.shot_on_target_B == 0)? 0.75 : LM.save_A / LM.shot_on_target_B,
                         // Save B
-                        (LM.shot_on_target_A == 0)? 1 : LM.save_B / LM.shot_on_target_A,
+                        (LM.shot_on_target_A == 0)? 0.75 : LM.save_B / LM.shot_on_target_A,
                         // Нарушения А
                         HelpFunctions.SigmaFunction(LM.Violations_A),
                         // Нарушения В
