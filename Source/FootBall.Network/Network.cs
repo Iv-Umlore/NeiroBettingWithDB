@@ -121,7 +121,7 @@ namespace Football.Network
         }
 
         public void Learning(object errors)
-        {
+        {          
             var tmp = _outputLayer.LearningLayer((List<double>)errors);
             // Удаляем изменения последнего коррекционного нейрона
             tmp.RemoveAt(tmp.Count - 1);

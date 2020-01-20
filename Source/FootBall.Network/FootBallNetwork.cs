@@ -256,7 +256,7 @@ namespace Football.Network
                 }
                 else lastErrorCount[i]++;
                 
-                if (lastErrorCount[i] > 2000)
+                if (lastErrorCount[i] > 2000 && i != 7)
                 {
                     netNetwork[i].ChangeWeight();
                     lastErrorCount[i] = 0;
@@ -344,6 +344,8 @@ namespace Football.Network
 
         private void LearningStep(List<double> helperError, List<double> VangaError)
         {
+            /*
+             
             // total
             Thread TotalThread = new Thread(new ParameterizedThreadStart(netNetwork.First(it => it.NetworkName == "TotalGoals").Learning));
             TotalThread.Start(new List<double>() { helperError[0] });
@@ -387,6 +389,14 @@ namespace Football.Network
             ViolationsBThread.Join(50);
 
             VangaThread.Join();
+
+            */
+
+            for (int i = 0; i < netNetwork.Count - 1; i++)
+                netNetwork[i].Learning(new List<double>() { helperError[i] });
+
+            netNetwork.First(it => it.NetworkName == "Vanga").Learning(VangaError);
+
 
         }
 
