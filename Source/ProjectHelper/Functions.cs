@@ -11,14 +11,14 @@ namespace ProjectHelper
 
         public static double SigmaFunction(double value)
         {
-            double result = 1 / (1 + Math.Pow(Math.E, -0.5 * value + 4));
+            double result = 1 / (1 + Math.Pow(Math.E, -0.25 * value + 4));
             return result;
         }
 
         public static double Derivate(double value)
         {
             double E = Math.E;
-            double pow = Math.Pow(E, -0.5 * value + 4);
+            double pow = Math.Pow(E, -0.25 * value + 4);
             double result = pow / Math.Pow(1 + pow, 2);
             return result;
         }
@@ -56,21 +56,16 @@ namespace ProjectHelper
     public static class FootballHelper
     {
 
-        private static double SpecialSigmaFunction(int x, double a)
-        {
-            return 1 / (1 + Math.Pow(Math.E, (-x + a)));
-        }
-
         public static List<double> GetPerfectArrayValue(int correctScorePoints)
         {
             // Вопросы
-            var sigmaParameter = -10.0;
-            while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.8))
-                sigmaParameter += 0.2;
+            var y = 0.7;    // Значение "целевого нейрона сети"
+            var k = 0.1;    // Значение коэффициента уравнения y = kx+b
+            var b = y / (k * correctScorePoints);      // Искомый b, при условии, что х = correctScorePoints
 
             var result = new List<double>();
-            for (int i = 0; i < 10; i++)
-                result.Add(SpecialSigmaFunction(i, sigmaParameter));
+            for (int x = 0; x < 10; x++)
+                result.Add(k*x+b);
 
             return result;
         }

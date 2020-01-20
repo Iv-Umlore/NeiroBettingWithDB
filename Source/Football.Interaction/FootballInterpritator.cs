@@ -74,7 +74,7 @@ namespace Football.Interpritator
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.8) break;
+                    if (_outOutputNeironResults[i] >= 0.7) break;
                     i++;
                 }
                 // Нашёл I. Конкретные номера нейронов-активаторов
