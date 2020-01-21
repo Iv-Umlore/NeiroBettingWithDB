@@ -551,9 +551,9 @@
             this.ResultMediumLabel.AutoSize = true;
             this.ResultMediumLabel.Location = new System.Drawing.Point(2, 10);
             this.ResultMediumLabel.Name = "ResultMediumLabel";
-            this.ResultMediumLabel.Size = new System.Drawing.Size(124, 13);
+            this.ResultMediumLabel.Size = new System.Drawing.Size(126, 13);
             this.ResultMediumLabel.TabIndex = 0;
-            this.ResultMediumLabel.Text = "Стабильное результат:";
+            this.ResultMediumLabel.Text = "Стабильный результат:";
             // 
             // FirstPredictionPanel
             // 
