@@ -56,6 +56,15 @@ namespace ProjectHelper
     public static class FootballHelper
     {
 
+        private static double GausFunction(int x, int miu)
+        {
+            // 1 / (sqrt(0.5) * sqrt(2 * 3.1415 )) * e ^ (-(x - 6)^2/ (2*0.5))
+            var deltaStep2 = 0.5;           // квадрат дельты
+            var Pi = 3.14159265;            // Пи
+            var ePow = -1 * Math.Pow(x - miu, 2) / (2 * deltaStep2);
+            return 1 / (Math.Sqrt(deltaStep2 * 2 * Pi)) * Math.Pow(Math.E, ePow);
+        }
+
         private static double SpecialSigmaFunction(int x, double a)
         {
             return 1 / (1 + Math.Pow(Math.E, (-x + a)));
@@ -64,13 +73,17 @@ namespace ProjectHelper
         public static List<double> GetPerfectArrayValue(int correctScorePoints)
         {
             // Вопросы
-            var sigmaParameter = -10.0;
-            while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73))
-                sigmaParameter += 0.2;
+            //var sigmaParameter = -10.0;
+            //while (!(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73) && !(SpecialSigmaFunction(correctScorePoints, sigmaParameter) < 0.73))
+            //    sigmaParameter += 0.2;
+
+            //var result = new List<double>();
+            //for (int i = 0; i < 10; i++)
+            //    result.Add(SpecialSigmaFunction(i, sigmaParameter));
 
             var result = new List<double>();
             for (int i = 0; i < 10; i++)
-                result.Add(SpecialSigmaFunction(i, sigmaParameter));
+                result.Add(GausFunction(i, correctScorePoints));
 
             return result;
         }

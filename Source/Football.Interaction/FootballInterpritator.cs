@@ -74,11 +74,12 @@ namespace Football.Interpritator
                 int i = 0;
                 while (_outOutputNeironResults.Count > i - 1)
                 {
-                    if (_outOutputNeironResults[i] >= 0.7) break;
+                    if (_outOutputNeironResults[i] >= 0.475) break;
                     i++;
                 }
                 // Нашёл I. Конкретные номера нейронов-активаторов
 
+                // Риск // Медиум // Сейв
                 return "П1 " + (4 - i).ToString() + ';' + "П1 " + ( 5 - i).ToString() + ';' + "П1 " + ( 6 - i).ToString();
                 // Добавить дополнительный интерпритатор для преобразования в нормальную понятную строку
             }
