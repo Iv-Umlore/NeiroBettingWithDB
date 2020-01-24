@@ -27,7 +27,8 @@ namespace ProjectHelper
         {
             int rankA = 21 - tierA;
             int rankB = 21 - tierB;
-            return (rankB * rankB) / (rankA * rankA);
+            var res = (double)(rankB * rankB) / (rankA * rankA);
+            return res;
         }
 
         public static double GetCoeffByImportant(int important)
@@ -102,10 +103,10 @@ namespace ProjectHelper
                         LM.Score_A + LM.Score_B + 1,
                         // Save A
                         LM.save_A / (LM.shot_on_target_B + 1),
-                        LM.save_A / LM.shot_on_target_B,
+                        ( LM.shot_on_target_B == 0)? 0.8 : LM.save_A / LM.shot_on_target_B,
                         // Save B
                         LM.save_B / (LM.shot_on_target_A + 1),
-                        LM.save_B / LM.shot_on_target_A,
+                        (LM.shot_on_target_A == 0) ? 0.8 : LM.save_B / LM.shot_on_target_A,
                         // Нарушения А
                         LM.Violations_A,
                         LM.Violations_A + 1,

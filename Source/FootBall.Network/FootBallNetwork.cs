@@ -33,15 +33,15 @@ namespace Football.Network
             try
             {                
                 netNetwork = new List<Network>();
-                netNetwork.Add(new Network("TotalGoals", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_Total));
-                netNetwork.Add(new Network("Save_A", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveA));
-                netNetwork.Add(new Network("Save_B", 3, 150, 1, new List<int>() { 10, 10, 10, 5 }, NetworkType.Football_SaveB));
+                netNetwork.Add(new Network("TotalGoals", 3, 150, 1, new List<int>() { 10, 12, 10, 5 }, NetworkType.Football_Total));
+                netNetwork.Add(new Network("Save_A", 3, 150, 1, new List<int>() { 10, 8, 6, 4 }, NetworkType.Football_SaveA));
+                netNetwork.Add(new Network("Save_B", 3, 150, 1, new List<int>() { 10, 8, 6, 4 }, NetworkType.Football_SaveB));
                 netNetwork.Add(new Network("Violations_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsA));
                 netNetwork.Add(new Network("Violations_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ViolationsB));
                 netNetwork.Add(new Network("Shot_A", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotA));
                 netNetwork.Add(new Network("Shot_B", 3, 150, 1, new List<int>() { 5, 8, 6, 4 }, NetworkType.Football_ShotB));
 
-                netNetwork.Add(new Network("Vanga", 2, 150, 10, new List<int>() { 14, 10, 10 }, NetworkType.Football_Vanga));
+                netNetwork.Add(new Network("Vanga", 3, 150, 10, new List<int>() { 14, 20, 15, 10 }, NetworkType.Football_Vanga));
 
                 SetLoadWeights();
             }
@@ -208,6 +208,7 @@ namespace Football.Network
                 // Статистика
                 lastError[7] = oneSumm;
                 fullSumm += oneSumm;
+                oneSumm = 0;
             }
             // Считаем среднее отклонение по всем тестам
             fullSumm /= matches.Count;            

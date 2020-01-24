@@ -92,12 +92,10 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.shot_on_target_B == 0) ? 0.75 : (match.save_A / match.shot_on_target_B)
-                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                var totalCoeff = tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                tmp = totalCoeff * (match.save_A + 1) / (match.shot_on_target_B + 1);
                 saveArrayA.Add(tmp);
             }
-            // В итоговый массив поступает отсортированный по убыванию массив.
-            saveArrayA.OrderByDescending(it=>it);
 
             foreach (var match in values.Skip(5).ToList())
             {
@@ -113,12 +111,10 @@ namespace Football.InputLayers
                 /// Если матч важен для команды, то важность больше 1 и каждая ошибка более существенна
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
-                tmp = (match.save_B == 0) ? 0.25 : (match.shot_on_target_A / match.save_B) 
-                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                var totalCoeff = tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                tmp = totalCoeff * (match.shot_on_target_A + 1) / (match.save_B + 1) * -1;
                 goodShootArrayB.Add(tmp);
             }
-            // В итоговый массив поступает отсортированный по убыванию массив.
-            goodShootArrayB.OrderByDescending(it => it);
 
             var result = new List<double>();
             result.AddRange(saveArrayA);
@@ -151,7 +147,7 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.shot_on_target_B == 0) ? 0.75 : (match.save_A / match.shot_on_target_B)
+                tmp = (match.save_A + 1) /( match.shot_on_target_B + 1)
                     * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
                 saveArrayB.Add(tmp);
             }
@@ -166,8 +162,8 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.save_B == 0) ? 0.25 : (match.shot_on_target_A / match.save_B)
-                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                tmp = (match.shot_on_target_A + 1) / (match.save_B + 1)
+                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff * - 1;
                 goodShootArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
