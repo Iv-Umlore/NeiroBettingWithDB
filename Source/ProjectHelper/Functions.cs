@@ -103,10 +103,10 @@ namespace ProjectHelper
                         LM.Score_A + LM.Score_B + 1,
                         // Save A
                         LM.save_A / (LM.shot_on_target_B + 1),
-                        ( LM.shot_on_target_B == 0)? 0.8 : LM.save_A / LM.shot_on_target_B,
+                        ( LM.shot_on_target_B == 0)? 0.75 : (LM.save_A + 1) / (LM.shot_on_target_B + 1),
                         // Save B
-                        LM.save_B / (LM.shot_on_target_A + 1),
-                        (LM.shot_on_target_A == 0) ? 0.8 : LM.save_B / LM.shot_on_target_A,
+                        LM.save_B / (LM.shot_on_target_A + 1) - 0.1,
+                        (LM.shot_on_target_A == 0) ? 0.75 : LM.save_B / LM.shot_on_target_A - 0.1,
                         // Нарушения А
                         LM.Violations_A,
                         LM.Violations_A + 1,
@@ -129,9 +129,9 @@ namespace ProjectHelper
                         // Total
                         HelpFunctions.SigmaFunction(LM.Score_A +  LM.Score_B),
                         // Save A
-                        (LM.shot_on_target_B == 0)? 0.75 : LM.save_A / LM.shot_on_target_B,
+                        (LM.shot_on_target_B == 0)? 0.8 : (double)LM.save_A / LM.shot_on_target_B - 0.15,
                         // Save B
-                        (LM.shot_on_target_A == 0)? 0.75 : LM.save_B / LM.shot_on_target_A,
+                        (LM.shot_on_target_A == 0)? 0.8 : (double)LM.save_B / LM.shot_on_target_A - 0.15,
                         // Нарушения А
                         HelpFunctions.SigmaFunction(LM.Violations_A),
                         // Нарушения В

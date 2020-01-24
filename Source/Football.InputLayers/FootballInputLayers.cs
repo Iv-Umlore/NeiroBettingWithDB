@@ -112,7 +112,7 @@ namespace Football.InputLayers
                 /// Если не важен, то важность меньше 1, но каждая ошибка не так существенна
                 /// Ещё не реализована зависимость от замен
                 var totalCoeff = tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
-                tmp = totalCoeff * (match.shot_on_target_A + 1) / (match.save_B + 1) * -1;
+                tmp = totalCoeff * (match.shot_on_target_A + 1) / (match.save_B + 1);
                 goodShootArrayB.Add(tmp);
             }
 
@@ -147,8 +147,8 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.save_A + 1) /( match.shot_on_target_B + 1)
-                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                var totalCoeff = tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                tmp = totalCoeff * (match.save_A + 1) / (match.shot_on_target_B + 1);
                 saveArrayB.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
@@ -162,8 +162,8 @@ namespace Football.InputLayers
                 var replasementCoeff = HelpFunctions.GetCoeffByReplacement(match.replacements_A, match.replacements_B);
                 var tournamentCoeff = HelpFunctions.GetCoeffByTournament(match.tier_tournament, match.tier_A, match.tier_B);
                 // Подсчёт итогового числа и его корректировка
-                tmp = (match.shot_on_target_A + 1) / (match.save_B + 1)
-                    * tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff * - 1;
+                var totalCoeff = tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff;
+                tmp = totalCoeff * (match.shot_on_target_A + 1) / (match.save_B + 1);
                 goodShootArrayA.Add(tmp);
             }
             // В итоговый массив поступает отсортированный по убыванию массив.
