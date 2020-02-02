@@ -33,25 +33,43 @@ namespace ProjectHelper
 
         public static double GetCoeffByImportant(int important)
         {
-            if (important == -2) return 0.7;
+            if (important == -2) return 0.8;
             if (important == -1) return 0.9;
-            if (important == 0) return 1.1;
-            if (important == 1) return 1.3;
-            if (important == 2) return 1.5;
+            if (important == 0) return 1;
+            if (important == 1) return 1.1;
+            if (important == 2) return 1.2;
 
             return 1.0;
         }
 
         public static double GetCoeffByReplacement(int replasementA, int replasementB)
         {
-            return 1.0;
+            return 1 + (replasementA - replasementB + 1) / (replasementA + replasementB + 1);
         }
 
         public static double GetCoeffByTournament(int tournament_size, int tierA, int tierB)
         {
-            return 1.0;
+            switch (tournament_size)
+            {
+                case 1: return 3;
+                case 2: return 2;
+                default: {
+                        return 1 + (tierA - tierB) / tournament_size;
+                    }
+            }
         }
         
+        public static double GetTotalCoeff(int tierA, int tierB, int replasementA, int replasementB, int importantA, int importantB, int tournament_size)
+        {
+            // Вычисление коэффициентов влияния Ранга команд, важности матча для команд, и замен, а так же размерности турнира
+            var tierCoeff = GetMatchCoeffByTier(tierA, tierB);
+            var importantCoeff = GetCoeffByImportant(importantA - importantB);
+            var replasementCoeff = GetCoeffByReplacement(replasementA, replasementB);
+            var tournamentCoeff = GetCoeffByTournament(tournament_size, tierA, tierB);
+
+            return Math.Pow(tierCoeff * importantCoeff * replasementCoeff * tournamentCoeff, 1 / 3);
+        }
+
     }
 
     public static class FootballHelper
@@ -102,11 +120,11 @@ namespace ProjectHelper
                         LM.Score_A +  LM.Score_B,
                         LM.Score_A + LM.Score_B + 1,
                         // Save A
-                        LM.save_A / (LM.shot_on_target_B + 1),
-                        ( LM.shot_on_target_B == 0)? 0.75 : (LM.save_A + 1) / (LM.shot_on_target_B + 1),
+                        LM.save_A + 1 / (LM.shot_on_target_B + 1) - 0.1,
+                        ( LM.shot_on_target_B == 0)? 0.75 : (LM.save_A + 1) / (LM.shot_on_target_B + 1) - 0.1,
                         // Save B
-                        LM.save_B / (LM.shot_on_target_A + 1) - 0.1,
-                        (LM.shot_on_target_A == 0) ? 0.75 : LM.save_B / LM.shot_on_target_A - 0.1,
+                        LM.save_B + 1 / (LM.shot_on_target_A + 1) - 0.1,
+                        (LM.shot_on_target_A == 0) ? 0.75 : LM.save_B + 1 / LM.shot_on_target_A - 0.1,
                         // Нарушения А
                         LM.Violations_A,
                         LM.Violations_A + 1,
@@ -129,9 +147,9 @@ namespace ProjectHelper
                         // Total
                         HelpFunctions.SigmaFunction(LM.Score_A +  LM.Score_B),
                         // Save A
-                        (LM.shot_on_target_B == 0)? 0.8 : (double)LM.save_A / LM.shot_on_target_B - 0.15,
+                        (LM.shot_on_target_B == 0)? 0.8 : (double)LM.save_A / LM.shot_on_target_B - 0.2,
                         // Save B
-                        (LM.shot_on_target_A == 0)? 0.8 : (double)LM.save_B / LM.shot_on_target_A - 0.15,
+                        (LM.shot_on_target_A == 0)? 0.8 : (double)LM.save_B / LM.shot_on_target_A - 0.2,
                         // Нарушения А
                         HelpFunctions.SigmaFunction(LM.Violations_A),
                         // Нарушения В

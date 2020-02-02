@@ -150,11 +150,10 @@ namespace Football.Network
         {
 
             // Собираю статистику
-            double[] minMaxHelperArray = new double[14];
-            for (int i = 0; i < 14; i += 2)
+            double[] minMaxHelperArray = new double[7];
+            for (int i = 0; i < 7; i++)
             {
-                minMaxHelperArray[i] = 1000.0;
-                minMaxHelperArray[i + 1] = -1000.0;
+                minMaxHelperArray[i] = 0;
             }
             double fullSumm = 0.0;
             double oneSumm = 0.0;
@@ -186,10 +185,7 @@ namespace Football.Network
                 for (int i = 0; i < perfectHelpAnswer.Count; i++)
                 {
                     var tmp = helpNetworkResult[i] - perfectHelpAnswer[i];
-                    if (minMaxHelperArray[2*i] > tmp)
-                        minMaxHelperArray[2*i] = tmp;
-                    if (minMaxHelperArray[2*i + 1] < tmp)
-                        minMaxHelperArray[2*i + 1] = tmp;
+                    minMaxHelperArray[i]+= Math.Abs(tmp);
                     helpErrors.Add(tmp);
 
                     lastError[i] += Math.Abs(tmp);
@@ -213,37 +209,38 @@ namespace Football.Network
             // Считаем среднее отклонение по всем тестам
             fullSumm /= matches.Count;            
 
-            var resultString = "Main: " + fullSumm.ToString("f4") + " other min/max: ";
+            var resultString = "Main: " + fullSumm.ToString("f4") + " other: ";
 
-            for (int i = 0; i < 14; i += 2)
+            for (int i = 0; i < 7; i++)
             {
                 switch (i)
                 {
                     case 0:
                         resultString += "Tot: ";
                         break;
-                    case 2:
+                    case 1:
                         resultString += "SvA: ";
                         break;
-                    case 4:
+                    case 2:
                         resultString += "SvB: ";
                         break;
-                    case 6:
+                    case 3:
                         resultString += "VA: ";
                         break;
-                    case 8:
+                    case 4:
                         resultString += "VB: ";
                         break;
-                    case 10:
+                    case 5:
                         resultString += "ShA: ";
                         break;                        
-                    case 12:
+                    case 6:
                         resultString += "ShB: ";
                         break;
                     default:
                         break;
                 }
-                resultString += minMaxHelperArray[i].ToString("f2") + "/" + minMaxHelperArray[i + 1].ToString("f2") + " ";
+                minMaxHelperArray[i] /= matches.Count;
+                resultString += minMaxHelperArray[i].ToString("f3")  +  " ";
             }
 
             // Если нейронка не может обучиться или уходит не туда,

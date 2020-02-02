@@ -43,96 +43,96 @@ namespace Football.InteractionController
 
             if (isReadyForLearning)
             {
-                var MWR = entities.WaitResults.First(it => it.Team_A == currentMatch.Team_A && it.Team_B == currentMatch.Team_B && it.date == currentMatch.match_date);
+                var MWR = entities.WaitResults.FirstOrDefault(it => it.Team_A == currentMatch.Team_A && it.Team_B == currentMatch.Team_B && it.date == currentMatch.match_date);
 
                 // Изменение ранга команд
                 var A = entities.Comands.First(it => it.id_team == MWR.Team_A);
                 var B = entities.Comands.First(it => it.id_team == MWR.Team_B);
-
-                if (int.Parse(matchParameters[7]) > int.Parse(matchParameters[8]))
-                {
-                    if (A.tier_team < B.tier_team)
+                
+                    if (int.Parse(matchParameters[7]) > int.Parse(matchParameters[8]))
                     {
-                        A.team_point += (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
-                        B.team_point -= (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
-                    }
-                    else
-                    {
-                        A.team_point += (A.tier_team - B.tier_team);
-                        B.team_point -= (A.tier_team - B.tier_team) / 2;
-                    }
-
-                    if (A.team_point > 100)
-                        if (A.tier_team != 1)
+                        if (A.tier_team < B.tier_team)
                         {
-                            A.tier_team++;
-                            A.team_point -= 100;
+                            A.team_point += (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
+                            B.team_point -= (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
+                        }
+                        else
+                        {
+                            A.team_point += (A.tier_team - B.tier_team);
+                            B.team_point -= (A.tier_team - B.tier_team) / 2;
                         }
 
-                    if (B.team_point < 0)
-                        if (B.tier_team != 20)
-                        {
-                            B.tier_team--;
-                            B.team_point += 100;
-                        }
-
-                    if (B.team_point > 100)
-                        if (B.tier_team != 1)
-                        {
-                            B.tier_team++;
-                            B.team_point -= 100;
-                        }
-
-                    if (A.team_point < 0)
-                        if (A.tier_team != 20)
-                        {
-                            A.tier_team--;
-                            A.team_point += 100;
-                        }
-
-                }
-                else 
-                    if (int.Parse(matchParameters[7]) < int.Parse(matchParameters[8]))
-                        {
-                            if (A.tier_team > B.tier_team)
+                        if (A.team_point > 100)
+                            if (A.tier_team != 1)
                             {
-                                A.team_point -= (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
-                                B.team_point += (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
-                            }
-                            else
-                            {
-                                A.team_point -= (A.tier_team - B.tier_team) / 2;
-                                B.team_point += (A.tier_team - B.tier_team);
+                                A.tier_team++;
+                                A.team_point -= 100;
                             }
 
-                            if (B.team_point > 100)
-                                if (B.tier_team != 1)
+                        if (B.team_point < 0)
+                            if (B.tier_team != 20)
+                            {
+                                B.tier_team--;
+                                B.team_point += 100;
+                            }
+
+                        if (B.team_point > 100)
+                            if (B.tier_team != 1)
+                            {
+                                B.tier_team++;
+                                B.team_point -= 100;
+                            }
+
+                        if (A.team_point < 0)
+                            if (A.tier_team != 20)
+                            {
+                                A.tier_team--;
+                                A.team_point += 100;
+                            }
+
+                    }
+                    else 
+                        if (int.Parse(matchParameters[7]) < int.Parse(matchParameters[8]))
+                            {
+                                if (A.tier_team > B.tier_team)
                                 {
-                                    B.tier_team++;
-                                    B.team_point -= 100;
+                                    A.team_point -= (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
+                                    B.team_point += (B.tier_team - A.tier_team) * (B.tier_team - A.tier_team);
+                                }
+                                else
+                                {
+                                    A.team_point -= (A.tier_team - B.tier_team) / 2;
+                                    B.team_point += (A.tier_team - B.tier_team);
                                 }
 
-                            if (A.team_point < 0)
-                                if (A.tier_team != 20)
-                                {
-                                    A.tier_team--;
-                                    A.team_point += 100;
-                                }
+                                if (B.team_point > 100)
+                                    if (B.tier_team != 1)
+                                    {
+                                        B.tier_team++;
+                                        B.team_point -= 100;
+                                    }
 
-                    if (A.team_point > 100)
-                        if (A.tier_team != 1)
-                        {
-                            A.tier_team++;
-                            A.team_point -= 100;
-                        }
+                                if (A.team_point < 0)
+                                    if (A.tier_team != 20)
+                                    {
+                                        A.tier_team--;
+                                        A.team_point += 100;
+                                    }
 
-                    if (B.team_point < 0)
-                        if (B.tier_team != 20)
-                        {
-                            B.tier_team--;
-                            B.team_point += 100;
-                        }
-                }
+                        if (A.team_point > 100)
+                            if (A.tier_team != 1)
+                            {
+                                A.tier_team++;
+                                A.team_point -= 100;
+                            }
+
+                        if (B.team_point < 0)
+                            if (B.tier_team != 20)
+                            {
+                                B.tier_team--;
+                                B.team_point += 100;
+                            }
+                    }
 
                 entities.WaitResults.Remove(MWR);
                 
